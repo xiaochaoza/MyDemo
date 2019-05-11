@@ -2,6 +2,7 @@ package com.fzzz.mydemo;
 
 import android.view.View;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.fzzz.mydemo.base.BaseActivity;
 
 import butterknife.OnClick;
@@ -26,9 +27,10 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_volley:
                 break;
             case R.id.btn_okhttp:
+                ARouter.getInstance().build(Constants.PATH_OKHTTP).navigation();
                 break;
             case R.id.btn_retrofit:
-
+                ARouter.getInstance().build(Constants.PATH_RETROFIT).navigation();
                 break;
             case R.id.btn_rxjava:
                 break;

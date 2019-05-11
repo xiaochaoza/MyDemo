@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.0 rc2"
     defaultConfig {
         applicationId "com.fzzz.mydemo"
-        minSdkVersion 'Q'
+        minSdkVersion 28
         targetSdkVersion 'Q'
         versionCode 1
         versionName "1.0"
@@ -14,7 +14,7 @@ android {
         //路由配置
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [AROUTER_MODULE_NAME: project.getName()]
+                arguments = [moduleName: project.getName()]
             }
         }
     }
@@ -40,10 +40,18 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
+    //butterknife
     implementation 'com.jakewharton:butterknife:10.1.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
 
-    //阿里路由
+    //阿里路由arouter
     implementation 'com.alibaba:arouter-api:1.5.0'
     annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+
+    //gson
+    implementation 'com.google.code.gson:gson:2.8.5'
+
 }
