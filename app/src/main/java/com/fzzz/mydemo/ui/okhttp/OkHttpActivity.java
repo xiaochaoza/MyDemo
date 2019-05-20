@@ -1,5 +1,6 @@
 package com.fzzz.mydemo.ui.okhttp;
 
+import android.util.Log;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -32,6 +33,7 @@ import okhttp3.Response;
  */
 @Route(path = Constants.PATH_OKHTTP)
 public class OkHttpActivity extends BaseActivity {
+    public static final String TAG = "OkHttpActivity";
 
     //1.创建OkHttpClient对象
     OkHttpClient httpClient = new OkHttpClient.Builder()
@@ -70,7 +72,7 @@ public class OkHttpActivity extends BaseActivity {
     private void noParamGetSync() {
         //2.创建Request对象，设置一个url地址（百度地址）,设置请求方式。
         Request request = new Request.Builder()
-                .url("https://www.baidu.com")
+                .url("https://www.baidu.com/")
                 .get()
                 .build();
         //3.创建一个call对象,参数就是Request请求对象
@@ -95,7 +97,7 @@ public class OkHttpActivity extends BaseActivity {
     private void noParamGetAsync() {
         //2.创建Request对象，设置一个url地址（百度地址）,设置请求方式。
         Request request = new Request.Builder()
-                .url("https://www.baidu.com")
+                .url("https://www.baidu.com/")
                 .get()
                 .build();
         //3.创建一个call对象,参数就是Request请求对象
@@ -104,7 +106,7 @@ public class OkHttpActivity extends BaseActivity {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
+                Log.d(TAG, "error");
             }
 
             @Override
@@ -124,7 +126,7 @@ public class OkHttpActivity extends BaseActivity {
                 .build();
         //2.创建Request对象，设置一个url地址（百度地址）,设置请求方式。
         Request request = new Request.Builder()
-                .url(Constants.BASE_URL + "toutiao/index")
+                .url(Constants.BASE_URL_JUHE + "toutiao/index")
                 .post(requestBody)
                 .build();
         //3.创建一个call对象,参数就是Request请求对象
@@ -133,7 +135,7 @@ public class OkHttpActivity extends BaseActivity {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                System.out.println("error");
+                Log.d(TAG, "error");
             }
 
             @Override
@@ -148,7 +150,6 @@ public class OkHttpActivity extends BaseActivity {
      */
     private void hasJsonPostAsync() {
         MediaType mediaType = MediaType.parse("application/json; charset=utf-8");//"类型,字节码"
-
         JSONObject params = new JSONObject();
         try {
             params.put("key", Constants.JUHE_APP_KEY);
@@ -160,7 +161,7 @@ public class OkHttpActivity extends BaseActivity {
         RequestBody requestBody = RequestBody.create(mediaType, params.toString());
         //2.创建Request对象，设置一个url地址（百度地址）,设置请求方式。
         Request request = new Request.Builder()
-                .url(Constants.BASE_URL + "toutiao/index")
+                .url(Constants.BASE_URL_JUHE + "toutiao/index")
                 .post(requestBody)
                 .build();
         //3.创建一个call对象,参数就是Request请求对象
@@ -169,7 +170,7 @@ public class OkHttpActivity extends BaseActivity {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                System.out.println("error");
+                Log.d(TAG, "error");
             }
 
             @Override
@@ -177,11 +178,6 @@ public class OkHttpActivity extends BaseActivity {
                 PageUtil.toResultPage(response.body().string());
             }
         });
-    }
-
-    class Para {
-        public String type;
-        public String key;
     }
 
     /**
