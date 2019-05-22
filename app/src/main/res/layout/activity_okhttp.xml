@@ -13,6 +13,7 @@
 
         <Button
             android:id="@+id/bt1"
+            style="@style/button_style"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -21,6 +22,7 @@
 
         <Button
             android:id="@+id/bt2"
+            style="@style/button_style"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -29,6 +31,7 @@
 
         <Button
             android:id="@+id/bt3"
+            style="@style/button_style"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -37,12 +40,12 @@
 
         <Button
             android:id="@+id/bt4"
+            style="@style/button_style"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:text="json提交post"
             android:textAllCaps="false" />
-
 
     </GridLayout>
 </LinearLayout>

@@ -1,6 +1,5 @@
 package com.fzzz.mydemo.ui.retrofit;
 
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -22,7 +21,6 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;

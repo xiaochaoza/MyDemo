@@ -15,4 +15,6 @@ public class Constants {
     public static final String PATH_OKHTTP = "/ui/okhttp/OkHttpActivity";
     public static final String PATH_RETROFIT = "/ui/retrofit/RetrofitActivity";
     public static final String PATH_RESULT = "/ui/result/ResultActivity";
+    public static final String PATH_RXJAVA = "/ui/rxjava/RxJxvaActivity";
+    public static final String PATH_OKHTTP_RXJAVA = "/ui/rxjava/OkHttpRxJavaActivity";
 }

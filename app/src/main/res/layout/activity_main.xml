@@ -12,6 +12,7 @@
 
         <Button
             android:id="@+id/btn_async_load"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -21,6 +22,7 @@
 
         <Button
             android:id="@+id/btn_volley"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -30,6 +32,7 @@
 
         <Button
             android:id="@+id/btn_okhttp"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -39,6 +42,7 @@
 
         <Button
             android:id="@+id/btn_retrofit"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -48,6 +52,7 @@
 
         <Button
             android:id="@+id/btn_rxjava"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -56,7 +61,18 @@
             android:textSize="18sp" />
 
         <Button
+            android:id="@+id/btn_okhttp_rxjava"
+            style="@style/button_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="okhttp_rxjava"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
+
+        <Button
             android:id="@+id/btn_retrofit_rxjava"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -66,6 +82,7 @@
 
         <Button
             android:id="@+id/btn_eventbus"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -75,6 +92,7 @@
 
         <Button
             android:id="@+id/btn_glide"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -84,6 +102,7 @@
 
         <Button
             android:id="@+id/btn_greendao"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -93,6 +112,7 @@
 
         <Button
             android:id="@+id/btn_figerprint"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -102,6 +122,7 @@
 
         <Button
             android:id="@+id/btn_recyclerview"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -111,6 +132,7 @@
 
         <Button
             android:id="@+id/btn_stick_recycler"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -120,6 +142,7 @@
 
         <Button
             android:id="@+id/btn_coordinator"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -129,6 +152,7 @@
 
         <Button
             android:id="@+id/btn_webview"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -138,6 +162,7 @@
 
         <Button
             android:id="@+id/btn_dialog"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -147,6 +172,7 @@
 
         <Button
             android:id="@+id/btn_drawerlayout"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -156,6 +182,7 @@
 
         <Button
             android:id="@+id/btn_toolbar"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -165,6 +192,7 @@
 
         <Button
             android:id="@+id/btn_zxing"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -174,6 +202,7 @@
 
         <Button
             android:id="@+id/btn_lottie"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -183,6 +212,7 @@
 
         <Button
             android:id="@+id/btn_tablayout"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -192,6 +222,7 @@
 
         <Button
             android:id="@+id/btn_dagger2"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -201,6 +232,7 @@
 
         <Button
             android:id="@+id/btn_handler"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -210,6 +242,7 @@
 
         <Button
             android:id="@+id/btn_databinding"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -219,6 +252,7 @@
 
         <Button
             android:id="@+id/btn_windowinput"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -228,6 +262,7 @@
 
         <Button
             android:id="@+id/btn_animation"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -237,6 +272,7 @@
 
         <Button
             android:id="@+id/btn_gps"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -246,6 +282,7 @@
 
         <Button
             android:id="@+id/btn_take_pic"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -255,6 +292,7 @@
 
         <Button
             android:id="@+id/btn_device_info"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
@@ -264,6 +302,7 @@
 
         <Button
             android:id="@+id/btn_mytest"
+            style="@style/button_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"

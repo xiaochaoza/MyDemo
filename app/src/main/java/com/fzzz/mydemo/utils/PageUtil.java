@@ -14,4 +14,9 @@ public class PageUtil {
     public static void toResultPage(String result) {
         ARouter.getInstance().build(Constants.PATH_RESULT).withString("result", result).navigation();
     }
+
+    public static void toActivity(String path) {
+        ARouter.getInstance().build(path).navigation();
+    }
+
 }

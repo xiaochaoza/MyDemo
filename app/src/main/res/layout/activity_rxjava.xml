@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.okhttp.OkHttpActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="3">
+
+            <Button
+                android:id="@+id/bt1"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="遍历输出list"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt15"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="just顺序执行"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt2"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="事件发射与暂停"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt3"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="map数据转换"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt4"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="zip合并事件"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt5"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="concat连接事件"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt6"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="flatMap无序转换"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt7"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="concatMap有序转换"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt8"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="distinct去重"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt9"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Filter过滤器"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt10"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="buffer步长分组"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt11"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="timer定时任务"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt12"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="interval定时任务"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt13"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="doOnNext"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt14"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="Single只接单参数"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt16"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="debounce\n过滤频率高的"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt17"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="defer\n每次订阅创建新的"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt18"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="last\n取出最后一个值"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt19"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="merge结合事件"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt20"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="reduce处理值"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt21"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="scan处理值"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt22"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="window分组发送"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt23"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text=""
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/bt24"
+                style="@style/button_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text=""
+                android:textAllCaps="false" />
+
+        </GridLayout>
+    </ScrollView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="结果显示"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2">
+
+        <TextView
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+</LinearLayout>
