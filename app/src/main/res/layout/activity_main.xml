@@ -8,7 +8,7 @@
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnCount="3">
+        android:columnCount="2">
 
         <Button
             android:id="@+id/btn_async_load"
@@ -57,16 +57,6 @@
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:text="rxjava"
-            android:textAllCaps="false"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/btn_okhttp_rxjava"
-            style="@style/button_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="okhttp_rxjava"
             android:textAllCaps="false"
             android:textSize="18sp" />
 

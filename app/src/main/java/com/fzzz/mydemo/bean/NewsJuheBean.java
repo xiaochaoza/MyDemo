@@ -8,7 +8,7 @@ import java.util.List;
  * time: 2019-05-14
  * update:
  */
-public class NewsReturnBean {
+public class NewsJuheBean {
 
 
     /**

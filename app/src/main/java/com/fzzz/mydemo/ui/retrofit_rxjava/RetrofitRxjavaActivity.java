@@ -1,0 +1,207 @@
+package com.fzzz.mydemo.ui.retrofit_rxjava;
+
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.fzzz.mydemo.Constants;
+import com.fzzz.mydemo.R;
+import com.fzzz.mydemo.base.BaseActivity;
+import com.fzzz.mydemo.bean.NewsJuheBean;
+import com.fzzz.mydemo.bean.UserReturnBean;
+import com.fzzz.mydemo.helper.RetrofitJuHeHelper;
+import com.fzzz.mydemo.helper.RetrofitLocalHelper;
+import com.fzzz.mydemo.utils.RequestBodyUtil;
+import com.fzzz.mydemo.utils.ToastUtil;
+import com.google.gson.Gson;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import butterknife.BindView;
+import butterknife.OnClick;
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+
+/**
+ * description:
+ * author: ShenChao
+ * time: 2019-05-10
+ * update:
+ */
+@Route(path = Constants.PATH_RETROFIT_RXJAVA)
+public class RetrofitRxjavaActivity extends BaseActivity {
+
+    public static final String TAG = "RetrofitRxjavaActivity";
+
+    @BindView(R.id.content1)
+    TextView content1;
+    @BindView(R.id.content2)
+    TextView content2;
+    @BindView(R.id.et_username)
+    EditText etUsername;
+    @BindView(R.id.et_password)
+    EditText etPassword;
+
+    private Disposable disposable;
+
+    @Override
+    public int getLayoutID() {
+        return R.layout.activity_retrofit_rxjava;
+    }
+
+    @OnClick({R.id.bt1, R.id.bt2, R.id.content1, R.id.content2, R.id.local_add, R.id.local_delete,
+            R.id.local_update, R.id.local_find_all, R.id.local_find_one})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.bt1:
+                bt1();
+                content1.setVisibility(View.VISIBLE);
+                content2.setVisibility(View.GONE);
+                break;
+            case R.id.bt2:
+                bt2();
+                content1.setVisibility(View.GONE);
+                content2.setVisibility(View.VISIBLE);
+                break;
+            case R.id.content1:
+                con1();
+                break;
+            case R.id.content2:
+                con2();
+                break;
+            case R.id.local_add:
+                localAdd();
+                break;
+            case R.id.local_delete:
+                localDelete();
+                break;
+            case R.id.local_update:
+                localUpdate();
+                break;
+            case R.id.local_find_all:
+                localFindAll();
+                break;
+            case R.id.local_find_one:
+                localFindUserByUserName();
+                break;
+        }
+    }
+
+    private void localFindUserByUserName() {
+
+    }
+
+    private void localFindAll() {
+
+    }
+
+    private void localUpdate() {
+
+    }
+
+    private void localDelete() {
+
+    }
+
+    private void localAdd() {
+        RequestBody requestBody = RequestBodyUtil.creat(getInput());
+        disposable = RetrofitLocalHelper.get().add(requestBody)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(new Function<ResponseBody, UserReturnBean>() {
+                    @Override
+                    public UserReturnBean apply(ResponseBody responseBody) throws Exception {
+                        return new Gson().fromJson(responseBody.string(), UserReturnBean.class);
+                    }
+                })
+                .subscribe(new Consumer<UserReturnBean>() {
+                    @Override
+                    public void accept(UserReturnBean userReturnBean) throws Exception {
+                        if (null == userReturnBean) {
+                            return;
+                        }
+                        ToastUtil.show(getApplicationContext(), userReturnBean.resultMessage);
+                    }
+                });
+    }
+
+    private Map<String, String> getInput() {
+        String userName = etUsername.getText().toString().trim();
+        String passWord = etPassword.getText().toString().trim();
+        Map<String, String> params = new HashMap<>();
+        if (!TextUtils.isEmpty(userName)) {
+            params.put("userName", userName);
+        }
+        if (!TextUtils.isEmpty(passWord)) {
+            params.put("passWord", passWord);
+        }
+        return params;
+    }
+
+    private void bt1() {
+        content1.setText(getString(R.string.retrofit_rxjava_content1));
+    }
+
+    private void bt2() {
+        content2.setText(getString(R.string.retrofit_rxjava_content2));
+    }
+
+    private void con1() {
+        content1.setText("");
+        disposable = RetrofitJuHeHelper.get().getNewsGet(Constants.JUHE_APP_KEY)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .flatMap(new Function<ResponseBody, ObservableSource<NewsJuheBean.ResultBean.DataBean>>() {
+                    @Override
+                    public ObservableSource<NewsJuheBean.ResultBean.DataBean> apply(ResponseBody responseBody) throws Exception {
+                        Gson gson = new Gson();
+                        NewsJuheBean newsJuheBean = gson.fromJson(responseBody.string(), NewsJuheBean.class);
+                        return Observable.fromIterable(newsJuheBean.getResult().getData());
+                    }
+                }).subscribe(new Consumer<NewsJuheBean.ResultBean.DataBean>() {
+                    @Override
+                    public void accept(NewsJuheBean.ResultBean.DataBean dataBean) throws Exception {
+                        content1.append(dataBean.getTitle());
+                        content1.append("\n");
+                    }
+                });
+    }
+
+    private void con2() {
+        content2.setText("");
+        disposable = RetrofitJuHeHelper.get().getNewsPost(Constants.JUHE_APP_KEY, "top")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .flatMap(new Function<NewsJuheBean, ObservableSource<NewsJuheBean.ResultBean.DataBean>>() {
+                    @Override
+                    public ObservableSource<NewsJuheBean.ResultBean.DataBean> apply(NewsJuheBean newsJuheBean) throws Exception {
+                        return Observable.fromIterable(newsJuheBean.getResult().getData());
+                    }
+                }).subscribe(new Consumer<NewsJuheBean.ResultBean.DataBean>() {
+                    @Override
+                    public void accept(NewsJuheBean.ResultBean.DataBean dataBean) throws Exception {
+                        content2.append(dataBean.getTitle());
+                        content2.append("\n");
+                    }
+                });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (null != disposable && !disposable.isDisposed()) {
+            disposable.dispose();
+        }
+    }
+
+}

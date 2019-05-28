@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">MyDemo</string>
+
+    <string name="retrofit_rxjava_content1">
+        点我\n
+        1.利用retrofit访问聚合数据，新闻接口，get方式\n
+        2.返回成功后处理报文，转为NewsReturnBean\n
+        3.处理数据之前，把bean中的所有新闻的标题拿出来\n
+        4.遍历集合，把标题显示在页面中
+    </string>
+    <string name="retrofit_rxjava_content2">
+        点我\n
+        1.利用retrofit访问聚合数据，新闻接口，post方式\n
+        2.返回rxjava支持，直接返回NewsReturnBean\n
+        3.处理数据之前，把bean中的所有新闻的标题拿出来\n
+        4.遍历集合，把标题显示在页面中
+    </string>
 </resources>

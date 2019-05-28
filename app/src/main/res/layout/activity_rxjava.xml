@@ -220,7 +220,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:text=""
+                android:text="rxjava线程"
                 android:textAllCaps="false" />
 
             <Button
@@ -240,7 +240,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="结果显示"
-        android:textSize="15sp"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <ScrollView
@@ -250,6 +250,7 @@
 
         <TextView
             android:id="@+id/content"
+            style="@style/text_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </ScrollView>

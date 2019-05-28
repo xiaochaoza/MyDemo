@@ -854,8 +854,118 @@ public class RxJavaActivity extends BaseActivity {
                 });
     }
 
+    /**
+     * 2019-05-23 15:15:47.698 30828-30828/com.fzzz.mydemo E/RxJavaActivity: doOnSubscribe after trampoline: main
+     * 2019-05-23 15:15:47.700 30828-30899/com.fzzz.mydemo E/RxJavaActivity: doOnSubscribe after main: RxComputationThreadPool-1
+     * 2019-05-23 15:15:47.705 30828-30900/com.fzzz.mydemo E/RxJavaActivity: doOnSubscribe after new Thread: RxCachedThreadScheduler-1
+     * 2019-05-23 15:15:47.711 30828-30902/com.fzzz.mydemo E/RxJavaActivity: doOnSubscribe: RxNewThreadScheduler-1
+     * 2019-05-23 15:15:47.711 30828-30902/com.fzzz.mydemo E/RxJavaActivity: doOnNext: RxNewThreadScheduler-1
+     * 2019-05-23 15:15:47.712 30828-30902/com.fzzz.mydemo E/RxJavaActivity: map thread: RxNewThreadScheduler-1
+     * 2019-05-23 15:15:47.712 30828-30902/com.fzzz.mydemo E/RxJavaActivity: doOnNext after new Thread: RxNewThreadScheduler-1
+     * 2019-05-23 15:15:47.712 30828-30828/com.fzzz.mydemo E/RxJavaActivity: map after main: main
+     * 2019-05-23 15:15:47.713 30828-30828/com.fzzz.mydemo E/RxJavaActivity: doOnNext after main: main
+     * 2019-05-23 15:15:47.714 30828-30903/com.fzzz.mydemo E/RxJavaActivity: doOnNext after trampoline: RxCachedThreadScheduler-2
+     * 2019-05-23 15:15:47.714 30828-30903/com.fzzz.mydemo E/RxJavaActivity: onNext : RxCachedThreadScheduler-2
+     * <p>
+     * doondoOnSubscribe 线程为后边指定的subscribeOn线程，未指定为main,指定多个subscribeOn，只第一个生效
+     * doondoOnSubscribe 越在后边越先执行
+     * doOnSubscribe after trampoline: main
+     * doOnSubscribe after main: RxComputationThreadPool-1
+     * doOnSubscribe after new Thread: RxCachedThreadScheduler-1
+     * doOnSubscribe: RxNewThreadScheduler-1
+     * doonnext 线程为当前线程 上个运行的是doOnSubscribe 在newThread
+     * doOnNext: RxNewThreadScheduler-1
+     * map thread: RxNewThreadScheduler-1
+     * doOnNext after new Thread: RxNewThreadScheduler-1
+     * observeOn 会改变以后的它线程
+     * map after main: main
+     * doOnNext after main: main
+     * observeOn 可以随时改变线程
+     * doOnNext after trampoline: RxCachedThreadScheduler-2
+     * onNext : RxCachedThreadScheduler-2
+     */
     private void test23() {
-
+        mDisposable = Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
+                emitter.onNext(1);
+                emitter.onComplete();
+            }
+        })
+                .doOnSubscribe(new Consumer<Disposable>() {
+                    @Override
+                    public void accept(Disposable disposable) throws Exception {
+                        Log.e(TAG, "doOnSubscribe: " + Thread.currentThread().getName());
+                    }
+                })
+                .doOnNext(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                        Log.e(TAG, "doOnNext: " + Thread.currentThread().getName());
+                    }
+                })
+                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.single())
+                .map(new Function<Integer, String>() {
+                    @Override
+                    public String apply(Integer integer) throws Exception {
+                        Log.e(TAG, "map thread: " + Thread.currentThread().getName());
+                        return integer + "";
+                    }
+                })
+                .doOnSubscribe(new Consumer<Disposable>() {
+                    @Override
+                    public void accept(Disposable disposable) throws Exception {
+                        Log.e(TAG, "doOnSubscribe after new Thread: " + Thread.currentThread().getName());
+                    }
+                })
+                .doOnNext(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        Log.e(TAG, "doOnNext after new Thread: " + Thread.currentThread().getName());
+                    }
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(new Function<String, String>() {
+                    @Override
+                    public String apply(String s) throws Exception {
+                        Log.e(TAG, "map after main: " + Thread.currentThread().getName());
+                        return s + "1";
+                    }
+                })
+                .doOnNext(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        Log.e(TAG, "doOnNext after main: " + Thread.currentThread().getName());
+                    }
+                })
+                .doOnSubscribe(new Consumer<Disposable>() {
+                    @Override
+                    public void accept(Disposable disposable) throws Exception {
+                        Log.e(TAG, "doOnSubscribe after main: " + Thread.currentThread().getName());
+                    }
+                })
+                .subscribeOn(Schedulers.computation())
+                .observeOn(Schedulers.io())
+                .doOnNext(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        Log.e(TAG, "doOnNext after trampoline: " + Thread.currentThread().getName());
+                    }
+                })
+                .doOnSubscribe(new Consumer<Disposable>() {
+                    @Override
+                    public void accept(Disposable disposable) throws Exception {
+                        Log.e(TAG, "doOnSubscribe after trampoline: " + Thread.currentThread().getName());
+                    }
+                })
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Exception {
+                        Log.e(TAG, "onNext : " + Thread.currentThread().getName());
+                    }
+                });
     }
 
     private void test24() {

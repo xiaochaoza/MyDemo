@@ -9,11 +9,12 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fzzz.mydemo.Constants;
 import com.fzzz.mydemo.R;
 import com.fzzz.mydemo.base.BaseActivity;
-import com.fzzz.mydemo.bean.NewsReturnBean;
-import com.fzzz.mydemo.helper.RetrofitHelper;
+import com.fzzz.mydemo.bean.NewsJuheBean;
+import com.fzzz.mydemo.helper.RetrofitJuHeHelper;
 import com.fzzz.mydemo.net.RemoteService;
 import com.fzzz.mydemo.utils.PageUtil;
 import com.fzzz.mydemo.utils.RequestBodyUtil;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -52,7 +53,7 @@ public class RetrofitActivity extends BaseActivity {
         return R.layout.activity_retrofit;
     }
 
-    @OnClick({R.id.bt1, R.id.bt2, R.id.bt3, R.id.bt4, R.id.bt5, R.id.local_add, R.id.local_delete, R.id.local_update, R.id.local_find_all, R.id.local_find_one})
+    @OnClick({R.id.bt1, R.id.bt2, R.id.bt3, R.id.bt4, R.id.bt5})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt1:
@@ -70,43 +71,8 @@ public class RetrofitActivity extends BaseActivity {
             case R.id.bt5:
                 hanParamGetAsync();
                 break;
-            case R.id.local_add:
-                localAdd();
-                break;
-            case R.id.local_delete:
-                localDelete();
-                break;
-            case R.id.local_update:
-                localUpdate();
-                break;
-            case R.id.local_find_all:
-                localFindAll();
-                break;
-            case R.id.local_find_one:
-                localFindUserByUserName();
-                break;
+
         }
-    }
-
-
-    private void localFindUserByUserName() {
-
-    }
-
-    private void localFindAll() {
-
-    }
-
-    private void localUpdate() {
-
-    }
-
-    private void localDelete() {
-
-    }
-
-    private void localAdd() {
-
     }
 
     /**
@@ -213,33 +179,38 @@ public class RetrofitActivity extends BaseActivity {
     }
 
     /**
-     * json提交post请求
+     * json提交post请求 接口不支持json格式
      */
     private void hasJsonPostAsync() {
         Map<String, String> params = new HashMap<>();
         params.put("key", Constants.JUHE_APP_KEY);
         params.put("type", "top");
         RequestBody requestBody = RequestBodyUtil.creat(params);
-        Call<NewsReturnBean> call = RetrofitHelper.get().getNewsPostJson(requestBody);
-        call.enqueue(new Callback<NewsReturnBean>() {
+        Call<ResponseBody> call = RetrofitJuHeHelper.get().getNewsPostJson(requestBody);
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<NewsReturnBean> call, Response<NewsReturnBean> response) {
-                NewsReturnBean news = response.body();
-                if (null == news.getResult()) {
-                    PageUtil.toResultPage(news.getError_code() + "---" + news.getReason());
-                } else {
-                    List<NewsReturnBean.ResultBean.DataBean> data = news.getResult().getData();
-                    StringBuffer sb = new StringBuffer();
-                    for (NewsReturnBean.ResultBean.DataBean datum : data) {
-                        sb.append(datum.getTitle());
-                        sb.append("\n");
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    String json = response.body().string();
+                    NewsJuheBean news = new Gson().fromJson(json, NewsJuheBean.class);
+                    if (null == news.getResult()) {
+                        PageUtil.toResultPage(news.getError_code() + "---" + news.getReason());
+                    } else {
+                        List<NewsJuheBean.ResultBean.DataBean> data = news.getResult().getData();
+                        StringBuffer sb = new StringBuffer();
+                        for (NewsJuheBean.ResultBean.DataBean datum : data) {
+                            sb.append(datum.getTitle());
+                            sb.append("\n");
+                        }
+                        PageUtil.toResultPage(sb.toString());
                     }
-                    PageUtil.toResultPage(sb.toString());
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
 
             @Override
-            public void onFailure(Call<NewsReturnBean> call, Throwable t) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.d(TAG, "erroe");
             }
         });

@@ -12,6 +12,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -20,10 +21,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * time: 2019-05-14
  * update:
  */
-public class RetrofitHelper {
+public class RetrofitLocalHelper {
     private static RemoteService remoteService;
 
-    private RetrofitHelper() {
+    private RetrofitLocalHelper() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -37,9 +38,10 @@ public class RetrofitHelper {
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL_JUHE)
+                .baseUrl(Constants.BASE_URL_LOCAL)
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
 
         remoteService = retrofit.create(RemoteService.class);
@@ -47,13 +49,13 @@ public class RetrofitHelper {
 
     public static RemoteService get() {
         if (null == remoteService) {
-            synchronized (RetrofitHelper.class) {
+            synchronized (RetrofitLocalHelper.class) {
                 if (null == remoteService) {
-                    new RetrofitHelper();
+                    new RetrofitLocalHelper();
                 }
             }
         }
-        return RetrofitHelper.remoteService;
+        return RetrofitLocalHelper.remoteService;
     }
 
     private class RequestInterceptor implements Interceptor{
@@ -62,7 +64,8 @@ public class RetrofitHelper {
         public Response intercept(Chain chain) throws IOException {
             Request request = chain.request()
                     .newBuilder()
-                    .addHeader("aa", "aa")
+                    .addHeader("Content-Type", "application/json")
+                    .addHeader("Accept-Type", "application/json")
                     .build();
             return chain.proceed(request);
         }
