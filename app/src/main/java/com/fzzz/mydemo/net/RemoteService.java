@@ -49,4 +49,16 @@ public interface RemoteService {
     @POST("/user/add1")
     Observable<ResponseBody> add(@Body RequestBody requestBody);
 
+    @POST("/user/delete")
+    Observable<ResponseBody> delete(@Body RequestBody requestBody);
+
+    @POST("/user/update")
+    Observable<ResponseBody> update(@Body RequestBody requestBody);
+
+    @POST("/user/findAll")
+    Observable<ResponseBody> findAll(@Body RequestBody requestBody);
+
+    @POST("/user/findUserByUserName")
+    Observable<ResponseBody> findUserByUserName(@Body RequestBody requestBody);
+
 }

@@ -45,8 +45,6 @@ public class RetrofitActivity extends BaseActivity {
     EditText etUsername;
     @BindView(R.id.et_password)
     EditText etPassword;
-    @BindView(R.id.listview)
-    ListView listview;
 
     @Override
     public int getLayoutID() {

@@ -17,7 +17,7 @@ public class UserReturnBean {
      */
     public String resultCode;
     public String resultMessage;
-    public List<User> userList;
+    public List<User> data;
 
     public class User {
         /**

@@ -1,13 +1,18 @@
 package com.fzzz.mydemo.ui.retrofit_rxjava;
 
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fzzz.mydemo.Constants;
 import com.fzzz.mydemo.R;
+import com.fzzz.mydemo.adapter.BaseAdapter;
 import com.fzzz.mydemo.base.BaseActivity;
 import com.fzzz.mydemo.bean.NewsJuheBean;
 import com.fzzz.mydemo.bean.UserReturnBean;
@@ -51,8 +56,11 @@ public class RetrofitRxjavaActivity extends BaseActivity {
     EditText etUsername;
     @BindView(R.id.et_password)
     EditText etPassword;
+    @BindView(R.id.recyclerview)
+    RecyclerView recyclerview;
 
     private Disposable disposable;
+    private UserReturnBean userReturnBean;
 
     @Override
     public int getLayoutID() {
@@ -98,19 +106,104 @@ public class RetrofitRxjavaActivity extends BaseActivity {
     }
 
     private void localFindUserByUserName() {
-
+        RequestBody requestBody = RequestBodyUtil.creat(getInput());
+        disposable = RetrofitLocalHelper.get().findUserByUserName(requestBody)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(new Function<ResponseBody, UserReturnBean>() {
+                    @Override
+                    public UserReturnBean apply(ResponseBody responseBody) throws Exception {
+                        return new Gson().fromJson(responseBody.string(), UserReturnBean.class);
+                    }
+                }).subscribe(new Consumer<UserReturnBean>() {
+                    @Override
+                    public void accept(UserReturnBean userReturnBean) throws Exception {
+                        if (null == userReturnBean) {
+                            return;
+                        }
+                        BaseAdapter adapter = new BaseAdapter(userReturnBean, new BaseAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(String userName, String password) {
+                                etUsername.setText(userName);
+                                etPassword.setText(password);
+                            }
+                        });
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RetrofitRxjavaActivity.this, LinearLayoutManager.VERTICAL, false);
+                        recyclerview.setAdapter(adapter);
+                        recyclerview.setLayoutManager(layoutManager);
+                    }
+                });
     }
 
     private void localFindAll() {
-
+        RequestBody requestBody = RequestBodyUtil.creat(new HashMap<>());
+        disposable = RetrofitLocalHelper.get().findAll(requestBody)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(new Function<ResponseBody, UserReturnBean>() {
+                    @Override
+                    public UserReturnBean apply(ResponseBody responseBody) throws Exception {
+                        return new Gson().fromJson(responseBody.string(), UserReturnBean.class);
+                    }
+                }).subscribe(new Consumer<UserReturnBean>() {
+                    @Override
+                    public void accept(UserReturnBean userReturnBean) throws Exception {
+                        BaseAdapter adapter = new BaseAdapter(userReturnBean, new BaseAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(String userName, String password) {
+                                etUsername.setText(userName);
+                                etPassword.setText(password);
+                            }
+                        });
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RetrofitRxjavaActivity.this, LinearLayoutManager.VERTICAL, false);
+                        recyclerview.setAdapter(adapter);
+                        recyclerview.setLayoutManager(layoutManager);
+                    }
+                });
     }
 
     private void localUpdate() {
-
+        RequestBody requestBody = RequestBodyUtil.creat(getInput());
+        disposable = RetrofitLocalHelper.get().update(requestBody)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(new Function<ResponseBody, UserReturnBean>() {
+                    @Override
+                    public UserReturnBean apply(ResponseBody responseBody) throws Exception {
+                        return new Gson().fromJson(responseBody.string(), UserReturnBean.class);
+                    }
+                })
+                .subscribe(new Consumer<UserReturnBean>() {
+                    @Override
+                    public void accept(UserReturnBean userReturnBean) throws Exception {
+                        if (null == userReturnBean) {
+                            return;
+                        }
+                        ToastUtil.show(getApplicationContext(), userReturnBean.resultMessage);
+                    }
+                });
     }
 
     private void localDelete() {
-
+        RequestBody requestBody = RequestBodyUtil.creat(getInput());
+        disposable = RetrofitLocalHelper.get().delete(requestBody)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .map(new Function<ResponseBody, UserReturnBean>() {
+                    @Override
+                    public UserReturnBean apply(ResponseBody responseBody) throws Exception {
+                        return new Gson().fromJson(responseBody.string(), UserReturnBean.class);
+                    }
+                })
+                .subscribe(new Consumer<UserReturnBean>() {
+                    @Override
+                    public void accept(UserReturnBean userReturnBean) throws Exception {
+                        if (null == userReturnBean) {
+                            return;
+                        }
+                        ToastUtil.show(getApplicationContext(), userReturnBean.resultMessage);
+                    }
+                });
     }
 
     private void localAdd() {
