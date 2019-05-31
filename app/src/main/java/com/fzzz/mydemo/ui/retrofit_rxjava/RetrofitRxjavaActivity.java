@@ -60,7 +60,6 @@ public class RetrofitRxjavaActivity extends BaseActivity {
     RecyclerView recyclerview;
 
     private Disposable disposable;
-    private UserReturnBean userReturnBean;
 
     @Override
     public int getLayoutID() {
@@ -179,7 +178,7 @@ public class RetrofitRxjavaActivity extends BaseActivity {
                         if (null == userReturnBean) {
                             return;
                         }
-                        ToastUtil.show(getApplicationContext(), userReturnBean.resultMessage);
+                        ToastUtil.show(userReturnBean.resultMessage);
                     }
                 });
     }
@@ -201,7 +200,7 @@ public class RetrofitRxjavaActivity extends BaseActivity {
                         if (null == userReturnBean) {
                             return;
                         }
-                        ToastUtil.show(getApplicationContext(), userReturnBean.resultMessage);
+                        ToastUtil.show(userReturnBean.resultMessage);
                     }
                 });
     }
@@ -223,7 +222,7 @@ public class RetrofitRxjavaActivity extends BaseActivity {
                         if (null == userReturnBean) {
                             return;
                         }
-                        ToastUtil.show(getApplicationContext(), userReturnBean.resultMessage);
+                        ToastUtil.show(userReturnBean.resultMessage);
                     }
                 });
     }

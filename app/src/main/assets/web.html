@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+        <title>H5 And Android</title>
+
+    </head>
+    <body>
+        <button id="button" onclick="myOnclick()">点击调用Android方法</button>
+
+        <div id="result">效果展示</div>
+
+    </body>
+</html>
+
+<script>
+    //定义本地方法 给Android端调用 被调用后将获得参数值
+    function callH5(data){
+        document.getElementById("result").innerHTML = data;
+        alert("Android调用h5成功");
+    }
+
+    //定义本地点击事件 效果调用Android方法 传递参数给Android客服端
+    function myOnclick(){
+        document.getElementById("result").innerHTML = "按钮被点击了"
+        //调用android本地方法 调用对象由Android定义，调用方法由Android提供 (约定好的方法名)
+        native.callAndroid("h5调原生成功");
+    }
+</script>

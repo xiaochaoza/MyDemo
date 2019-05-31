@@ -5,6 +5,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.fzzz.mydemo.base.BaseActivity;
 import com.fzzz.mydemo.utils.PageUtil;
 
@@ -62,6 +63,7 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_coordinator:
                 break;
             case R.id.btn_webview:
+                ARouter.getInstance().build(Constants.PATH_JSWEB).navigation();
                 break;
             case R.id.btn_dialog:
                 break;

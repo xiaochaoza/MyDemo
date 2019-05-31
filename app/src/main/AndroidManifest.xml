@@ -28,6 +28,7 @@
         <activity android:name=".ui.okhttp.OkHttpActivity" />
         <activity android:name=".ui.rxjava.RxJavaActivity" />
         <activity android:name=".ui.retrofit_rxjava.RetrofitRxjavaActivity" />
+        <activity android:name=".ui.jsbridge.JsWebActivity" />
     </application>
 
 </manifest>
