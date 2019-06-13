@@ -1,5 +1,6 @@
 package com.fzzz.mydemo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -7,6 +8,7 @@ import androidx.annotation.Nullable;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.fzzz.mydemo.base.BaseActivity;
+import com.fzzz.mydemo.ui.forum.ForumActivity;
 import com.fzzz.mydemo.utils.PageUtil;
 
 import butterknife.OnClick;
@@ -94,6 +96,8 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_device_info:
                 break;
             case R.id.btn_mytest:
+                Intent intent = new Intent(this, ForumActivity.class);
+                startActivity(intent);
                 break;
         }
     }

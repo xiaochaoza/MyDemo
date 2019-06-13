@@ -35,6 +35,8 @@ public class JsWebActivity extends BaseActivity {
         webview.getSettings().setDefaultTextEncodingName("utf-8");
         //设置支持js
         webview.getSettings().setJavaScriptEnabled(true);
+        //设置允许弹窗
+        webview.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 
         webview.addJavascriptInterface(new Contact() {
             @JavascriptInterface
@@ -54,13 +56,13 @@ public class JsWebActivity extends BaseActivity {
 
     @OnClick(R.id.bt_call_h5)
     public void onViewClicked() {
-//        webview.loadUrl("javascript:callH5('Android调h5成功')");
-        webview.evaluateJavascript("javascript:callH5()", new ValueCallback<String>() {
-            @Override
-            public void onReceiveValue(String s) {
-
-            }
-        });
+        webview.loadUrl("javascript:callH5('Android调h5成功')");
+//        webview.evaluateJavascript("javascript:callH5()", new ValueCallback<String>() {
+//            @Override
+//            public void onReceiveValue(String s) {
+//                s = "aaa";
+//            }
+//        });
     }
 
     interface Contact{
