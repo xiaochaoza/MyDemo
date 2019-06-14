@@ -6,9 +6,9 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.mydemo.Constants;
 import com.fzzz.mydemo.R;
-import com.fzzz.mydemo.base.BaseActivity;
 
 import butterknife.BindView;
 

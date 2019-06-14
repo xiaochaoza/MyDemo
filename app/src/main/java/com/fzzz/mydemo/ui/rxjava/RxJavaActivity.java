@@ -5,10 +5,10 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.fzzz.framework.base.BaseActivity;
+import com.fzzz.framework.utils.TimeUtil;
 import com.fzzz.mydemo.Constants;
 import com.fzzz.mydemo.R;
-import com.fzzz.mydemo.base.BaseActivity;
-import com.fzzz.mydemo.utils.TimeUtil;
 
 import java.util.ArrayList;
 import java.util.List;

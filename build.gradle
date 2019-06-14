@@ -7,7 +7,7 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0-beta01'
+        classpath 'com.android.tools.build:gradle:3.5.0-beta04'
         classpath 'com.jakewharton:butterknife-gradle-plugin:10.1.0'
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -26,3 +26,54 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    compileSdkVersion = 'android-Q'
+    buildToolsVersion = "29.0.0 rc2"
+    minSdkVersion = 26
+    targetSdkVersion = 28
+    butterknife = '10.1.0'
+
+    versionCode = 1
+    versionName = '1.0.0'
+}
+
+ext.deps = [
+        appcompat             : 'androidx.appcompat:appcompat:1.0.2',
+
+        butterknife           : "com.jakewharton:butterknife:$rootProject.butterknife",
+        butterknifeCompiler   : "com.jakewharton:butterknife-compiler:$rootProject.butterknife",
+
+        recyclerview          : 'androidx.recyclerview:recyclerview:1.0.0',
+
+        rxjava                : 'io.reactivex.rxjava2:rxjava:2.2.0',
+        rxandroid             : 'io.reactivex.rxjava2:rxandroid:2.0.2',
+
+        retrofit              : 'com.squareup.retrofit2:retrofit:2.5.0',
+        retrofit_gson         : 'com.squareup.retrofit2:converter-gson:2.5.0',
+        retrofit_rxjava       : 'com.squareup.retrofit2:adapter-rxjava2:2.5.0',
+
+        okhttp_log            : 'com.squareup.okhttp3:logging-interceptor:3.14.1',
+
+        gson                  : 'com.google.code.gson:gson:2.8.5',
+//        glide                 : 'com.github.bumptech.glide:glide:4.0.0',
+//        lottie                : 'com.airbnb.android:lottie:2.7.0',
+
+        arouter               : 'com.alibaba:arouter-api:1.5.0',
+        arouterComplier       : 'com.alibaba:arouter-compiler:1.1.4',
+
+//        eventBus              : 'org.greenrobot:eventbus:3.0.0',
+//        adapterHelper         :'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30',
+]
+
+ext.serverUrls = [
+        BASE_URL_JUHE         : "\"http://v.juhe.cn/\"",
+        BASE_URL_JISU         : "\"https://api.jisuapi.com/\"",
+        BASE_URL_LOCAL        : "\"http://localhost:8080/\"",
+]
+
+ext.keys = [
+        JUHE_APP_KEY          : "Q1e0I1M8bVVShic5G1NF4QPv",
+        JISU_APP_KEY          : "nC9pEnpqjBaCLDatGO9NmTX1UZon5lkj",
+]
+

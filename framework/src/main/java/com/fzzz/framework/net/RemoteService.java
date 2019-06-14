@@ -1,6 +1,4 @@
-package com.fzzz.mydemo.net;
-
-import com.fzzz.mydemo.bean.NewsJuheBean;
+package com.fzzz.framework.net;
 
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
@@ -44,7 +42,7 @@ public interface RemoteService {
 
     @FormUrlEncoded
     @POST("/toutiao/index")
-    Observable<NewsJuheBean> getNewsPost(@Field("key") String key, @Field("type") String type);
+    Observable<ResponseBody> getNewsPost(@Field("key") String key, @Field("type") String type);
 
     @POST("/user/add1")
     Observable<ResponseBody> add(@Body RequestBody requestBody);

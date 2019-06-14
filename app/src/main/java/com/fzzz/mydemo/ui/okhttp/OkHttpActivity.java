@@ -4,9 +4,10 @@ import android.util.Log;
 import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.fzzz.framework.BuildConfig;
+import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.mydemo.Constants;
 import com.fzzz.mydemo.R;
-import com.fzzz.mydemo.base.BaseActivity;
 import com.fzzz.mydemo.utils.PageUtil;
 
 import org.json.JSONException;
@@ -121,12 +122,12 @@ public class OkHttpActivity extends BaseActivity {
      */
     private void hasFormPostAsync() {
         RequestBody requestBody = new FormBody.Builder()
-                .add("key", Constants.JUHE_APP_KEY)
+                .add("key", BuildConfig.JUHE_APP_KEY)
                 .add("type", "yule")
                 .build();
         //2.创建Request对象，设置一个url地址（百度地址）,设置请求方式。
         Request request = new Request.Builder()
-                .url(Constants.BASE_URL_JUHE + "toutiao/index")
+                .url(BuildConfig.BASE_URL_JUHE + "toutiao/index")
                 .post(requestBody)
                 .build();
         //3.创建一个call对象,参数就是Request请求对象
@@ -152,7 +153,7 @@ public class OkHttpActivity extends BaseActivity {
         MediaType mediaType = MediaType.parse("application/json; charset=utf-8");//"类型,字节码"
         JSONObject params = new JSONObject();
         try {
-            params.put("key", Constants.JUHE_APP_KEY);
+            params.put("key", BuildConfig.JUHE_APP_KEY);
             params.put("type", "top");
         } catch (JSONException e) {
             e.printStackTrace();
@@ -161,7 +162,7 @@ public class OkHttpActivity extends BaseActivity {
         RequestBody requestBody = RequestBody.create(mediaType, params.toString());
         //2.创建Request对象，设置一个url地址（百度地址）,设置请求方式。
         Request request = new Request.Builder()
-                .url(Constants.BASE_URL_JUHE + "toutiao/index")
+                .url(BuildConfig.BASE_URL_JUHE + "toutiao/index")
                 .post(requestBody)
                 .build();
         //3.创建一个call对象,参数就是Request请求对象

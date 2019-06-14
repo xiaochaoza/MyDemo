@@ -1,4 +1,4 @@
-package com.fzzz.mydemo.utils;
+package com.fzzz.framework.utils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

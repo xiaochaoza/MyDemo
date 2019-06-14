@@ -9,8 +9,8 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 
+import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.mydemo.R;
-import com.fzzz.mydemo.base.BaseActivity;
 import com.fzzz.mydemo.bean.User;
 
 import java.util.ArrayList;

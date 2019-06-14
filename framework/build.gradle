@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+
+        buildConfigField "String", "JUHE_APP_KEY", "\"${keys.JUHE_APP_KEY}\""
+        buildConfigField "String", "JISU_APP_KEY", "\"${keys.JISU_APP_KEY}\""
+
+        //读取所有地址配置，构建常量字段
+        serverUrls.each { key, value ->
+            buildConfigField "String", key, value
+        }
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    api(
+        deps.recyclerview,
+        deps.rxjava,
+        deps.rxandroid,
+        deps.retrofit,
+        deps.retrofit_gson,
+        deps.retrofit_rxjava,
+        deps.okhttp_log,
+        deps.butterknife,
+        deps.arouter,
+        deps.gson,
+    )
+    annotationProcessor deps.butterknifeCompiler
+    annotationProcessor deps.arouterComplier
+}

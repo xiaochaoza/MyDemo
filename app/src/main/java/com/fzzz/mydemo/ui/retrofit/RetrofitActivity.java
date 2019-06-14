@@ -3,17 +3,17 @@ package com.fzzz.mydemo.ui.retrofit;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ListView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.fzzz.framework.BuildConfig;
+import com.fzzz.framework.base.BaseActivity;
+import com.fzzz.framework.helper.RetrofitJuHeHelper;
+import com.fzzz.framework.net.RemoteService;
+import com.fzzz.framework.utils.RequestBodyUtil;
 import com.fzzz.mydemo.Constants;
 import com.fzzz.mydemo.R;
-import com.fzzz.mydemo.base.BaseActivity;
 import com.fzzz.mydemo.bean.NewsJuheBean;
-import com.fzzz.mydemo.helper.RetrofitJuHeHelper;
-import com.fzzz.mydemo.net.RemoteService;
 import com.fzzz.mydemo.utils.PageUtil;
-import com.fzzz.mydemo.utils.RequestBodyUtil;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -127,10 +127,10 @@ public class RetrofitActivity extends BaseActivity {
      */
     private void hasFormPostAsync() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL_JUHE)
+                .baseUrl(BuildConfig.BASE_URL_JUHE)
                 .build();
         RemoteService remoteService = retrofit.create(RemoteService.class);
-        Call<ResponseBody> call = remoteService.getNewsPostWithKey(Constants.JUHE_APP_KEY, "yule");
+        Call<ResponseBody> call = remoteService.getNewsPostWithKey(BuildConfig.JUHE_APP_KEY, "yule");
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -154,10 +154,10 @@ public class RetrofitActivity extends BaseActivity {
      */
     private void hanParamGetAsync() {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL_JUHE)
+                .baseUrl(BuildConfig.BASE_URL_JUHE)
                 .build();
         RemoteService remoteService = retrofit.create(RemoteService.class);
-        Call<ResponseBody> call = remoteService.getNewsGetWithKey(Constants.JUHE_APP_KEY);
+        Call<ResponseBody> call = remoteService.getNewsGetWithKey(BuildConfig.JUHE_APP_KEY);
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -181,7 +181,7 @@ public class RetrofitActivity extends BaseActivity {
      */
     private void hasJsonPostAsync() {
         Map<String, String> params = new HashMap<>();
-        params.put("key", Constants.JUHE_APP_KEY);
+        params.put("key", BuildConfig.JUHE_APP_KEY);
         params.put("type", "top");
         RequestBody requestBody = RequestBodyUtil.creat(params);
         Call<ResponseBody> call = RetrofitJuHeHelper.get().getNewsPostJson(requestBody);

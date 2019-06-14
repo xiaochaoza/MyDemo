@@ -1,7 +1,7 @@
-package com.fzzz.mydemo.helper;
+package com.fzzz.framework.helper;
 
-import com.fzzz.mydemo.Constants;
-import com.fzzz.mydemo.net.RemoteService;
+import com.fzzz.framework.BuildConfig;
+import com.fzzz.framework.net.RemoteService;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -38,7 +38,7 @@ public class RetrofitJuHeHelper {
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL_JUHE)
+                .baseUrl(BuildConfig.BASE_URL_JUHE)
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

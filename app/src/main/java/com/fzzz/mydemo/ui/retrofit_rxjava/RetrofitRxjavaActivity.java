@@ -1,7 +1,6 @@
 package com.fzzz.mydemo.ui.retrofit_rxjava;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -10,15 +9,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.fzzz.framework.BuildConfig;
+import com.fzzz.framework.base.BaseActivity;
+import com.fzzz.framework.helper.RetrofitJuHeHelper;
+import com.fzzz.framework.helper.RetrofitLocalHelper;
+import com.fzzz.framework.utils.RequestBodyUtil;
 import com.fzzz.mydemo.Constants;
 import com.fzzz.mydemo.R;
 import com.fzzz.mydemo.adapter.BaseAdapter;
-import com.fzzz.mydemo.base.BaseActivity;
 import com.fzzz.mydemo.bean.NewsJuheBean;
 import com.fzzz.mydemo.bean.UserReturnBean;
-import com.fzzz.mydemo.helper.RetrofitJuHeHelper;
-import com.fzzz.mydemo.helper.RetrofitLocalHelper;
-import com.fzzz.mydemo.utils.RequestBodyUtil;
 import com.fzzz.mydemo.utils.ToastUtil;
 import com.google.gson.Gson;
 
@@ -84,7 +84,7 @@ public class RetrofitRxjavaActivity extends BaseActivity {
                 con1();
                 break;
             case R.id.content2:
-                con2();
+//                con2();
                 break;
             case R.id.local_add:
                 localAdd();
@@ -250,7 +250,7 @@ public class RetrofitRxjavaActivity extends BaseActivity {
 
     private void con1() {
         content1.setText("");
-        disposable = RetrofitJuHeHelper.get().getNewsGet(Constants.JUHE_APP_KEY)
+        disposable = RetrofitJuHeHelper.get().getNewsGet(BuildConfig.JUHE_APP_KEY)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .flatMap(new Function<ResponseBody, ObservableSource<NewsJuheBean.ResultBean.DataBean>>() {
@@ -271,19 +271,21 @@ public class RetrofitRxjavaActivity extends BaseActivity {
 
     private void con2() {
         content2.setText("");
-        disposable = RetrofitJuHeHelper.get().getNewsPost(Constants.JUHE_APP_KEY, "top")
+        disposable = RetrofitJuHeHelper.get().getNewsPost(BuildConfig.JUHE_APP_KEY, "top")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .flatMap(new Function<NewsJuheBean, ObservableSource<NewsJuheBean.ResultBean.DataBean>>() {
+                .flatMap(new Function<ResponseBody, ObservableSource<NewsJuheBean.ResultBean.DataBean>>() {
                     @Override
-                    public ObservableSource<NewsJuheBean.ResultBean.DataBean> apply(NewsJuheBean newsJuheBean) throws Exception {
+                    public ObservableSource<NewsJuheBean.ResultBean.DataBean> apply(ResponseBody responseBody) throws Exception {
+                        Gson gson = new Gson();
+                        NewsJuheBean newsJuheBean = gson.fromJson(responseBody.string(), NewsJuheBean.class);
                         return Observable.fromIterable(newsJuheBean.getResult().getData());
                     }
                 }).subscribe(new Consumer<NewsJuheBean.ResultBean.DataBean>() {
                     @Override
                     public void accept(NewsJuheBean.ResultBean.DataBean dataBean) throws Exception {
-                        content2.append(dataBean.getTitle());
-                        content2.append("\n");
+                        content1.append(dataBean.getTitle());
+                        content1.append("\n");
                     }
                 });
     }

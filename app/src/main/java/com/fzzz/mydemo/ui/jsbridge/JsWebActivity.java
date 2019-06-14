@@ -2,15 +2,14 @@ package com.fzzz.mydemo.ui.jsbridge;
 
 import android.os.Bundle;
 import android.webkit.JavascriptInterface;
-import android.webkit.ValueCallback;
 import android.webkit.WebView;
 
 import androidx.annotation.Nullable;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.mydemo.Constants;
 import com.fzzz.mydemo.R;
-import com.fzzz.mydemo.base.BaseActivity;
 import com.fzzz.mydemo.utils.ToastUtil;
 
 import butterknife.BindView;

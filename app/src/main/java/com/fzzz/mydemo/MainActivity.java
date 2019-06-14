@@ -1,14 +1,12 @@
 package com.fzzz.mydemo;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.fzzz.mydemo.base.BaseActivity;
-import com.fzzz.mydemo.ui.forum.ForumActivity;
+import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.mydemo.utils.PageUtil;
 
 import butterknife.OnClick;
@@ -31,7 +29,7 @@ public class MainActivity extends BaseActivity {
             R.id.btn_eventbus, R.id.btn_glide, R.id.btn_greendao, R.id.btn_figerprint, R.id.btn_recyclerview, R.id.btn_stick_recycler,
             R.id.btn_coordinator, R.id.btn_webview, R.id.btn_dialog, R.id.btn_drawerlayout, R.id.btn_toolbar, R.id.btn_zxing,
             R.id.btn_lottie, R.id.btn_tablayout, R.id.btn_dagger2, R.id.btn_handler, R.id.btn_databinding, R.id.btn_windowinput,
-            R.id.btn_animation, R.id.btn_gps, R.id.btn_take_pic, R.id.btn_device_info, R.id.btn_mytest})
+            R.id.btn_animation, R.id.btn_gps, R.id.btn_take_pic, R.id.btn_device_info, R.id.btn_mytest, R.id.btn_thread})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_async_load:
@@ -96,8 +94,26 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_device_info:
                 break;
             case R.id.btn_mytest:
-                Intent intent = new Intent(this, ForumActivity.class);
-                startActivity(intent);
+//                ARouter.getInstance().build(.PATH_INTERVIEW).navigation();
+                break;
+            case R.id.btn_thread:
+//                if (ThreadUtil.isMainThread2()) {
+//                    Log.e(getLocalClassName(), "main");
+//                } else {
+//                    Log.e(getLocalClassName(), "no main");
+//                }
+//
+//                new Thread() {
+//                    @Override
+//                    public void run() {
+//                        if (ThreadUtil.isMainThread()) {
+//                            Log.e(getLocalClassName(), "main");
+//                        } else {
+//                            Log.e(getLocalClassName(), "no main");
+//                        }
+//
+//                    }
+//                }.start();
                 break;
         }
     }

@@ -1,4 +1,4 @@
-package com.fzzz.mydemo.utils;
+package com.fzzz.framework.utils;
 
 import java.security.KeyPair;
 import java.security.PrivateKey;

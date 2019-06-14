@@ -1,0 +1,1 @@
+Service是执行在主线程的，IntentService是在子线程执行

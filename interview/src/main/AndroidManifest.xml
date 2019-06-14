@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.fzzz.interview" >
+    
+    <application>
+
+        <activity android:name=".ui.InterViewActivity" />
+    </application>
+</manifest>
