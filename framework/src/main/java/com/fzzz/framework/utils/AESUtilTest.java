@@ -1,5 +1,6 @@
 package com.fzzz.framework.utils;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 import javax.crypto.SecretKey;
@@ -23,10 +24,10 @@ public class AESUtilTest {
             SecretKey secretKey = AESUtil.strKey2SecretKey(strKeyAES);
 
             // 加密数据
-            byte[] encryptAESbytes = AESUtil.encryptAES(content.getBytes("utf-8"), secretKey);
+            byte[] encryptAESbytes = AESUtil.encryptAES(content.getBytes(StandardCharsets.UTF_8), secretKey);
             System.out.println("加密后的数据经 BASE64 处理之后为：" + Base64.getEncoder().encodeToString(encryptAESbytes));
             // 解密数据
-            String decryptAESStr = new String(AESUtil.decryptAES(encryptAESbytes, secretKey), "utf-8");
+            String decryptAESStr = new String(AESUtil.decryptAES(encryptAESbytes, secretKey), StandardCharsets.UTF_8);
             System.out.println("解密后的数据为：" + decryptAESStr);
 
             if (content.equals(decryptAESStr)) {

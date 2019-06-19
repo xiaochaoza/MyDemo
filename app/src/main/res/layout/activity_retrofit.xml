@@ -1,66 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.okhttp.OkHttpActivity">
+    android:columnCount="3"
+    tools:context=".ui.retrofit.RetrofitActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/bt1"
+        style="@style/button_style"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_columnWeight="1"
+        android:text="无参get同步"
+        android:textAllCaps="false" />
 
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="3">
+    <Button
+        android:id="@+id/bt2"
+        style="@style/button_style"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:text="无参get异步"
+        android:textAllCaps="false" />
 
-            <Button
-                android:id="@+id/bt1"
-                style="@style/button_style"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="无参get同步"
-                android:textAllCaps="false" />
+    <Button
+        android:id="@+id/bt3"
+        style="@style/button_style"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:text="表单提交post"
+        android:textAllCaps="false" />
 
-            <Button
-                android:id="@+id/bt2"
-                style="@style/button_style"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="无参get异步"
-                android:textAllCaps="false" />
+    <Button
+        android:id="@+id/bt4"
+        style="@style/button_style"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:text="json提交post"
+        android:textAllCaps="false" />
 
-            <Button
-                android:id="@+id/bt3"
-                style="@style/button_style"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="表单提交post"
-                android:textAllCaps="false" />
+    <Button
+        android:id="@+id/bt5"
+        style="@style/button_style"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:text="get提交带参"
+        android:textAllCaps="false" />
 
-            <Button
-                android:id="@+id/bt4"
-                style="@style/button_style"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="json提交post"
-                android:textAllCaps="false" />
+</GridLayout>
 
-            <Button
-                android:id="@+id/bt5"
-                style="@style/button_style"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:text="get提交带参"
-                android:textAllCaps="false" />
-
-        </GridLayout>
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>

@@ -1,2 +1,2 @@
-include ':app', ':interview', ':framework'
+include ':app', ':interview', ':framework', ':design_mode'
 rootProject.name='MyDemo'

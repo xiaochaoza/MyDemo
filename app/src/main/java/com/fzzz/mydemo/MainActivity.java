@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.fzzz.framework.Constants;
 import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.mydemo.utils.PageUtil;
 
@@ -37,16 +38,16 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_volley:
                 break;
             case R.id.btn_okhttp:
-                PageUtil.toActivity(Constants.PATH_OKHTTP);
+                PageUtil.toActivity(Constants.PATH_APP_OKHTTP);
                 break;
             case R.id.btn_retrofit:
-                PageUtil.toActivity(Constants.PATH_RETROFIT);
+                PageUtil.toActivity(Constants.PATH_APP_RETROFIT);
                 break;
             case R.id.btn_rxjava:
-                PageUtil.toActivity(Constants.PATH_RXJAVA);
+                PageUtil.toActivity(Constants.PATH_APP_RXJAVA);
                 break;
             case R.id.btn_retrofit_rxjava:
-                PageUtil.toActivity(Constants.PATH_RETROFIT_RXJAVA);
+                PageUtil.toActivity(Constants.PATH_APP_RETROFIT_RXJAVA);
                 break;
             case R.id.btn_eventbus:
                 break;
@@ -63,7 +64,7 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_coordinator:
                 break;
             case R.id.btn_webview:
-                ARouter.getInstance().build(Constants.PATH_JSWEB).navigation();
+                ARouter.getInstance().build(Constants.PATH_APP_JSWEB).navigation();
                 break;
             case R.id.btn_dialog:
                 break;
@@ -94,7 +95,7 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_device_info:
                 break;
             case R.id.btn_mytest:
-//                ARouter.getInstance().build(.PATH_INTERVIEW).navigation();
+                ARouter.getInstance().build(Constants.PATH_INTERVIEW).navigation();
                 break;
             case R.id.btn_thread:
 //                if (ThreadUtil.isMainThread2()) {

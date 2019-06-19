@@ -1,5 +1,6 @@
 package com.fzzz.framework.utils;
 
+import java.nio.charset.StandardCharsets;
 import java.security.KeyPair;
 import java.security.PrivateKey;
 import java.security.PublicKey;
@@ -35,7 +36,7 @@ public class RSAUtilTest {
             byte[] privateDecryBytes = RSAUtil.privateDecrypt(publicEncryBytes, privateKey);
             System.out.println("私钥解密后的原始字符串：" + new String(privateDecryBytes));
 
-            String privateDecryStr = new String(privateDecryBytes, "utf-8");
+            String privateDecryStr = new String(privateDecryBytes, StandardCharsets.UTF_8);
             if (content.equals(privateDecryStr)) {
                 System.out.println("测试通过！");
             } else {

@@ -1,0 +1,4 @@
+2019-06-18 10:45:55.703 15735-15735/com.fzzz.mydemo I/System.out: finally
+2019-06-18 10:45:55.703 15735-15735/com.fzzz.mydemo I/System.out: division by 0
+
+先走finally，再走catch

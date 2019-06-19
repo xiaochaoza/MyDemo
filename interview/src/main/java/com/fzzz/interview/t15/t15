@@ -1,0 +1,6 @@
+2019-06-17 12:13:30.458 11413-11413/com.fzzz.mydemo E/Service: on Create
+2019-06-17 12:13:30.458 11413-11413/com.fzzz.mydemo E/Service: Point A
+2019-06-17 12:13:30.459 11413-11413/com.fzzz.mydemo E/Service: main thread
+2019-06-17 12:13:30.460 11413-11484/com.fzzz.mydemo E/Service: Point C
+
+Service是运行在主线程的

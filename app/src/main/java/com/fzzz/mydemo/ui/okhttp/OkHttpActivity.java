@@ -5,8 +5,8 @@ import android.view.View;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fzzz.framework.BuildConfig;
+import com.fzzz.framework.Constants;
 import com.fzzz.framework.base.BaseActivity;
-import com.fzzz.mydemo.Constants;
 import com.fzzz.mydemo.R;
 import com.fzzz.mydemo.utils.PageUtil;
 
@@ -32,7 +32,7 @@ import okhttp3.Response;
  * time: 2019-05-10
  * update:
  */
-@Route(path = Constants.PATH_OKHTTP)
+@Route(path = Constants.PATH_APP_OKHTTP)
 public class OkHttpActivity extends BaseActivity {
     public static final String TAG = "OkHttpActivity";
 

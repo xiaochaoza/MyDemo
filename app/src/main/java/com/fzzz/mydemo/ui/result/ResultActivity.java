@@ -6,8 +6,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.fzzz.framework.Constants;
 import com.fzzz.framework.base.BaseActivity;
-import com.fzzz.mydemo.Constants;
 import com.fzzz.mydemo.R;
 
 import butterknife.BindView;
@@ -18,7 +18,7 @@ import butterknife.BindView;
  * time: 2019-05-10
  * update:
  */
-@Route(path = Constants.PATH_RESULT)
+@Route(path = Constants.PATH_APP_RESULT)
 public class ResultActivity extends BaseActivity {
 
     @BindView(R.id.tv_result)

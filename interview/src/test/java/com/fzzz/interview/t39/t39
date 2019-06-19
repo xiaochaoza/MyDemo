@@ -1,0 +1,14 @@
+[a, b, d]
+[f, c, e]
+
+stack.peek()返回栈顶数据，但是不出栈
+stack.pop()返回栈顶数据，但是出栈
+
+queue.remove()移除第一个数据，会抛异常
+queue.poll()移除第一个数据，不会抛异常，会返回null
+
+queue.add()添加数据到第一个位置, 如果队列有大小限制，add会抛异常
+queue.offer()添加数据到第一个位置，如果队列已满，不会抛异常，会返回false
+
+queue.element()用于在队列的头部查询元素。在队列为空时， element() 抛出一个异常
+queue.peek() 用于在队列的头部查询元素。在队列为空时， peek() 返回 null

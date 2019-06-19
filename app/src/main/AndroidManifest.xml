@@ -31,9 +31,6 @@
         <activity android:name=".ui.jsbridge.JsWebActivity" />
         <activity android:name=".ui.forum.ForumActivity" />
 
-        <activity android:name=".interview.InterViewActivity" />
-        <service android:name=".interview.t12.MyService" />
-        <service android:name=".interview.t12.MyIntentService" />
     </application>
 
 </manifest>

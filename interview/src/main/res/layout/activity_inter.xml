@@ -12,7 +12,7 @@
 
         <Button
             android:id="@+id/bt_t12_1"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:text="t12-Service"
@@ -20,13 +20,58 @@
 
         <Button
             android:id="@+id/bt_t12_2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:text="t12-IntentService"
             android:textAllCaps="false" />
 
+        <Button
+            android:id="@+id/bt_t13"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="t13"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/bt_t15"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="t15"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/bt_t16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="t16"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/bt_t18"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="t18"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/bt_t20"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="t20"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/bt_t21"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="t21"
+            android:textAllCaps="false" />
     </GridLayout>
-
-
 </ScrollView>

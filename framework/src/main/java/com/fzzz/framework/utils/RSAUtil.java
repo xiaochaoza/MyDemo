@@ -1,6 +1,7 @@
 package com.fzzz.framework.utils;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.KeyFactory;
 import java.security.KeyPair;
@@ -35,7 +36,7 @@ public class RSAUtil {
      */
     public static KeyPair getKeyPair() throws NoSuchAlgorithmException, UnsupportedEncodingException {
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");// 获得RSA密钥对的生成器实例
-        SecureRandom secureRandom = new SecureRandom(String.valueOf(System.currentTimeMillis()).getBytes("utf-8")); // 说的一个安全的随机数
+        SecureRandom secureRandom = new SecureRandom(String.valueOf(System.currentTimeMillis()).getBytes(StandardCharsets.UTF_8)); // 说的一个安全的随机数
         keyPairGenerator.initialize(2048, secureRandom);
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
         return keyPair;

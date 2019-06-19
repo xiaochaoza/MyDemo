@@ -92,7 +92,7 @@ public class ForumActivity extends BaseActivity {
 //            rootView.addView(formView);
 //        }
 
-        System.out.println("");
+        System.out.println();
     }
 
     @Override

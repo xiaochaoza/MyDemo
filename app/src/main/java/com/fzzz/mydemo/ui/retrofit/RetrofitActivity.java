@@ -6,11 +6,11 @@ import android.widget.EditText;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fzzz.framework.BuildConfig;
+import com.fzzz.framework.Constants;
 import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.framework.helper.RetrofitJuHeHelper;
 import com.fzzz.framework.net.RemoteService;
 import com.fzzz.framework.utils.RequestBodyUtil;
-import com.fzzz.mydemo.Constants;
 import com.fzzz.mydemo.R;
 import com.fzzz.mydemo.bean.NewsJuheBean;
 import com.fzzz.mydemo.utils.PageUtil;
@@ -36,7 +36,7 @@ import retrofit2.Retrofit;
  * time: 2019-05-10
  * update:
  */
-@Route(path = Constants.PATH_RETROFIT)
+@Route(path = Constants.PATH_APP_RETROFIT)
 public class RetrofitActivity extends BaseActivity {
 
     public static final String TAG = "RetrofitActivity";

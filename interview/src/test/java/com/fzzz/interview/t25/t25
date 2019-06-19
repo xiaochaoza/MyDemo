@@ -1,0 +1,12 @@
+bark
+dog run
+wagging
+Fetch
+bark
+dog run
+wagging
+bark
+dog run
+
+父类中，没有子类方法
+父类new子类对象，执行实例方法，也就是子类方法，子类没有，执行父类

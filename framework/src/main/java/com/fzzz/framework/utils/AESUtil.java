@@ -1,6 +1,7 @@
 package com.fzzz.framework.utils;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -28,7 +29,7 @@ public class AESUtil {
      */
     public static String getStrKeyAES() throws NoSuchAlgorithmException, UnsupportedEncodingException {
         KeyGenerator keyGen = KeyGenerator.getInstance("AES");
-        SecureRandom secureRandom = new SecureRandom(String.valueOf(System.currentTimeMillis()).getBytes("utf-8"));
+        SecureRandom secureRandom = new SecureRandom(String.valueOf(System.currentTimeMillis()).getBytes(StandardCharsets.UTF_8));
         keyGen.init(256, secureRandom);// 这里可以是 128、192、256、越大越安全
         SecretKey secretKey = keyGen.generateKey();
         return Base64.getEncoder().encodeToString(secretKey.getEncoded());

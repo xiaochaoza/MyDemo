@@ -2,7 +2,15 @@
     package="com.fzzz.interview" >
     
     <application>
-
         <activity android:name=".ui.InterViewActivity" />
+        <activity android:name=".t13.T13BaseActivity" />
+        <activity android:name=".t13.T13Activity" />
+        <activity android:name=".t16.T16Activity" />
+        <activity android:name=".t18.T18Activity" />
+        <activity android:name=".t20.T20Activity"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <activity android:name=".t21.T21Activity" />
+
+        <service android:name=".t15.DownloadService" />
     </application>
 </manifest>

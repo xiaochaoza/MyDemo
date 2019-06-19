@@ -1,13 +1,14 @@
 package com.fzzz.mydemo.ui.rxjava;
 
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.View;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.fzzz.framework.Constants;
 import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.framework.utils.TimeUtil;
-import com.fzzz.mydemo.Constants;
 import com.fzzz.mydemo.R;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ import io.reactivex.schedulers.Schedulers;
  * time: 2019-05-20
  * update:
  */
-@Route(path = Constants.PATH_RXJAVA)
+@Route(path = Constants.PATH_APP_RXJAVA)
 public class RxJavaActivity extends BaseActivity {
     public static final String TAG = "RxJavaActivity";
 
@@ -149,7 +150,7 @@ public class RxJavaActivity extends BaseActivity {
                 emitter.onNext(3);
             }
         });
-        observable.subscribe(System.out::println);
+        mDisposable = observable.subscribe(System.out::println);
         //等价
         Observable.just(1, 2, 3, 4).subscribe(System.out::println);
     }

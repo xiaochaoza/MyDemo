@@ -10,11 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fzzz.framework.BuildConfig;
+import com.fzzz.framework.Constants;
 import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.framework.helper.RetrofitJuHeHelper;
 import com.fzzz.framework.helper.RetrofitLocalHelper;
 import com.fzzz.framework.utils.RequestBodyUtil;
-import com.fzzz.mydemo.Constants;
 import com.fzzz.mydemo.R;
 import com.fzzz.mydemo.adapter.BaseAdapter;
 import com.fzzz.mydemo.bean.NewsJuheBean;
@@ -43,7 +43,7 @@ import okhttp3.ResponseBody;
  * time: 2019-05-10
  * update:
  */
-@Route(path = Constants.PATH_RETROFIT_RXJAVA)
+@Route(path = Constants.PATH_APP_RETROFIT_RXJAVA)
 public class RetrofitRxjavaActivity extends BaseActivity {
 
     public static final String TAG = "RetrofitRxjavaActivity";

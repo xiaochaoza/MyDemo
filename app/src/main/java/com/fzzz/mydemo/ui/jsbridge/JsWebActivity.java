@@ -7,8 +7,8 @@ import android.webkit.WebView;
 import androidx.annotation.Nullable;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.fzzz.framework.Constants;
 import com.fzzz.framework.base.BaseActivity;
-import com.fzzz.mydemo.Constants;
 import com.fzzz.mydemo.R;
 import com.fzzz.mydemo.utils.ToastUtil;
 
@@ -21,7 +21,7 @@ import butterknife.OnClick;
  * time: 2019-05-31
  * update:
  */
-@Route(path = Constants.PATH_JSWEB)
+@Route(path = Constants.PATH_APP_JSWEB)
 public class JsWebActivity extends BaseActivity {
     @BindView(R.id.webview)
     WebView webview;

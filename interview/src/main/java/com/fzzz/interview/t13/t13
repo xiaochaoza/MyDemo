@@ -1,0 +1,15 @@
+2019-06-17 11:26:18.419 9652-9652/com.fzzz.mydemo E/Lifecycle: Value is: Apple
+2019-06-17 11:26:18.419 9652-9652/com.fzzz.mydemo E/Lifecycle: Static value is: Dog
+2019-06-17 11:26:18.420 9652-9652/com.fzzz.mydemo E/Lifecycle: Saved Value is null
+横过来
+2019-06-17 11:27:20.999 9652-9652/com.fzzz.mydemo E/Lifecycle: Value is: Apple
+2019-06-17 11:27:21.000 9652-9652/com.fzzz.mydemo E/Lifecycle: Static value is: Cat
+2019-06-17 11:27:21.000 9652-9652/com.fzzz.mydemo E/Lifecycle: Saved Value is: Disco
+竖回来
+2019-06-17 11:28:08.410 9652-9652/com.fzzz.mydemo E/Lifecycle: Value is: Apple
+2019-06-17 11:28:08.410 9652-9652/com.fzzz.mydemo E/Lifecycle: Static value is: Cat
+2019-06-17 11:28:08.410 9652-9652/com.fzzz.mydemo E/Lifecycle: Saved Value is: Disco
+再变化 值不会变
+
+旋转重新走onCreate，非静态值会重新创建，静态值则不会
+旋转开始会先走save状态的方法，先走父类，后走子类，然后在执行onCreate，此时状态里有值

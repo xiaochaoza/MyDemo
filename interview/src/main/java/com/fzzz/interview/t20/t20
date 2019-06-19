@@ -1,0 +1,25 @@
+2019-06-18 09:40:57.492 6818-6818/com.fzzz.mydemo E/T20Activity: static
+2019-06-18 09:40:57.493 6818-6818/com.fzzz.mydemo E/T20Activity: local
+2019-06-18 09:40:57.494 6818-6818/com.fzzz.mydemo E/T20Activity: onCreate
+2019-06-18 09:40:57.500 6818-6818/com.fzzz.mydemo E/T20Activity: onStart
+2019-06-18 09:40:57.504 6818-6818/com.fzzz.mydemo E/T20Activity: onResume
+横
+2019-06-18 09:41:31.664 6818-6818/com.fzzz.mydemo E/T20Activity: onPause
+2019-06-18 09:41:31.667 6818-6818/com.fzzz.mydemo E/T20Activity: onStop
+2019-06-18 09:41:31.667 6818-6818/com.fzzz.mydemo E/T20Activity: onDestroy
+2019-06-18 09:41:31.683 6818-6818/com.fzzz.mydemo E/T20Activity: local
+2019-06-18 09:41:31.687 6818-6818/com.fzzz.mydemo E/T20Activity: onCreate
+2019-06-18 09:41:31.698 6818-6818/com.fzzz.mydemo E/T20Activity: onStart
+2019-06-18 09:41:31.708 6818-6818/com.fzzz.mydemo E/T20Activity: onResume
+竖
+2019-06-18 09:42:02.475 6818-6818/com.fzzz.mydemo E/T20Activity: onPause
+2019-06-18 09:42:02.480 6818-6818/com.fzzz.mydemo E/T20Activity: onStop
+2019-06-18 09:42:02.481 6818-6818/com.fzzz.mydemo E/T20Activity: onDestroy
+2019-06-18 09:42:02.497 6818-6818/com.fzzz.mydemo E/T20Activity: local
+2019-06-18 09:42:02.499 6818-6818/com.fzzz.mydemo E/T20Activity: onCreate
+2019-06-18 09:42:02.508 6818-6818/com.fzzz.mydemo E/T20Activity: onStart
+2019-06-18 09:42:02.516 6818-6818/com.fzzz.mydemo E/T20Activity: onResume
+
+不设置configChanges和只设置configChanges=orientation，每个生命周期都会重新走
+
+只有设置android:configChanges="orientation|keyboardHidden|screenSize"时，只走onConfigurationChanged

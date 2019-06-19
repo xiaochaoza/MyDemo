@@ -1,0 +1,30 @@
+list是有序的集合
+set是无序的集合
+PriorityQueue 一个基于优先级的无界优先级队列。优先级队列的元素按照其自然顺序进行排序
+ArrayDeque 没有容量限制，可根据需求自动进行扩容。ArrayDeque不支持值为 null 的元素。
+
+//往队列插入元素，如果出现异常会抛出异常
+boolean add(E e);
+//往队列插入元素，如果出现异常则返回false
+boolean offer(E e);
+//移除队列元素，如果出现异常会抛出异常
+E remove();
+//移除队列元素，如果出现异常则返回null
+E poll();
+//获取队列头部元素，如果出现异常会抛出异常
+E element();
+//获取队列头部元素，如果出现异常则返回null
+E peek();
+void addFirst(E e);//插入头部，异常会报错
+boolean offerFirst(E e);//插入头部，异常返回false
+E getFirst();//获取头部，异常会报错
+E peekFirst();//获取头部，异常不报错
+E removeFirst();//移除头部，异常会报错
+E pollFirst();//移除头部，异常不报错
+
+void addLast(E e);//插入尾部，异常会报错
+boolean offerLast(E e);//插入尾部，异常返回false
+E getLast();//获取尾部，异常会报错
+E peekLast();//获取尾部，异常不报错
+E removeLast();//移除尾部，异常会报错
+E pollLast();//移除尾部，异常不报错
