@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.custom_view.CustomViewActivity">
+
+    <com.fzzz.mydemo.ui.custom_view.CircleView
+        android:id="@+id/circle_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:arcColor="#00ff00"
+        app:circleColor="#ff0000"
+        app:startAngle="200"
+        app:sweepAngle="200"
+        app:text="自定义"
+        app:textColor="#000000"
+        app:textSize="20sp" />
+</LinearLayout>
+
