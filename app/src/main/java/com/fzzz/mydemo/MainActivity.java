@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.fzzz.framework.Constants;
 import com.fzzz.framework.base.BaseActivity;
-import com.fzzz.mydemo.utils.PageUtil;
+import com.fzzz.framework.utils.PageUtil;
 
 import butterknife.OnClick;
 
@@ -30,7 +30,7 @@ public class MainActivity extends BaseActivity {
             R.id.btn_eventbus, R.id.btn_glide, R.id.btn_greendao, R.id.btn_figerprint, R.id.btn_recyclerview, R.id.btn_stick_recycler,
             R.id.btn_coordinator, R.id.btn_webview, R.id.btn_dialog, R.id.btn_drawerlayout, R.id.btn_toolbar, R.id.btn_zxing,
             R.id.btn_lottie, R.id.btn_tablayout, R.id.btn_dagger2, R.id.btn_handler, R.id.btn_databinding, R.id.btn_windowinput,
-            R.id.btn_animation, R.id.btn_gps, R.id.btn_take_pic, R.id.btn_device_info, R.id.btn_mytest, R.id.btn_thread})
+            R.id.btn_animation, R.id.btn_gps, R.id.btn_take_pic, R.id.btn_device_info, R.id.btn_mytest, R.id.btn_thread, R.id.btn_single_task})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_async_load:
@@ -64,7 +64,7 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_coordinator:
                 break;
             case R.id.btn_webview:
-                ARouter.getInstance().build(Constants.PATH_APP_JSWEB).navigation();
+                PageUtil.toActivity(Constants.PATH_APP_JSWEB);
                 break;
             case R.id.btn_dialog:
                 break;
@@ -95,26 +95,12 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_device_info:
                 break;
             case R.id.btn_mytest:
-                ARouter.getInstance().build(Constants.PATH_INTERVIEW).navigation();
+                PageUtil.toActivity(Constants.PATH_INTERVIEW);
                 break;
             case R.id.btn_thread:
-//                if (ThreadUtil.isMainThread2()) {
-//                    Log.e(getLocalClassName(), "main");
-//                } else {
-//                    Log.e(getLocalClassName(), "no main");
-//                }
-//
-//                new Thread() {
-//                    @Override
-//                    public void run() {
-//                        if (ThreadUtil.isMainThread()) {
-//                            Log.e(getLocalClassName(), "main");
-//                        } else {
-//                            Log.e(getLocalClassName(), "no main");
-//                        }
-//
-//                    }
-//                }.start();
+                break;
+            case R.id.btn_single_task:
+                PageUtil.toActivity(Constants.PATH_APP_LAUNCHMODE);
                 break;
         }
     }

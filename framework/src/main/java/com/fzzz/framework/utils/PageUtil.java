@@ -1,4 +1,4 @@
-package com.fzzz.mydemo.utils;
+package com.fzzz.framework.utils;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.fzzz.framework.Constants;

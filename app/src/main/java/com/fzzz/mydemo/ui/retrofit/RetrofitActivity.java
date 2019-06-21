@@ -10,10 +10,10 @@ import com.fzzz.framework.Constants;
 import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.framework.helper.RetrofitJuHeHelper;
 import com.fzzz.framework.net.RemoteService;
+import com.fzzz.framework.utils.PageUtil;
 import com.fzzz.framework.utils.RequestBodyUtil;
 import com.fzzz.mydemo.R;
 import com.fzzz.mydemo.bean.NewsJuheBean;
-import com.fzzz.mydemo.utils.PageUtil;
 import com.google.gson.Gson;
 
 import java.io.IOException;

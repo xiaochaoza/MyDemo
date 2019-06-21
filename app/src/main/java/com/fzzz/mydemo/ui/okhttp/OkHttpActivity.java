@@ -7,8 +7,8 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fzzz.framework.BuildConfig;
 import com.fzzz.framework.Constants;
 import com.fzzz.framework.base.BaseActivity;
+import com.fzzz.framework.utils.PageUtil;
 import com.fzzz.mydemo.R;
-import com.fzzz.mydemo.utils.PageUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
