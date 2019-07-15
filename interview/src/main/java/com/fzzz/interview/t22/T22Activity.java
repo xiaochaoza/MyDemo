@@ -22,7 +22,9 @@ import butterknife.OnClick;
  */
 @Route(path = Constants.PATH_INTERVIEW_T22)
 public class T22Activity extends BaseActivity {
-    /** 参数设置 */
+    /**
+     * 参数设置
+     */
     T22Service countService;
 
     private ServiceConnection conn = new ServiceConnection() {
@@ -48,26 +50,26 @@ public class T22Activity extends BaseActivity {
     }
 
     @OnClick(R2.id.bt_start_service)
-    public void startService(){
+    public void startService() {
         Intent intent = new Intent(this, T22Service.class);
         startService(intent);
     }
 
-     @OnClick(R2.id.bt_stop_service)
-    public void stopService(){
-         Intent intent = new Intent(this, T22Service.class);
-         stopService(intent);
+    @OnClick(R2.id.bt_stop_service)
+    public void stopService() {
+        Intent intent = new Intent(this, T22Service.class);
+        stopService(intent);
     }
 
     @OnClick(R2.id.bt_bind_service)
-    public void bindService(){
-         Intent intent = new Intent(this, T22Service.class);
-         bindService(intent, conn, BIND_AUTO_CREATE);
+    public void bindService() {
+        Intent intent = new Intent(this, T22Service.class);
+        bindService(intent, conn, BIND_AUTO_CREATE);
     }
 
-     @OnClick(R2.id.bt_unbind_service)
-    public void unbindService(){
-         unbindService(conn);
+    @OnClick(R2.id.bt_unbind_service)
+    public void unbindService() {
+        unbindService(conn);
     }
 
 
