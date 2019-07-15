@@ -1,0 +1,35 @@
+2019-07-15 11:38:05.206 9157-9157/com.fzzz.mydemo E/T22Service: service onCreate
+2019-07-15 11:38:05.207 9157-9157/com.fzzz.mydemo E/T22Service: service onStartCommand
+2019-07-15 11:38:07.149 9157-9157/com.fzzz.mydemo E/T22Service: service onStartCommand
+2019-07-15 11:38:07.315 9157-9157/com.fzzz.mydemo E/T22Service: service onStartCommand
+2019-07-15 11:38:07.797 9157-9157/com.fzzz.mydemo E/T22Service: service onDestroy
+start service的时候多次start只会执行一次onCreate()方法，但是每次start都会执行onStartCommand()方法
+
+2019-07-15 11:39:02.175 9157-9157/com.fzzz.mydemo E/T22Service: service onCreate
+2019-07-15 11:39:02.175 9157-9157/com.fzzz.mydemo E/T22Service: service onBind
+2019-07-15 11:39:03.661 9157-9157/com.fzzz.mydemo E/T22Service: service onUnbind
+2019-07-15 11:39:03.662 9157-9157/com.fzzz.mydemo E/T22Service: service onDestroy
+bind service的时候，多次执行 也只会执行一次onCreate()和onBind()方法，解绑的时候，会执行onUnbind()方法和onDestroy()方法，执行stopService没有效果
+
+2019-07-15 11:40:55.432 9157-9157/com.fzzz.mydemo E/T22Service: service onCreate
+2019-07-15 11:40:55.443 9157-9157/com.fzzz.mydemo E/T22Service: service onBind
+2019-07-15 11:40:56.592 9157-9157/com.fzzz.mydemo E/T22Service: service onStartCommand
+2019-07-15 11:40:57.017 9157-9157/com.fzzz.mydemo E/T22Service: service onStartCommand
+2019-07-15 11:40:57.255 9157-9157/com.fzzz.mydemo E/T22Service: service onStartCommand
+2019-07-15 11:40:57.483 9157-9157/com.fzzz.mydemo E/T22Service: service onStartCommand
+2019-07-15 11:40:59.133 9157-9157/com.fzzz.mydemo E/T22Service: service onUnbind
+2019-07-15 11:41:05.088 9157-9157/com.fzzz.mydemo E/T22Service: service onDestroy
+先执行bindService方法会执行onCreate和onBind，再执行onStart方法的时候，这时候service会执行onStartCommand
+--而且解绑的时候，不会走onDestroy，只有stopService的时候才会不会走onDestroy
+--startService以后执行stopService的时候，服务不会释放，解绑的时候才会释放
+
+2019-07-15 11:45:29.358 9157-9157/com.fzzz.mydemo E/T22Service: service onCreate
+2019-07-15 11:45:29.358 9157-9157/com.fzzz.mydemo E/T22Service: service onStartCommand
+2019-07-15 11:45:30.545 9157-9157/com.fzzz.mydemo E/T22Service: service onBind
+2019-07-15 11:45:34.430 9157-9157/com.fzzz.mydemo E/T22Service: service onUnbind
+2019-07-15 11:45:36.204 9157-9157/com.fzzz.mydemo E/T22Service: service onDestroy
+先start再bind的时候，解绑时，服务不会释放，再执行stop的时候，才会释放
+先start再bind的时候，先执行stop，这时候服务不会释放，但是执行unbind后，服务直接就会释放
+
+
+

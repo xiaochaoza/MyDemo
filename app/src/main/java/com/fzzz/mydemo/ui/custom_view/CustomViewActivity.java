@@ -1,7 +1,6 @@
 package com.fzzz.mydemo.ui.custom_view;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 

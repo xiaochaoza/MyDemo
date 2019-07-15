@@ -69,4 +69,14 @@ public class InterViewActivity extends BaseActivity {
     public void onViewClicked8() {
         ARouter.getInstance().build(Constants.PATH_INTERVIEW_T21).navigation();
     }
+
+    @OnClick(R2.id.bt_t11)
+    public void onViewClicked9() {
+        ARouter.getInstance().build(Constants.PATH_INTERVIEW_T11_1).navigation();
+    }
+
+    @OnClick(R2.id.bt_t22)
+    public void onViewClicked10() {
+        ARouter.getInstance().build(Constants.PATH_INTERVIEW_T22).navigation();
+    }
 }

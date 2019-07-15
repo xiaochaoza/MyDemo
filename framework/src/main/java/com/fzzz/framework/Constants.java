@@ -19,10 +19,13 @@ public class Constants {
     public static final String PATH_APP_ACTIVITY3 = "/ui/lunchmode/Activity3";
     public static final String PATH_APP_CUSTOMVIEW = "/ui/customview/CustomViewActivity";
 
-    public static final String PATH_INTERVIEW = "/interview/ui/InterViewActivity";
+    public static final String PATH_INTERVIEW = "/interview/InterViewActivity";
+    public static final String PATH_INTERVIEW_T11_1 = "/interview/T11Activity1";
+    public static final String PATH_INTERVIEW_T11_2 = "/interview/T11Activity2";
     public static final String PATH_INTERVIEW_T13 = "/interview/T13Activity";
     public static final String PATH_INTERVIEW_T16 = "/interview/T16Activity";
     public static final String PATH_INTERVIEW_T18 = "/interview/T18Activity";
     public static final String PATH_INTERVIEW_T20 = "/interview/T20Activity";
     public static final String PATH_INTERVIEW_T21 = "/interview/T21Activity";
+    public static final String PATH_INTERVIEW_T22 = "/interview/T22Activity";
 }

@@ -15,7 +15,7 @@ android {
         //路由配置
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
         }
     }
@@ -52,8 +52,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation project(':framework')
+    implementation project(':interview')
     //Butterknife
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
     //阿里路由ARouter
-    annotationProcessor 'com.alibaba:arouter-compiler:1.1.4'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
 }

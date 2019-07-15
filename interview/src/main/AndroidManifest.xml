@@ -3,6 +3,8 @@
     
     <application>
         <activity android:name=".ui.InterViewActivity" />
+        <activity android:name=".t11.T11Activity1" />
+        <activity android:name=".t11.T11Activity2" />
         <activity android:name=".t13.T13BaseActivity" />
         <activity android:name=".t13.T13Activity" />
         <activity android:name=".t16.T16Activity" />
@@ -10,7 +12,9 @@
         <activity android:name=".t20.T20Activity"
             android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity android:name=".t21.T21Activity" />
+        <activity android:name=".t22.T22Activity" />
 
         <service android:name=".t15.DownloadService" />
+        <service android:name=".t22.T22Service" />
     </application>
 </manifest>

@@ -11,6 +11,14 @@
         android:columnCount="2">
 
         <Button
+            android:id="@+id/bt_t11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="t11"
+            android:textAllCaps="false" />
+
+        <Button
             android:id="@+id/bt_t12_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -72,6 +80,14 @@
             android:layout_height="wrap_content"
             android:layout_columnWeight="1"
             android:text="t21"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/bt_t22"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="t22"
             android:textAllCaps="false" />
     </GridLayout>
 </ScrollView>
