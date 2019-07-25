@@ -1,22 +1,26 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.fzzz.mydemo"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
 
         //路由配置
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [AROUTER_MODULE_NAME: project.getName()]
             }
+        }
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
         }
     }
 
@@ -27,22 +31,10 @@ android {
         }
     }
 
-    // Butterknife requires Java 8.
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
-    //在layout下建立文件夹
-//    sourceSets {
-//        main {
-//            res.srcDirs = [
-//                'src/main/res/layout/interview',
-//                'src/main/res/layout',
-//                'src/main/res',
-//            ]
-//        }
-//    }
 }
 
 dependencies {
@@ -51,11 +43,16 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
     implementation project(':framework')
-    implementation project(':interview')
-    implementation project(':fragment')
     //Butterknife
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
     //阿里路由ARouter
     annotationProcessor 'com.alibaba:arouter-compiler:1.2.2'
+
+    implementation 'androidx.navigation:navigation-fragment:2.0.0'
+    implementation 'androidx.navigation:navigation-ui:2.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
 }

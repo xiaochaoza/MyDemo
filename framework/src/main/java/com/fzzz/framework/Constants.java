@@ -28,4 +28,7 @@ public class Constants {
     public static final String PATH_INTERVIEW_T20 = "/interview/T20Activity";
     public static final String PATH_INTERVIEW_T21 = "/interview/T21Activity";
     public static final String PATH_INTERVIEW_T22 = "/interview/T22Activity";
+
+    public static final String PATH_FRAGMENT_HOME = "/fragment/HomeActivity";
+
 }
