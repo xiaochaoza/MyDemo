@@ -18,6 +18,7 @@ public class Constants {
     public static final String PATH_APP_ACTIVITY2 = "/ui/launchmode/Activity2";
     public static final String PATH_APP_ACTIVITY3 = "/ui/lunchmode/Activity3";
     public static final String PATH_APP_CUSTOMVIEW = "/ui/customview/CustomViewActivity";
+    public static final String PATH_APP_LEAK = "/ui/LeakActivity";
 
     public static final String PATH_INTERVIEW = "/interview/InterViewActivity";
     public static final String PATH_INTERVIEW_T11_1 = "/interview/T11Activity1";

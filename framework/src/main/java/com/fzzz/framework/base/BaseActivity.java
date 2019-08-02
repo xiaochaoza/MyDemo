@@ -5,9 +5,9 @@ import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.fzzz.framework.utils.ActivityManager;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
 
@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
  * time: 2019-05-10
  * update:
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends RxAppCompatActivity {
     private boolean showBack = true;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,6 +27,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         if (showBack) {
             //设置左上角返回键
+            if (null == getSupportActionBar()) {
+                return;
+            }
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }

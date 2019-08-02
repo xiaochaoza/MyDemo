@@ -1,6 +1,10 @@
 package com.fzzz.interview.ui;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
@@ -12,6 +16,7 @@ import com.fzzz.interview.t12.MyIntentService;
 import com.fzzz.interview.t12.MyService;
 import com.fzzz.interview.t15.DownloadService;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -22,6 +27,19 @@ import butterknife.OnClick;
  */
 @Route(path = Constants.PATH_INTERVIEW)
 public class InterViewActivity extends BaseActivity {
+
+    @BindView(R2.id.tv_tv)
+    TextView tv_tv;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+//        tv_tv.setClickable(true);
+        tv_tv.setFocusable(true);
+        tv_tv.setFocusableInTouchMode(true);
+        tv_tv.setSelected(true);
+    }
+
     @Override
     public int getLayoutID() {
         return R.layout.activity_inter;

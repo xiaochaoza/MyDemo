@@ -340,5 +340,15 @@
             android:textAllCaps="false"
             android:textSize="18sp" />
 
+        <Button
+            android:id="@+id/btn_leak"
+            style="@style/button_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="内存泄漏"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
+
     </GridLayout>
 </ScrollView>

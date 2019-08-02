@@ -1,93 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".ui.InterViewActivity">
 
-    <GridLayout
+    <Button
+        android:id="@+id/bt_t11"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="t11"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/bt_t12_1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bt_t12_1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="t12-Service"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toRightOf="@id/bt_t11"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bt_t12_2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="t12-IntentService"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/bt_t13"
+        app:layout_constraintTop_toBottomOf="@id/bt_t11" />
+
+    <Button
+        android:id="@+id/bt_t13"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="t13"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toRightOf="@id/bt_t12_2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_t12_1" />
+
+    <Button
+        android:id="@+id/bt_t15"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="t15"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/bt_t16"
+        app:layout_constraintTop_toBottomOf="@id/bt_t12_2" />
+
+    <Button
+        android:id="@+id/bt_t16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="t16"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toRightOf="@id/bt_t15"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_t13" />
+
+    <Button
+        android:id="@+id/bt_t18"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="t18"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/bt_t20"
+        app:layout_constraintTop_toBottomOf="@id/bt_t15" />
+
+    <Button
+        android:id="@+id/bt_t20"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="t20"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toRightOf="@id/bt_t18"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_t16" />
+
+    <Button
+        android:id="@+id/bt_t21"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="t21"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/bt_t22"
+        app:layout_constraintTop_toBottomOf="@id/bt_t18" />
+
+    <Button
+        android:id="@+id/bt_t22"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="t22"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toRightOf="@id/bt_t21"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_t20" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:columnCount="2">
-
-        <Button
-            android:id="@+id/bt_t11"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="t11"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/bt_t12_1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="t12-Service"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/bt_t12_2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="t12-IntentService"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/bt_t13"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="t13"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/bt_t15"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="t15"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/bt_t16"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="t16"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/bt_t18"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="t18"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/bt_t20"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="t20"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/bt_t21"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="t21"
-            android:textAllCaps="false" />
-
-        <Button
-            android:id="@+id/bt_t22"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="t22"
-            android:textAllCaps="false" />
-    </GridLayout>
-</ScrollView>
+        android:text="大家啊理解错了开箱子就立刻的就撒离开家材料科学总经理看第三，没出息找借口了"
+        app:layout_constraintTop_toBottomOf="@id/bt_t22"
+        android:singleLine="true"
+        android:id="@+id/tv_tv"
+        android:ellipsize="marquee"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

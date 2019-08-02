@@ -43,6 +43,7 @@
             android:name=".ui.launch_mode.Activity3"
             android:launchMode="singleTask" />
         <activity android:name=".ui.custom_view.CustomViewActivity" />
+        <activity android:name=".ui.leak.LeakActivity" />
 
     </application>
 
