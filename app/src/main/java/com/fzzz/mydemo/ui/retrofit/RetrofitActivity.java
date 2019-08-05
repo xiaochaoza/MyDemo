@@ -41,11 +41,6 @@ public class RetrofitActivity extends BaseActivity {
 
     public static final String TAG = "RetrofitActivity";
 
-    @BindView(R.id.et_username)
-    EditText etUsername;
-    @BindView(R.id.et_password)
-    EditText etPassword;
-
     @Override
     public int getLayoutID() {
         return R.layout.activity_retrofit;

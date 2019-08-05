@@ -30,7 +30,7 @@ task clean(type: Delete) {
 ext {
     compileSdkVersion = 28
     buildToolsVersion = "29.0.0 rc2"
-    minSdkVersion = 26
+    minSdkVersion = 22
     targetSdkVersion = 28
     butterknife = '10.1.0'
 
