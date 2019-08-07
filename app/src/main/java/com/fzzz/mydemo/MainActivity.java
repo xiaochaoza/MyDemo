@@ -30,7 +30,7 @@ public class MainActivity extends BaseActivity {
             R.id.btn_coordinator, R.id.btn_webview, R.id.btn_dialog, R.id.btn_drawerlayout, R.id.btn_toolbar, R.id.btn_zxing,
             R.id.btn_lottie, R.id.btn_tablayout, R.id.btn_dagger2, R.id.btn_handler, R.id.btn_databinding, R.id.btn_windowinput,
             R.id.btn_animation, R.id.btn_gps, R.id.btn_take_pic, R.id.btn_device_info, R.id.btn_mytest, R.id.btn_thread, R.id.btn_single_task,
-            R.id.btn_custom_view, R.id.btn_fragment, R.id.btn_leak})
+            R.id.btn_custom_view, R.id.btn_fragment, R.id.btn_leak, R.id.btn_forum, R.id.btn_swipe_refresh})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_async_load:
@@ -110,6 +110,12 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.btn_leak:
                 PageUtil.toActivity(Constants.PATH_APP_LEAK);
+                break;
+            case R.id.btn_forum:
+                PageUtil.toActivity(Constants.PATH_APP_FORUM);
+                break;
+            case R.id.btn_swipe_refresh:
+                PageUtil.toActivity(Constants.PATH_APP_SWIPE_REFRESH);
                 break;
         }
     }

@@ -350,5 +350,25 @@
             android:textAllCaps="false"
             android:textSize="18sp" />
 
+        <Button
+            android:id="@+id/btn_forum"
+            style="@style/button_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="论坛盖楼"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_swipe_refresh"
+            style="@style/button_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="SwipeRefresh"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
+
     </GridLayout>
 </ScrollView>

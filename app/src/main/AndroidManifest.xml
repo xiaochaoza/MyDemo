@@ -44,6 +44,7 @@
             android:launchMode="singleTask" />
         <activity android:name=".ui.custom_view.CustomViewActivity" />
         <activity android:name=".ui.leak.LeakActivity" />
+        <activity android:name=".ui.swipe_refresh.SwipeRefreshActivity" />
 
     </application>
 
