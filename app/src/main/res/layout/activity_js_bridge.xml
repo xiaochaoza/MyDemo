@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.jsbridge.JsWebActivity">
+    tools:context="com.fzzz.mydemo.ui.webview.JsWebActivity">
 
     <Button
         android:id="@+id/bt_call_h5"
@@ -14,7 +14,7 @@
         android:text="调h5" />
 
     <WebView
-        android:id="@+id/webview"
+        android:id="@+id/wv_js_bridge"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </LinearLayout>

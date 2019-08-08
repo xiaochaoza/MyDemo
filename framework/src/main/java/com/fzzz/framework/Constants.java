@@ -12,7 +12,9 @@ public class Constants {
     public static final String PATH_APP_RESULT = "/ui/result/ResultActivity";
     public static final String PATH_APP_RXJAVA = "/ui/rxjava/RxJxvaActivity";
     public static final String PATH_APP_RETROFIT_RXJAVA = "/ui/rxjava/RetrofitRxjavaActivity";
-    public static final String PATH_APP_JSWEB = "/ui/jsbridge/JsWebActivity";
+    public static final String PATH_APP_WEBVIEW = "/ui/webview/WebViewActivity";
+    public static final String PATH_APP_JS_BRIDGE = "/ui/webview/JsWebActivity";
+    public static final String PATH_APP_JS_CAMERA = "/ui/webview/JsCameraActivity";
     public static final String PATH_APP_LAUNCHMODE = "/ui/launchmode/LaunchModeActivity";
     public static final String PATH_APP_ACTIVITY1 = "/ui/launchmode/Activity1";
     public static final String PATH_APP_ACTIVITY2 = "/ui/launchmode/Activity2";

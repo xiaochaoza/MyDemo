@@ -1,4 +1,4 @@
-package com.fzzz.mydemo.ui.jsbridge;
+package com.fzzz.mydemo.ui.webview;
 
 import android.os.Bundle;
 import android.webkit.JavascriptInterface;
@@ -21,10 +21,15 @@ import butterknife.OnClick;
  * time: 2019-05-31
  * update:
  */
-@Route(path = Constants.PATH_APP_JSWEB)
+@Route(path = Constants.PATH_APP_JS_BRIDGE)
 public class JsWebActivity extends BaseActivity {
-    @BindView(R.id.webview)
+    @BindView(R.id.wv_js_bridge)
     WebView webview;
+
+    @Override
+    public int getLayoutID() {
+        return R.layout.activity_js_bridge;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,11 +53,6 @@ public class JsWebActivity extends BaseActivity {
         webview.loadUrl("file:///android_asset/web.html");
     }
 
-    @Override
-    public int getLayoutID() {
-        return R.layout.activity_jsweb;
-    }
-
     @OnClick(R.id.bt_call_h5)
     public void onViewClicked() {
         webview.loadUrl("javascript:callH5('Android调h5成功')");
@@ -64,7 +64,7 @@ public class JsWebActivity extends BaseActivity {
 //        });
     }
 
-    interface Contact{
+    interface Contact {
         @JavascriptInterface
         void callAndroid(String text);
     }

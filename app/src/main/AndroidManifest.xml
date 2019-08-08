@@ -24,13 +24,23 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="mydemo"
+                    android:host="shouye" />
+            </intent-filter>
         </activity>
         <activity android:name=".ui.result.ResultActivity" />
         <activity android:name=".ui.retrofit.RetrofitActivity" />
         <activity android:name=".ui.okhttp.OkHttpActivity" />
         <activity android:name=".ui.rxjava.RxJavaActivity" />
         <activity android:name=".ui.retrofit_rxjava.RetrofitRxjavaActivity" />
-        <activity android:name=".ui.jsbridge.JsWebActivity" />
+        <activity android:name=".ui.webview.JsWebActivity" />
+        <activity android:name=".ui.webview.JsCameraActivity" />
         <activity android:name=".ui.forum.ForumActivity" />
         <activity android:name=".ui.launch_mode.LaunchModeActivity" />
         <activity
@@ -45,6 +55,7 @@
         <activity android:name=".ui.custom_view.CustomViewActivity" />
         <activity android:name=".ui.leak.LeakActivity" />
         <activity android:name=".ui.swipe_refresh.SwipeRefreshActivity" />
+        <activity android:name=".ui.webview.WebViewActivity" />
 
     </application>
 

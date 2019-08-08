@@ -64,7 +64,7 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_coordinator:
                 break;
             case R.id.btn_webview:
-                PageUtil.toActivity(Constants.PATH_APP_JSWEB);
+                PageUtil.toActivity(Constants.PATH_APP_WEBVIEW);
                 break;
             case R.id.btn_dialog:
                 break;
