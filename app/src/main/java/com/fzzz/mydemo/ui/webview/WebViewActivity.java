@@ -29,6 +29,8 @@ import butterknife.OnClick;
 public class WebViewActivity extends BaseActivity {
     public static final String TAG = "WebViewActivity";
 
+    private List<Intent> cameraIntents = new ArrayList<>();
+
     @Override
     public int getLayoutID() {
         return R.layout.activity_webview;
@@ -61,8 +63,6 @@ public class WebViewActivity extends BaseActivity {
                 break;
         }
     }
-    List<Intent> cameraIntents = new ArrayList<>();
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
