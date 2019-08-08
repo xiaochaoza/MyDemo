@@ -1,5 +1,7 @@
 package com.fzzz.framework;
 
+import android.Manifest;
+
 /**
  * description:
  * author: ShenChao
@@ -23,6 +25,7 @@ public class Constants {
     public static final String PATH_APP_LEAK = "/ui/LeakActivity";
     public static final String PATH_APP_FORUM = "/ui/ForumActivity";
     public static final String PATH_APP_SWIPE_REFRESH = "/ui/SwipeRefreshActivity";
+    public static final String PATH_APP_VIEWSTUB = "/ui/ViewStubActivity";
 
     public static final String PATH_INTERVIEW = "/interview/InterViewActivity";
     public static final String PATH_INTERVIEW_T11_1 = "/interview/T11Activity1";
@@ -35,5 +38,8 @@ public class Constants {
     public static final String PATH_INTERVIEW_T22 = "/interview/T22Activity";
 
     public static final String PATH_FRAGMENT_HOME = "/fragment/HomeActivity";
+
+    public static final String[] PERMISSIONS_WRITE_EXTERNAL_STORAGE = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
+
 
 }

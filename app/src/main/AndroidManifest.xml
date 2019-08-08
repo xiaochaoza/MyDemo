@@ -3,6 +3,8 @@
     package="com.fzzz.mydemo">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!--    网络框架现在不允许明文传输，会报错-->
     <!--    java.net.UnknownServiceException: CLEARTEXT communication to v.juhe.cn not permitted by network security policy-->
@@ -56,6 +58,7 @@
         <activity android:name=".ui.leak.LeakActivity" />
         <activity android:name=".ui.swipe_refresh.SwipeRefreshActivity" />
         <activity android:name=".ui.webview.WebViewActivity" />
+        <activity android:name=".ui.viewstub.ViewStubActivity" />
 
     </application>
 

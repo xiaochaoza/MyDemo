@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.fzzz.mydemo.ui.viewstub.ViewStubActivity">
+
+    <Button
+        android:id="@+id/bt_viewstub"
+        style="@style/button_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点击懒加载"
+        android:textAllCaps="false"
+        android:textSize="18sp" />
+
+    <ViewStub
+        android:id="@+id/vs_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout="@layout/item_viewstub" />
+</LinearLayout>

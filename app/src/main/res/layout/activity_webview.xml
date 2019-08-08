@@ -1,31 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="300dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:orientation="vertical"
     tools:context="com.fzzz.mydemo.ui.webview.WebViewActivity">
 
     <Button
         android:id="@+id/bt_js_bridge"
         style="@style/button_style"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="h5桥接" />
+        android:text="h5桥接"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/bt_js_camera"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/bt_js_camera"
         style="@style/button_style"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="H5摄像头" />
+        android:text="H5摄像头"
+        app:layout_constraintLeft_toRightOf="@id/bt_js_bridge"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/bt_system_camera"
         style="@style/button_style"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="系统摄像头" />
+        android:text="系统摄像头"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/bt_temp"
+        app:layout_constraintTop_toBottomOf="@id/bt_js_bridge" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/bt_temp"
+        style="@style/button_style"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toRightOf="@id/bt_system_camera"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_js_camera" />
+
+    <ImageView
+        android:id="@+id/iv_show"
+        style="@style/button_style"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="数据转换"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_system_camera" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
