@@ -26,6 +26,9 @@ public class Constants {
     public static final String PATH_APP_FORUM = "/ui/ForumActivity";
     public static final String PATH_APP_SWIPE_REFRESH = "/ui/SwipeRefreshActivity";
     public static final String PATH_APP_VIEWSTUB = "/ui/ViewStubActivity";
+    public static final String PATH_APP_CAMERA = "/ui/CameraActivity";
+    public static final String PATH_APP_TAKEPIC_OLD = "/ui/TakePicOldActivity";
+    public static final String PATH_APP_TAKEPIC_NEW = "/ui/TakePicNewActivity";
 
     public static final String PATH_INTERVIEW = "/interview/InterViewActivity";
     public static final String PATH_INTERVIEW_T11_1 = "/interview/T11Activity1";
@@ -38,6 +41,11 @@ public class Constants {
     public static final String PATH_INTERVIEW_T22 = "/interview/T22Activity";
 
     public static final String PATH_FRAGMENT_HOME = "/fragment/HomeActivity";
+
+    public static final int CAMERA_OCR = 0;
+    public static final int CAMERA_FACE = 1;
+    public static final int TAKE_PIC_OLD = 1000;
+    public static final int TAKE_PIC_NEW = 1001;
 
     public static final String[] PERMISSIONS_WRITE_EXTERNAL_STORAGE = {Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE};
 

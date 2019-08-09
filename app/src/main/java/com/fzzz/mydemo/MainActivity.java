@@ -96,6 +96,7 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_gps:
                 break;
             case R.id.btn_take_pic:
+                PageUtil.toActivity(Constants.PATH_APP_CAMERA);
                 break;
             case R.id.btn_device_info:
                 break;

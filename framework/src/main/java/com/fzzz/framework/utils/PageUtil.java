@@ -1,5 +1,8 @@
 package com.fzzz.framework.utils;
 
+import android.app.Activity;
+import android.content.Context;
+
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.fzzz.framework.Constants;
 
@@ -17,6 +20,10 @@ public class PageUtil {
 
     public static void toActivity(String path) {
         ARouter.getInstance().build(path).navigation();
+    }
+
+    public static void toActivityForResult(Activity activity, String path, int requestCode) {
+        ARouter.getInstance().build(path).navigation(activity, requestCode);
     }
 
 }

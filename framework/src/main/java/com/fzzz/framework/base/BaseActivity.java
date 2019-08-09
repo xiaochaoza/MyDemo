@@ -23,6 +23,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityManager.getInstance().addActivity(this);
+        beforeSetContentView();
         setContentView(getLayoutID());
         ButterKnife.bind(this);
         if (showBack) {
@@ -32,6 +33,10 @@ public abstract class BaseActivity extends RxAppCompatActivity {
             }
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    public void beforeSetContentView() {
+
     }
 
     @Override
