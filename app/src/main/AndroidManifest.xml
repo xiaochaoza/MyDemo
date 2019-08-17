@@ -63,6 +63,7 @@
         <activity android:name=".ui.camera.CameraActivity" />
         <activity android:name=".ui.camera.TakePicOldActivity" />
         <activity android:name=".ui.camera.TakePicNewActivity" />
+        <activity android:name=".ui.generic.GenericActivity" />
 
     </application>
 

@@ -351,7 +351,7 @@ public class TakePicNewActivity extends BaseActivity {
             // 设置自动曝光模式
             captureRequestBuilder.set(CaptureRequest.CONTROL_AE_MODE, CaptureRequest.CONTROL_AE_MODE_ON_AUTO_FLASH);
 
-            //现在拍照成功直接返回，暂时没有回显页，所以不能重新预览，添加回显页以后可以打开 todo
+            //现在拍照成功直接返回，暂时没有回显页，所以不能重新预览，添加回显页以后可以打开
 //            try {
 //                //重新进行预览
 //                mPreviewSession.setRepeatingRequest(mCaptureRequest, null, null);
