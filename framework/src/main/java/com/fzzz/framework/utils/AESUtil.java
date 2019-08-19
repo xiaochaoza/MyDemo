@@ -1,11 +1,12 @@
 package com.fzzz.framework.utils;
 
+import android.util.Base64;
+
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.util.Base64;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -32,7 +33,8 @@ public class AESUtil {
         SecureRandom secureRandom = new SecureRandom(String.valueOf(System.currentTimeMillis()).getBytes(StandardCharsets.UTF_8));
         keyGen.init(256, secureRandom);// 这里可以是 128、192、256、越大越安全
         SecretKey secretKey = keyGen.generateKey();
-        return Base64.getEncoder().encodeToString(secretKey.getEncoded());
+//        return Base64.getEncoder().encodeToString(secretKey.getEncoded());//java
+        return Base64.encodeToString(secretKey.getEncoded(), Base64.NO_WRAP);//android
     }
 
     /**
@@ -42,7 +44,8 @@ public class AESUtil {
      * @return SecretKey
      */
     public static SecretKey strKey2SecretKey(String strKey) {
-        byte[] bytes = Base64.getDecoder().decode(strKey);
+//        byte[] bytes = Base64.getDecoder().decode(strKey);//java
+        byte[] bytes = Base64.decode(strKey, Base64.NO_WRAP);//android
         SecretKeySpec secretKeySpec = new SecretKeySpec(bytes, "AES");
         return secretKeySpec;
     }
@@ -82,6 +85,6 @@ public class AESUtil {
         Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");//"算法/模式/补码方式"
         cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
         byte[] encrypted = cipher.doFinal(sourceStr.getBytes(StandardCharsets.UTF_8));
-        return android.util.Base64.encodeToString(encrypted, android.util.Base64.NO_WRAP);
+        return Base64.encodeToString(encrypted, android.util.Base64.NO_WRAP);
     }
 }

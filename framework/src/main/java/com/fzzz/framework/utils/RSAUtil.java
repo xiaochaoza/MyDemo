@@ -1,5 +1,7 @@
 package com.fzzz.framework.utils;
 
+import android.util.Base64;
+
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
@@ -13,7 +15,6 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.Base64;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
@@ -51,7 +52,8 @@ public class RSAUtil {
     public static String getPublicKey(KeyPair keyPair) {
         PublicKey publicKey = keyPair.getPublic();
         byte[] bytes = publicKey.getEncoded();
-        return Base64.getEncoder().encodeToString(bytes);
+//        return Base64.getEncoder().encodeToString(bytes);//java
+        return Base64.encodeToString(bytes, android.util.Base64.NO_WRAP);//android
     }
 
     /**
@@ -63,7 +65,8 @@ public class RSAUtil {
     public static String getPrivateKey(KeyPair keyPair) {
         PrivateKey privateKey = keyPair.getPrivate();
         byte[] bytes = privateKey.getEncoded();
-        return Base64.getEncoder().encodeToString(bytes);
+//        return Base64.getEncoder().encodeToString(bytes);//java
+        return Base64.encodeToString(bytes, android.util.Base64.NO_WRAP);//android
     }
 
     /**
@@ -73,7 +76,8 @@ public class RSAUtil {
      * @return PublicKey
      */
     public static PublicKey string2PublicKey(String pubStr) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        byte[] bytes = Base64.getDecoder().decode(pubStr);
+//        byte[] bytes = Base64.getDecoder().decode(pubStr);//java
+        byte[] bytes = Base64.decode(pubStr, Base64.NO_WRAP);//android
         X509EncodedKeySpec keySpec = new X509EncodedKeySpec(bytes);
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         PublicKey publicKey = keyFactory.generatePublic(keySpec);
@@ -87,7 +91,8 @@ public class RSAUtil {
      * @return PrivateKey
      */
     public static PrivateKey string2Privatekey(String priStr) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        byte[] bytes = Base64.getDecoder().decode(priStr);
+//        byte[] bytes = Base64.getDecoder().decode(priStr);//java
+        byte[] bytes = Base64.decode(priStr, Base64.NO_WRAP);//android
         PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(bytes);
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         PrivateKey privateKey = keyFactory.generatePrivate(keySpec);
