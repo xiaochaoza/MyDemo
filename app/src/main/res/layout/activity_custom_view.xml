@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.custom_view.CustomViewActivity">
+    tools:context="com.fzzz.mydemo.ui.custom_view.CustomViewActivity">
 
     <com.fzzz.mydemo.ui.custom_view.CircleView
         android:id="@+id/circle_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:arcColor="#00ff00"
         app:circleColor="#ff0000"
         app:startAngle="200"
@@ -18,5 +18,11 @@
         app:text="自定义"
         app:textColor="#000000"
         app:textSize="20sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" />
 </LinearLayout>
 

@@ -1,9 +1,14 @@
 package com.fzzz.framework.utils;
 
+import android.annotation.TargetApi;
+import android.os.Build;
+
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
+import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
 
 /**
  * description: 测试 AESUtil 对AES加密算法的封装
@@ -12,31 +17,17 @@ import javax.crypto.SecretKey;
  * update:
  */
 public class AESUtilTest {
-    public static void main(String[] args) {
-        String content = "abcdefg789+-*+="; // 待加密的字符串
-        System.out.println("明文数据为：" + content);
-        try {
-            // 获得经 BASE64 处理之后的 AES 密钥
-            String strKeyAES = AESUtil.getStrKeyAES();
-            System.out.println("经BASE64处理之后的密钥：" + strKeyAES);
+    public static void main(String[] args) throws Exception {
+        String sSrc ="{\"sysCode\":\"nxgovapp\",\"mobileNo\":\"13712348810\",\"latitude\":\"39.130945\",\"longitude\":\"106.707405\",\"name\":\"张三\",\"avatar\":\"http://abc.com/123.jpg\"}";
+        String sKey = "AxsePck21Ab12345";
+            byte[] raw = sKey.getBytes("utf-8");
+            SecretKeySpec skeySpec = new SecretKeySpec(raw, "AES");
+            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");//"算法/模式/补码方式"
+            cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
+            byte[] encrypted = cipher.doFinal(sSrc.getBytes("utf-8"));
 
-            // 将 BASE64 处理之后的 AES 密钥转为 SecretKey
-            SecretKey secretKey = AESUtil.strKey2SecretKey(strKeyAES);
+//            return new Base64().encodeToString(encrypted);//此处使用BASE64做转码功能，同时能起到2次加密的作用。
+        Base64.getEncoder().encodeToString(encrypted);
 
-            // 加密数据
-            byte[] encryptAESbytes = AESUtil.encryptAES(content.getBytes(StandardCharsets.UTF_8), secretKey);
-            System.out.println("加密后的数据经 BASE64 处理之后为：" + Base64.getEncoder().encodeToString(encryptAESbytes));
-            // 解密数据
-            String decryptAESStr = new String(AESUtil.decryptAES(encryptAESbytes, secretKey), StandardCharsets.UTF_8);
-            System.out.println("解密后的数据为：" + decryptAESStr);
-
-            if (content.equals(decryptAESStr)) {
-                System.out.println("测试通过！");
-            } else {
-                System.out.println("测试未通过！");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }

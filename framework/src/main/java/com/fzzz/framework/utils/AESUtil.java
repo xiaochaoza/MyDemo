@@ -72,4 +72,16 @@ public class AESUtil {
         cipher.init(Cipher.DECRYPT_MODE, secretKey);
         return cipher.doFinal(content);
     }
+
+    /**
+     * AES加密
+     */
+    public static String encrypt (String sourceStr, String key) throws Exception {
+        byte[] raw = key.getBytes(StandardCharsets.UTF_8);
+        SecretKeySpec skeySpec = new SecretKeySpec(raw, "AES");
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");//"算法/模式/补码方式"
+        cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
+        byte[] encrypted = cipher.doFinal(sourceStr.getBytes(StandardCharsets.UTF_8));
+        return android.util.Base64.encodeToString(encrypted, android.util.Base64.NO_WRAP);
+    }
 }

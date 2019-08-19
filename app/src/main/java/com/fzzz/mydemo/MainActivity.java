@@ -109,7 +109,7 @@ public class MainActivity extends BaseActivity {
                 PageUtil.toActivity(Constants.PATH_APP_LAUNCHMODE);
                 break;
             case R.id.btn_custom_view:
-                PageUtil.toActivity(Constants.PATH_APP_CUSTOMVIEW);
+                PageUtil.toActivity(Constants.PATH_APP_CUSTOMVIEW_MENU);
                 break;
             case R.id.btn_fragment:
                 PageUtil.toActivity(Constants.PATH_FRAGMENT_HOME);

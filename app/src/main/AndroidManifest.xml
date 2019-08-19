@@ -56,6 +56,7 @@
             android:name=".ui.launch_mode.Activity3"
             android:launchMode="singleTask" />
         <activity android:name=".ui.custom_view.CustomViewActivity" />
+        <activity android:name=".ui.custom_view.CustomViewMenuActivity" />
         <activity android:name=".ui.leak.LeakActivity" />
         <activity android:name=".ui.swipe_refresh.SwipeRefreshActivity" />
         <activity android:name=".ui.webview.WebViewActivity" />

@@ -1,6 +1,9 @@
 package com.fzzz.mydemo.ui.custom_view;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
@@ -21,6 +24,8 @@ import butterknife.BindView;
 public class CustomViewActivity extends BaseActivity {
     @BindView(R.id.circle_view)
     CircleView circleView;
+    @BindView(R.id.ll_show)
+    LinearLayout llShow;
 
     @Override
     public int getLayoutID() {
@@ -30,6 +35,22 @@ public class CustomViewActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        circleView.requestLayout();
+        String type = getIntent().getStringExtra("type");
+        if (TextUtils.isEmpty(type)) {
+            return;
+        }
+        switch (type) {
+            case "circle":
+                circleView.requestLayout();
+                break;
+            case "menu":
+                circleView.setVisibility(View.GONE);
+                llShow.setWeightSum(4);
+                for (int i = 0; i < 4; i++) {
+                    CustomLineView customLineView = new CustomLineView(this);
+                    llShow.addView(customLineView);
+                }
+                break;
+        }
     }
 }
