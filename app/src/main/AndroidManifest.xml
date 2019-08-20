@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <!--    网络框架现在不允许明文传输，会报错-->
     <!--    java.net.UnknownServiceException: CLEARTEXT communication to v.juhe.cn not permitted by network security policy-->
@@ -65,6 +68,8 @@
         <activity android:name=".ui.camera.TakePicOldActivity" />
         <activity android:name=".ui.camera.TakePicNewActivity" />
         <activity android:name=".ui.generic.GenericActivity" />
+        <activity android:name=".ui.wifi.WifiActivity" />
+        <activity android:name=".ui.gps.GpsActivity" />
 
     </application>
 

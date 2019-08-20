@@ -1,14 +1,13 @@
 package com.fzzz.interview.t22;
 
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fzzz.framework.Constants;
-import com.fzzz.interview.BaseActivity;
+import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.interview.R;
 import com.fzzz.interview.R2;
 

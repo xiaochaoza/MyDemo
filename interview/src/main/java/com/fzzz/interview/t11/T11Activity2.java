@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fzzz.framework.Constants;
-import com.fzzz.interview.BaseActivity;
 
 /**
  * description:

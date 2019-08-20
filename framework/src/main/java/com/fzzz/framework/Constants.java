@@ -30,6 +30,8 @@ public class Constants {
     public static final String PATH_APP_CAMERA = "/ui/CameraActivity";
     public static final String PATH_APP_TAKEPIC_OLD = "/ui/TakePicOldActivity";
     public static final String PATH_APP_TAKEPIC_NEW = "/ui/TakePicNewActivity";
+    public static final String PATH_APP_WIFI = "/ui/WifiActivity";
+    public static final String PATH_APP_GPS = "/ui/GpsActivity";
 
     public static final String PATH_INTERVIEW = "/interview/InterViewActivity";
     public static final String PATH_INTERVIEW_T11_1 = "/interview/T11Activity1";

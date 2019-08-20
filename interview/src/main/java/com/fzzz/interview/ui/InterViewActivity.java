@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.fzzz.framework.Constants;
-import com.fzzz.interview.BaseActivity;
+import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.interview.R;
 import com.fzzz.interview.R2;
 import com.fzzz.interview.t12.MyIntentService;

@@ -2,21 +2,15 @@ package com.fzzz.interview.t11;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fzzz.framework.Constants;
+import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.framework.utils.PageUtil;
-import com.fzzz.interview.BaseActivity;
 import com.fzzz.interview.R;
 import com.fzzz.interview.R2;
-import com.fzzz.interview.t13.T13BaseActivity;
 
 import butterknife.OnClick;
 
