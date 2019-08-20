@@ -1,10 +1,13 @@
 package com.fzzz.mydemo.ui.retrofit_rxjava;
 
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -64,6 +67,16 @@ public class RetrofitRxjavaActivity extends BaseActivity {
     @Override
     public int getLayoutID() {
         return R.layout.activity_retrofit_rxjava;
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        etUsername.setFocusable(true);
+        etUsername.setFocusableInTouchMode(true);
+        etUsername.requestFocus();
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
     }
 
     @OnClick({R.id.bt1, R.id.bt2, R.id.content1, R.id.content2, R.id.local_add, R.id.local_delete,
