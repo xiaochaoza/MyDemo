@@ -14,7 +14,7 @@
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="3">
+            android:columnCount="2">
 
             <Button
                 android:id="@+id/bt1"
@@ -157,7 +157,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:text="debounce\n过滤频率高的"
+                android:text="debounce过滤频率高的"
                 android:textAllCaps="false" />
 
             <Button
@@ -166,7 +166,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:text="defer\n每次订阅创建新的"
+                android:text="defer每订阅创建新的"
                 android:textAllCaps="false" />
 
             <Button
@@ -175,7 +175,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:text="last\n取出最后一个值"
+                android:text="last取出最后一个值"
                 android:textAllCaps="false" />
 
             <Button

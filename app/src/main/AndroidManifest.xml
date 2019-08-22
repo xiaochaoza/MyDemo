@@ -70,7 +70,8 @@
         <activity android:name=".ui.generic.GenericActivity" />
         <activity android:name=".ui.wifi.WifiActivity" />
         <activity android:name=".ui.gps.GpsActivity" />
-
+<!--        <meta-data android:name="com.fzzz.mydemo.ui.wifi.OkHttpAppGlideModule"-->
+<!--            android:value="AppGlideModule"/>-->
     </application>
 
 </manifest>

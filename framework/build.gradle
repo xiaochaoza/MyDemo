@@ -54,7 +54,8 @@ dependencies {
         deps.butterknife,
         deps.arouter,
         deps.gson,
-        deps.glide
+        deps.glide,
+        deps.logger
     )
     annotationProcessor deps.butterknifeCompiler
     annotationProcessor deps.arouterComplier

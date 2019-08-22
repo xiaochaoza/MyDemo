@@ -3,7 +3,16 @@ package com.fzzz.mydemo;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.annotation.Nullable;
+
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.fzzz.framework.utils.DeviceUtil;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.FormatStrategy;
+import com.orhanobut.logger.LogStrategy;
+import com.orhanobut.logger.LogcatLogStrategy;
+import com.orhanobut.logger.Logger;
+import com.orhanobut.logger.PrettyFormatStrategy;
 
 /**
  * description:
@@ -29,6 +38,23 @@ public class MainApplication extends Application {
         }
         //路由初始化
         ARouter.init(this);
+
+        //logger初始化
+        FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
+                .showThreadInfo(false)  // （可选）是否显示线程信息。默认值true
+                .methodCount(1)         // (可选）要显示的方法行数。默认值2
+                .methodOffset(0)        // （可选）隐藏内部方法调用到偏移量。默认值5
+                .logStrategy(new LogcatLogStrategy()) // （可选）更改要打印的日志策略。默认LogCat
+                .tag(DeviceUtil.getAppName(this))   // （可选）每个日志的全局标记。默认Default PRETTY_LOGGER
+                .build();
+
+        Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy){
+            @Override
+            public boolean isLoggable(int priority, @Nullable String tag) {
+//                return super.isLoggable(priority, tag);
+                return true;
+            }
+        });
     }
 
     public static Context getContext() {

@@ -1,7 +1,5 @@
 package com.fzzz.mydemo.ui.rxjava;
 
-import android.util.Log;
-import android.util.SparseArray;
 import android.view.View;
 import android.widget.TextView;
 
@@ -10,6 +8,7 @@ import com.fzzz.framework.Constants;
 import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.framework.utils.TimeUtil;
 import com.fzzz.mydemo.R;
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +42,6 @@ import io.reactivex.schedulers.Schedulers;
  */
 @Route(path = Constants.PATH_APP_RXJAVA)
 public class RxJavaActivity extends BaseActivity {
-    public static final String TAG = "RxJavaActivity";
 
     @BindView(R.id.content)
     TextView content;
@@ -175,17 +173,17 @@ public class RxJavaActivity extends BaseActivity {
             @Override
             public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
                 content.append("Observable emit 1" + "\n");
-                Log.e(TAG, "Observable emit 1" + "\n");
+                Logger.e("Observable emit 1" + "\n");
                 emitter.onNext(1);
                 content.append("Observable emit 2" + "\n");
-                Log.e(TAG, "Observable emit 2" + "\n");
+                Logger.e("Observable emit 2" + "\n");
                 emitter.onNext(2);
                 content.append("Observable emit 3" + "\n");
-                Log.e(TAG, "Observable emit 3" + "\n");
+                Logger.e("Observable emit 3" + "\n");
                 emitter.onNext(3);
                 emitter.onComplete();
                 content.append("Observable emit 4" + "\n");
-                Log.e(TAG, "Observable emit 4" + "\n");
+                Logger.e("Observable emit 4" + "\n");
                 emitter.onNext(4);
             }
         }).subscribe(new Observer<Integer>() {
@@ -195,33 +193,33 @@ public class RxJavaActivity extends BaseActivity {
             @Override
             public void onSubscribe(Disposable d) {
                 content.append("onSubscribe : " + d.isDisposed() + "\n");
-                Log.e(TAG, "onSubscribe : " + d.isDisposed() + "\n");
+                Logger.e("onSubscribe : " + d.isDisposed() + "\n");
                 mDisposable = d;
             }
 
             @Override
             public void onNext(Integer integer) {
                 content.append("onNext : value : " + integer + "\n");
-                Log.e(TAG, "onNext : value : " + integer + "\n");
+                Logger.e("onNext : value : " + integer + "\n");
                 i++;
                 if (i == 2) {
                     // 在RxJava 2.x 中，新增的Disposable可以做到切断的操作，让Observer观察者不再接收上游事件
                     mDisposable.dispose();
                     content.append("onNext : isDisposable : " + mDisposable.isDisposed() + "\n");
-                    Log.e(TAG, "onNext : isDisposable : " + mDisposable.isDisposed() + "\n");
+                    Logger.e("onNext : isDisposable : " + mDisposable.isDisposed() + "\n");
                 }
             }
 
             @Override
             public void onError(Throwable e) {
                 content.append("onError : value : " + e.getMessage() + "\n");
-                Log.e(TAG, "onError : value : " + e.getMessage() + "\n");
+                Logger.e("onError : value : " + e.getMessage() + "\n");
             }
 
             @Override
             public void onComplete() {
                 content.append("onComplete" + "\n");
-                Log.e(TAG, "onComplete" + "\n");
+                Logger.e("onComplete" + "\n");
             }
         });
     }
@@ -250,7 +248,7 @@ public class RxJavaActivity extends BaseActivity {
             @Override
             public void accept(String s) throws Exception {
                 content.append("accept : " + s + "\n");
-                Log.e(TAG, "accept : " + s + "\n");
+                Logger.e("accept : " + s + "\n");
             }
         });
     }
@@ -284,7 +282,11 @@ public class RxJavaActivity extends BaseActivity {
             public void accept(Object o) throws Exception {
                 String s = (String) o;
                 content.append("zip : accept : " + s + "\n");
-                Log.e(TAG, "zip : accept : " + s + "\n");
+                Logger.e("zip : accept : " + s + "\n");
+                Logger.e("zip : accept : " + s + "\n");
+                Logger.e("zip : accept : " + s + "\n");
+                Logger.e("zip : accept : " + s + "\n");
+                Logger.e("zip : accept : " + s + "\n");
             }
         });
     }
@@ -296,13 +298,13 @@ public class RxJavaActivity extends BaseActivity {
                 if (!emitter.isDisposed()) {
                     emitter.onNext("A");
                     content.append("String emit : A \n");
-                    Log.e(TAG, "String emit : A \n");
+                    Logger.e("String emit : A \n");
                     emitter.onNext("B");
                     content.append("String emit : B \n");
-                    Log.e(TAG, "String emit : B \n");
+                    Logger.e("String emit : B \n");
                     emitter.onNext("C");
                     content.append("String emit : C \n");
-                    Log.e(TAG, "String emit : C \n");
+                    Logger.e("String emit : C \n");
                 }
             }
         });
@@ -315,19 +317,19 @@ public class RxJavaActivity extends BaseActivity {
                 if (!emitter.isDisposed()) {
                     emitter.onNext(1);
                     content.append("Integer emit : 1 \n");
-                    Log.e(TAG, "Integer emit : 1 \n");
+                    Logger.e("Integer emit : 1 \n");
                     emitter.onNext(2);
                     content.append("Integer emit : 2 \n");
-                    Log.e(TAG, "Integer emit : 2 \n");
+                    Logger.e("Integer emit : 2 \n");
                     emitter.onNext(3);
                     content.append("Integer emit : 3 \n");
-                    Log.e(TAG, "Integer emit : 3 \n");
+                    Logger.e("Integer emit : 3 \n");
                     emitter.onNext(4);
                     content.append("Integer emit : 4 \n");
-                    Log.e(TAG, "Integer emit : 4 \n");
+                    Logger.e("Integer emit : 4 \n");
                     emitter.onNext(5);
                     content.append("Integer emit : 5 \n");
-                    Log.e(TAG, "Integer emit : 5 \n");
+                    Logger.e("Integer emit : 5 \n");
                 }
             }
         });
@@ -349,7 +351,7 @@ public class RxJavaActivity extends BaseActivity {
                     @Override
                     public void accept(Integer integer) throws Exception {
                         content.append("concat : " + integer + "\n");
-                        Log.e(TAG, "concat : " + integer + "\n");
+                        Logger.e("concat : " + integer + "\n");
                     }
                 });
     }
@@ -364,7 +366,7 @@ public class RxJavaActivity extends BaseActivity {
      * 2019-05-21 16:57:28.384 20894-20894/com.fzzz.mydemo E/RxJavaActivity: flatMap : accept : I am value 2
      * 2019-05-21 16:57:28.387 20894-20894/com.fzzz.mydemo E/RxJavaActivity: flatMap : accept : I am value 2
      * <p>
-     * 采用一个随机数，生成一个时间，然后通过 delay（后面会讲）操作符，做一个小延时操作，而查看 Log 日志也确认验证了我们上面的说法，它是无序的。
+     * 采用一个随机数，生成一个时间，然后通过 delay（后面会讲）操作符，做一个小延时操作，而查看 Logger 日志也确认验证了我们上面的说法，它是无序的。
      */
     private void test6() {
         mDisposable = Observable.create(new ObservableOnSubscribe<Integer>() {
@@ -390,7 +392,7 @@ public class RxJavaActivity extends BaseActivity {
                     @Override
                     public void accept(String s) throws Exception {
                         content.append("flatMap : accept : " + s + "\n");
-                        Log.e(TAG, "flatMap : accept : " + s + "\n");
+                        Logger.e("flatMap : accept : " + s + "\n");
                     }
                 });
     }
@@ -432,7 +434,7 @@ public class RxJavaActivity extends BaseActivity {
                     @Override
                     public void accept(String s) throws Exception {
                         content.append("flatMap : accept : " + s + "\n");
-                        Log.e(TAG, "flatMap : accept : " + s + "\n");
+                        Logger.e("flatMap : accept : " + s + "\n");
                     }
                 });
     }
@@ -453,7 +455,7 @@ public class RxJavaActivity extends BaseActivity {
                     @Override
                     public void accept(Integer integer) throws Exception {
                         content.append("flatMap : accept : " + integer + "\n");
-                        Log.e(TAG, "flatMap : accept : " + integer + "\n");
+                        Logger.e("flatMap : accept : " + integer + "\n");
                     }
                 });
     }
@@ -479,7 +481,7 @@ public class RxJavaActivity extends BaseActivity {
                     @Override
                     public void accept(Integer integer) throws Exception {
                         content.append("flatMap : accept : " + integer + "\n");
-                        Log.e(TAG, "flatMap : accept : " + integer + "\n");
+                        Logger.e("flatMap : accept : " + integer + "\n");
                     }
                 });
     }
@@ -508,12 +510,12 @@ public class RxJavaActivity extends BaseActivity {
                     @Override
                     public void accept(@NonNull List<Integer> integers) throws Exception {
                         content.append("buffer size : " + integers.size() + "\n");
-                        Log.e(TAG, "buffer size : " + integers.size() + "\n");
+                        Logger.e("buffer size : " + integers.size() + "\n");
                         content.append("buffer value : " + integers.toString() + "\n");
-                        Log.e(TAG, "buffer value : " + integers.toString() + "\n");
+                        Logger.e("buffer value : " + integers.toString() + "\n");
                         for (Integer i : integers) {
                             content.append(i + "\n");
-                            Log.e(TAG, i + "\n");
+                            Logger.e(i + "\n");
                         }
                     }
                 });
@@ -527,7 +529,7 @@ public class RxJavaActivity extends BaseActivity {
      */
     private void test11() {
         content.append("timer start : " + TimeUtil.getLongTime() + "\n");
-        Log.e(TAG, "timer start : " + TimeUtil.getLongTime() + "\n");
+        Logger.e("timer start : " + TimeUtil.getLongTime() + "\n");
         mDisposable = Observable.timer(2, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()) // timer 默认在新线程，所以需要切换回主线程
@@ -535,7 +537,7 @@ public class RxJavaActivity extends BaseActivity {
                     @Override
                     public void accept(@NonNull Long aLong) throws Exception {
                         content.append("timer :" + aLong + " at " + TimeUtil.getLongTime() + "\n");
-                        Log.e(TAG, "timer :" + aLong + " at " + TimeUtil.getLongTime() + "\n");
+                        Logger.e("timer :" + aLong + " at " + TimeUtil.getLongTime() + "\n");
                     }
                 });
     }
@@ -555,7 +557,7 @@ public class RxJavaActivity extends BaseActivity {
      */
     private void test12() {
         content.append("timer start : " + TimeUtil.getLongTime() + "\n");
-        Log.e(TAG, "timer start : " + TimeUtil.getLongTime() + "\n");
+        Logger.e("timer start : " + TimeUtil.getLongTime() + "\n");
         mDisposable = Observable.interval(3, 2, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()) // timer 默认在新线程，所以需要切换回主线程
@@ -563,7 +565,7 @@ public class RxJavaActivity extends BaseActivity {
                     @Override
                     public void accept(@NonNull Long aLong) throws Exception {
                         content.append("timer :" + aLong + " at " + TimeUtil.getLongTime() + "\n");
-                        Log.e(TAG, "timer :" + aLong + " at " + TimeUtil.getLongTime() + "\n");
+                        Logger.e("timer :" + aLong + " at " + TimeUtil.getLongTime() + "\n");
                     }
                 });
     }
@@ -586,13 +588,13 @@ public class RxJavaActivity extends BaseActivity {
                     @Override
                     public void accept(@NonNull Integer integer) throws Exception {
                         content.append("doOnNext 保存 " + integer + "成功" + "\n");
-                        Log.e(TAG, "doOnNext 保存 " + integer + "成功" + "\n");
+                        Logger.e("doOnNext 保存 " + integer + "成功" + "\n");
                     }
                 }).subscribe(new Consumer<Integer>() {
                     @Override
                     public void accept(@NonNull Integer integer) throws Exception {
                         content.append("doOnNext :" + integer + "\n");
-                        Log.e(TAG, "doOnNext :" + integer + "\n");
+                        Logger.e("doOnNext :" + integer + "\n");
                     }
                 });
     }
@@ -613,13 +615,13 @@ public class RxJavaActivity extends BaseActivity {
                     @Override
                     public void onSuccess(Integer integer) {
                         content.append("single : onSuccess : " + integer + "\n");
-                        Log.e(TAG, "single : onSuccess : " + integer + "\n");
+                        Logger.e("single : onSuccess : " + integer + "\n");
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         content.append("single : onError : " + e.getMessage() + "\n");
-                        Log.e(TAG, "single : onError : " + e.getMessage() + "\n");
+                        Logger.e("single : onError : " + e.getMessage() + "\n");
                     }
                 });
     }
@@ -630,7 +632,7 @@ public class RxJavaActivity extends BaseActivity {
                     @Override
                     public void accept(Integer integer) throws Exception {
                         content.append("doOnNext :" + integer + "\n");
-                        Log.e(TAG, "doOnNext :" + integer + "\n");
+                        Logger.e("doOnNext :" + integer + "\n");
                     }
                 });
     }
@@ -666,7 +668,7 @@ public class RxJavaActivity extends BaseActivity {
                     @Override
                     public void accept(Integer integer) throws Exception {
                         content.append("debounce :" + integer + "\n");
-                        Log.e(TAG, "debounce :" + integer + "\n");
+                        Logger.e("debounce :" + integer + "\n");
                     }
                 });
     }
@@ -697,19 +699,19 @@ public class RxJavaActivity extends BaseActivity {
             @Override
             public void onNext(Integer integer) {
                 content.append("defer : " + integer + "\n");
-                Log.e(TAG, "defer : " + integer + "\n");
+                Logger.e("defer : " + integer + "\n");
             }
 
             @Override
             public void onError(Throwable e) {
                 content.append("defer : onError : " + e.getMessage() + "\n");
-                Log.e(TAG, "defer : onError : " + e.getMessage() + "\n");
+                Logger.e("defer : onError : " + e.getMessage() + "\n");
             }
 
             @Override
             public void onComplete() {
                 content.append("defer : onComplete\n");
-                Log.e(TAG, "defer : onComplete\n");
+                Logger.e("defer : onComplete\n");
             }
         });
     }
@@ -726,7 +728,7 @@ public class RxJavaActivity extends BaseActivity {
                     @Override
                     public void accept(Integer integer) throws Exception {
                         content.append("last : " + integer + "\n");
-                        Log.e(TAG, "last : " + integer + "\n");
+                        Logger.e("last : " + integer + "\n");
                     }
                 });
     }
@@ -751,7 +753,7 @@ public class RxJavaActivity extends BaseActivity {
                     @Override
                     public void accept(@NonNull Integer integer) throws Exception {
                         content.append("merge :" + integer + "\n");
-                        Log.e(TAG, "accept: merge :" + integer + "\n");
+                        Logger.e("accept: merge :" + integer + "\n");
                     }
                 });
     }
@@ -773,7 +775,7 @@ public class RxJavaActivity extends BaseActivity {
                     @Override
                     public void accept(Integer integer) throws Exception {
                         content.append("reduce : " + integer + "\n");
-                        Log.e(TAG, "accept: reduce : " + integer + "\n");
+                        Logger.e("accept: reduce : " + integer + "\n");
                     }
                 });
     }
@@ -797,7 +799,7 @@ public class RxJavaActivity extends BaseActivity {
                     @Override
                     public void accept(Integer integer) throws Exception {
                         content.append("scan " + integer + "\n");
-                        Log.e(TAG, "accept: scan " + integer + "\n");
+                        Logger.e("accept: scan " + integer + "\n");
                     }
                 });
 
@@ -831,7 +833,7 @@ public class RxJavaActivity extends BaseActivity {
      */
     private void test22() {
         content.append("window" + "\n");
-        Log.e(TAG, "window" + "\n");
+        Logger.e("window" + "\n");
         mDisposable = Observable.interval(300, TimeUnit.MILLISECONDS) //300毫秒发一次
                 .take(15) //最多发15次
                 .window(900, TimeUnit.MILLISECONDS) //600毫秒一组
@@ -841,14 +843,14 @@ public class RxJavaActivity extends BaseActivity {
                     @Override
                     public void accept(Observable<Long> longObservable) throws Exception {
                         content.append("Sub Divide begin...\n");
-                        Log.e(TAG, "Sub Divide begin...\n");
+                        Logger.e("Sub Divide begin...\n");
                         mDisposable = longObservable.subscribeOn(Schedulers.io())
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(new Consumer<Long>() {
                                     @Override
                                     public void accept(Long aLong) throws Exception {
                                         content.append("Next:" + aLong + "\n");
-                                        Log.e(TAG, "Next:" + aLong + "\n");
+                                        Logger.e("Next:" + aLong + "\n");
                                     }
                                 });
                     }
@@ -896,13 +898,13 @@ public class RxJavaActivity extends BaseActivity {
                 .doOnSubscribe(new Consumer<Disposable>() {
                     @Override
                     public void accept(Disposable disposable) throws Exception {
-                        Log.e(TAG, "doOnSubscribe: " + Thread.currentThread().getName());
+                        Logger.e("doOnSubscribe: " + Thread.currentThread().getName());
                     }
                 })
                 .doOnNext(new Consumer<Integer>() {
                     @Override
                     public void accept(Integer integer) throws Exception {
-                        Log.e(TAG, "doOnNext: " + Thread.currentThread().getName());
+                        Logger.e("doOnNext: " + Thread.currentThread().getName());
                     }
                 })
                 .subscribeOn(Schedulers.newThread())
@@ -910,20 +912,20 @@ public class RxJavaActivity extends BaseActivity {
                 .map(new Function<Integer, String>() {
                     @Override
                     public String apply(Integer integer) throws Exception {
-                        Log.e(TAG, "map thread: " + Thread.currentThread().getName());
+                        Logger.e("map thread: " + Thread.currentThread().getName());
                         return integer + "";
                     }
                 })
                 .doOnSubscribe(new Consumer<Disposable>() {
                     @Override
                     public void accept(Disposable disposable) throws Exception {
-                        Log.e(TAG, "doOnSubscribe after new Thread: " + Thread.currentThread().getName());
+                        Logger.e("doOnSubscribe after new Thread: " + Thread.currentThread().getName());
                     }
                 })
                 .doOnNext(new Consumer<String>() {
                     @Override
                     public void accept(String s) throws Exception {
-                        Log.e(TAG, "doOnNext after new Thread: " + Thread.currentThread().getName());
+                        Logger.e("doOnNext after new Thread: " + Thread.currentThread().getName());
                     }
                 })
                 .subscribeOn(Schedulers.io())
@@ -931,20 +933,20 @@ public class RxJavaActivity extends BaseActivity {
                 .map(new Function<String, String>() {
                     @Override
                     public String apply(String s) throws Exception {
-                        Log.e(TAG, "map after main: " + Thread.currentThread().getName());
+                        Logger.e("map after main: " + Thread.currentThread().getName());
                         return s + "1";
                     }
                 })
                 .doOnNext(new Consumer<String>() {
                     @Override
                     public void accept(String s) throws Exception {
-                        Log.e(TAG, "doOnNext after main: " + Thread.currentThread().getName());
+                        Logger.e("doOnNext after main: " + Thread.currentThread().getName());
                     }
                 })
                 .doOnSubscribe(new Consumer<Disposable>() {
                     @Override
                     public void accept(Disposable disposable) throws Exception {
-                        Log.e(TAG, "doOnSubscribe after main: " + Thread.currentThread().getName());
+                        Logger.e("doOnSubscribe after main: " + Thread.currentThread().getName());
                     }
                 })
                 .subscribeOn(Schedulers.computation())
@@ -952,19 +954,19 @@ public class RxJavaActivity extends BaseActivity {
                 .doOnNext(new Consumer<String>() {
                     @Override
                     public void accept(String s) throws Exception {
-                        Log.e(TAG, "doOnNext after trampoline: " + Thread.currentThread().getName());
+                        Logger.e("doOnNext after trampoline: " + Thread.currentThread().getName());
                     }
                 })
                 .doOnSubscribe(new Consumer<Disposable>() {
                     @Override
                     public void accept(Disposable disposable) throws Exception {
-                        Log.e(TAG, "doOnSubscribe after trampoline: " + Thread.currentThread().getName());
+                        Logger.e("doOnSubscribe after trampoline: " + Thread.currentThread().getName());
                     }
                 })
                 .subscribe(new Consumer<String>() {
                     @Override
                     public void accept(String s) throws Exception {
-                        Log.e(TAG, "onNext : " + Thread.currentThread().getName());
+                        Logger.e("onNext : " + Thread.currentThread().getName());
                     }
                 });
     }

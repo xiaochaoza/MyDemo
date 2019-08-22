@@ -67,6 +67,8 @@ ext.deps = [
         arouter               : 'com.alibaba:arouter-api:1.5.0',
         arouterComplier       : 'com.alibaba:arouter-compiler:1.2.2',
 
+        logger                : 'com.orhanobut:logger:2.2.0',
+
 //        eventBus              : 'org.greenrobot:eventbus:3.0.0',
 //        adapterHelper         :'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30',
 ]
