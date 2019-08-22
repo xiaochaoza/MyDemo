@@ -22,7 +22,7 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 /**
- * TODO 应用可根据自身公共处理逻辑，重写以下方法，在方法中对生成、测试环境判断，执行不同的处理逻辑
+ * https校验
  */
 public class CustomedHttpsVerify {
     private Context context;
@@ -60,11 +60,12 @@ public class CustomedHttpsVerify {
     }
 
     /**
-     *     TODO 请求https校验所用的验证规则
+     * 请求https校验所用的验证规则
      */
-    public HostnameVerifier getHostnameVerifier(){
-        return new HostnameVerifier(){
+    public HostnameVerifier getHostnameVerifier() {
+        return new HostnameVerifier() {
             Boolean isOK = false;
+
             @Override
             public boolean verify(String hostname, SSLSession session) {
                 /*String peerHost = session.getPeerHost(); //服务器返回的主机名
@@ -76,15 +77,12 @@ public class CustomedHttpsVerify {
 
                         //校验公钥是否一致
                         String publicKey = certificate.getPublicKey().toString();
-
                         LogUtil.e("publicKey111==" + publicKey.toString());
-
                         publicKey = publicKey.substring(publicKey.indexOf("modulus=")+8,publicKey.indexOf(","));
-
                         LogUtil.e("publicKey222==" + publicKey.toString());
 
                         if (peerHost.equals(hostname)){
-                            // TODO 验证公钥是否在信任列表
+                            //验证公钥是否在信任列表
                             for (String key : AppConstants.HTTPS_PUB_KEYS) {
 //                                key = key.substring(18,key.length() - 10);
 //                                LogUtil.e("keey333==" + key);
@@ -94,7 +92,6 @@ public class CustomedHttpsVerify {
                                 }
                             }
                         }
-
                     }
                 } catch (SSLPeerUnverifiedException e) {
                     e.printStackTrace();
@@ -111,11 +108,10 @@ public class CustomedHttpsVerify {
         };
     }
 
-    //网络图片加载过程中https 未自定义
     /**
-     *     TODO RN页面Webview中，sslError的回调处理，这里自定义校验失败时跳过指定证书使用的逻辑
+     * 网络图片加载过程中https 未自定义 RN页面Webview中，sslError的回调处理，这里自定义校验失败时跳过指定证书使用的逻辑
      */
-    public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error){
+    public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
        /* if (error.getPrimaryError() == SslError.SSL_DATE_INVALID  // 日期不正确
                 || error.getPrimaryError() == SslError.SSL_EXPIRED // 日期不正确
                 || error.getPrimaryError() == SslError.SSL_INVALID // webview BUG
@@ -133,9 +129,9 @@ public class CustomedHttpsVerify {
                 Certificate ca = cf.generateCertificate(new java.io.ByteArrayInputStream(bytes));
 
                 String publicKey = ((X509Certificate) ca).getPublicKey().toString();
-                publicKey = publicKey.substring(publicKey.indexOf("modulus=")+8,publicKey.indexOf(","));
+                publicKey = publicKey.substring(publicKey.indexOf("modulus=") + 8, publicKey.indexOf(","));
 
-                /*// TODO 验证公钥是否在信任列表
+                /*//验证公钥是否在信任列表
                 for (String key : AppConstants.HTTPS_PUB_KEYS) {
                     if (key.equals(publicKey)){
                         isOK = true;
@@ -145,7 +141,7 @@ public class CustomedHttpsVerify {
             } catch (Exception e) {
             }
         }
-        if (isOK){
+        if (isOK) {
             handler.proceed();
         }
     }
