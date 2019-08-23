@@ -1,19 +1,13 @@
 package com.fzzz.fragment.ui;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.fzzz.fragment.R;
 import com.fzzz.fragment.R2;
-import com.fzzz.fragment.model.MineFragmentModel;
+import com.fzzz.fragment.model.MainModel;
 import com.fzzz.framework.base.BaseFragment;
 
 import butterknife.BindView;
@@ -27,7 +21,8 @@ import butterknife.BindView;
 public class MineFragment extends BaseFragment {
     @BindView(R2.id.fragment_mine_content)
     TextView contentTv;
-    private MineFragmentModel mineFragmentModel;
+    private MainModel mineFragmentModel;
+
     @Override
     public int getLayoutID() {
         return R.layout.fragment_mine;
@@ -35,8 +30,9 @@ public class MineFragment extends BaseFragment {
 
     @Override
     protected void next() {
-        mineFragmentModel = ViewModelProviders.of(this).get(MineFragmentModel.class);
-        mineFragmentModel.getContent().observe(this, new Observer<String>() {
+        mineFragmentModel = ViewModelProviders.of(this).get(MainModel.class);
+        mineFragmentModel.setMineContent("mine");
+        mineFragmentModel.getMineContent().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
                 contentTv.setText(s);
