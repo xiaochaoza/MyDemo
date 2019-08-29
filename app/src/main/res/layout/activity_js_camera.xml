@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.fzzz.mydemo.ui.webview.JsCameraActivity">
+    tools:context=".ui.webview.JsCameraActivity">
 
     <WebView
         android:id="@+id/wv_camera"

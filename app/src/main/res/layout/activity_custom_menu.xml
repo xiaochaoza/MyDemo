@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="com.fzzz.mydemo.ui.custom_view.CustomViewMenuActivity">
+    tools:context=".ui.custom_view.CustomViewMenuActivity">
 
     <Button
         android:id="@+id/btn_custom_circle"

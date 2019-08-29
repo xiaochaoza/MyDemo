@@ -47,7 +47,7 @@ public class WebViewActivity extends BaseActivity {
         return R.layout.activity_webview;
     }
 
-    @OnClick({R.id.bt_js_bridge, R.id.bt_js_camera, R.id.bt_system_camera, R.id.iv_show})
+    @OnClick({R.id.bt_js_bridge, R.id.bt_js_camera, R.id.bt_system_camera, R.id.iv_show, R.id.bt_load})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_js_bridge:
@@ -82,6 +82,9 @@ public class WebViewActivity extends BaseActivity {
                 chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, cameraIntents.toArray(new Parcelable[]{}));
                 startActivityForResult(chooserIntent, 500);
                 cameraIntents.clear();
+                break;
+            case R.id.bt_load:
+                PageUtil.toActivity(Constants.PATH_APP_WEBLOAD);
                 break;
         }
     }

@@ -12,14 +12,14 @@ import androidx.lifecycle.ViewModel;
  */
 public class MainModel extends ViewModel {
     private MutableLiveData<String> homeContent = new MutableLiveData<>();
-    private MutableLiveData<String> MineContent = new MutableLiveData<>();
+    private MutableLiveData<String> mineContent = new MutableLiveData<>();
 
     public LiveData<String> getHomeContent() {
         return homeContent;
     }
 
     public LiveData<String> getMineContent() {
-        return MineContent;
+        return mineContent;
     }
 
     public void setHomeContent(String content) {
@@ -27,7 +27,7 @@ public class MainModel extends ViewModel {
     }
 
     public void setMineContent(String content) {
-        MineContent.setValue(content);
+        mineContent.setValue(content);
     }
 
 

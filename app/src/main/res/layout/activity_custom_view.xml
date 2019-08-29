@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.fzzz.mydemo.ui.custom_view.CustomViewActivity">
+    tools:context=".ui.custom_view.CustomViewActivity">
 
     <com.fzzz.mydemo.ui.custom_view.CircleView
         android:id="@+id/circle_view"

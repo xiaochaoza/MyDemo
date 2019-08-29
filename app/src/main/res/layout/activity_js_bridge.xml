@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.fzzz.mydemo.ui.webview.JsWebActivity">
+    tools:context=".ui.webview.JsWebActivity">
 
     <Button
         android:id="@+id/bt_call_h5"

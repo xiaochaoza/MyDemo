@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.fzzz.mydemo.ui.webview.WebViewActivity">
+    tools:context=".ui.webview.WebViewActivity">
 
     <Button
         android:id="@+id/bt_js_bridge"
@@ -33,15 +33,15 @@
         android:layout_height="wrap_content"
         android:text="系统摄像头"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/bt_temp"
+        app:layout_constraintRight_toLeftOf="@id/bt_load"
         app:layout_constraintTop_toBottomOf="@id/bt_js_bridge" />
 
     <Button
-        android:id="@+id/bt_temp"
+        android:id="@+id/bt_load"
         style="@style/button_style"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
+        android:text="加载网址"
         app:layout_constraintLeft_toRightOf="@id/bt_system_camera"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bt_js_camera" />
