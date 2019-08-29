@@ -40,6 +40,7 @@ public class MainActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_async_load:
+                PageUtil.toActivity(Constants.PATH_APP_AYSNC_TASK);
                 break;
             case R.id.btn_volley:
                 break;
