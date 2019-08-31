@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".ui.picker.PickerActivity">
+
+    <Button
+        android:id="@+id/bt_pick1"
+        style="@style/button_style"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="时间选择"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/bt_pick2"
+        style="@style/button_style"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="条件选择"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/bt_pick3"
+        style="@style/button_style"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="时间选择自定义"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/bt_pick4"
+        style="@style/button_style"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="条件选择自定义"
+        android:textAllCaps="false" />
+
+</LinearLayout>

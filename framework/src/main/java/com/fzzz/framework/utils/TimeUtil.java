@@ -29,4 +29,9 @@ public class TimeUtil {
         return formatter.format(new Date());
     }
 
+    public static String getLongTime(Date date) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
+        return formatter.format(date);
+    }
+
 }

@@ -34,6 +34,7 @@ public class Constants {
     public static final String PATH_APP_WIFI = "/ui/WifiActivity";
     public static final String PATH_APP_GPS = "/ui/GpsActivity";
     public static final String PATH_APP_AYSNC_TASK = "/ui/asynctask/AsyncTaskActivity";
+    public static final String PATH_APP_PICKER = "/ui/picker/PickerActivity";
 
     public static final String PATH_INTERVIEW = "/interview/InterViewActivity";
     public static final String PATH_INTERVIEW_T11_1 = "/interview/T11Activity1";

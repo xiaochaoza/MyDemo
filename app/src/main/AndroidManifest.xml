@@ -73,11 +73,10 @@
         <activity android:name=".ui.wifi.WifiActivity" />
         <activity android:name=".ui.gps.GpsActivity" />
         <activity android:name=".ui.asynctask.AsyncTaskActivity" />
+        <activity android:name=".ui.picker.PickerActivity" />
 
 
-
-
-<!--        <meta-data android:name="com.fzzz.mydemo.ui.wifi.OkHttpAppGlideModule"-->
+        <!--        <meta-data android:name="com.fzzz.mydemo.ui.wifi.OkHttpAppGlideModule"-->
 <!--            android:value="AppGlideModule"/>-->
     </application>
 

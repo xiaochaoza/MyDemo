@@ -36,7 +36,7 @@ public class MainActivity extends BaseActivity {
             R.id.btn_lottie, R.id.btn_tablayout, R.id.btn_dagger2, R.id.btn_handler, R.id.btn_databinding, R.id.btn_windowinput,
             R.id.btn_animation, R.id.btn_gps, R.id.btn_take_pic, R.id.btn_device_info, R.id.btn_mytest, R.id.btn_thread, R.id.btn_single_task,
             R.id.btn_custom_view, R.id.btn_fragment, R.id.btn_leak, R.id.btn_forum, R.id.btn_swipe_refresh, R.id.btn_viewstub,
-            R.id.btn_wifi})
+            R.id.btn_wifi, R.id.btn_picker_view})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_async_load:
@@ -131,6 +131,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.btn_wifi:
                 PageUtil.toActivity(Constants.PATH_APP_WIFI);
+                break;
+            case R.id.btn_picker_view:
+                PageUtil.toActivity(Constants.PATH_APP_PICKER);
                 break;
         }
     }
