@@ -74,6 +74,7 @@
         <activity android:name=".ui.gps.GpsActivity" />
         <activity android:name=".ui.asynctask.AsyncTaskActivity" />
         <activity android:name=".ui.picker.PickerActivity" />
+        <activity android:name=".ui.eventbus.EventBusActivity" />
 
 
         <!--        <meta-data android:name="com.fzzz.mydemo.ui.wifi.OkHttpAppGlideModule"-->

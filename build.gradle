@@ -73,14 +73,14 @@ ext.deps = [
 
         picker_view           :'com.contrarywind:Android-PickerView:4.1.8',
 
-//        eventBus              : 'org.greenrobot:eventbus:3.0.0',
+        eventBus              : 'org.greenrobot:eventbus:3.0.0',
 //        adapterHelper         :'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30',
 ]
 
 ext.serverUrls = [
         BASE_URL_JUHE         : "\"http://v.juhe.cn/\"",
         BASE_URL_JISU         : "\"https://api.jisuapi.com/\"",
-        BASE_URL_LOCAL        : "\"http://localhost:8080/\"",
+        BASE_URL_LOCAL        : "\"http://192.168.244.67:8080/\"",
 ]
 
 ext.keys = [

@@ -51,6 +51,7 @@ dependencies {
         deps.retrofit_gson,
         deps.retrofit_rxjava,
         deps.okhttp_log,
+        deps.eventBus,
         deps.butterknife,
         deps.arouter,
         deps.gson,

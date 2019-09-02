@@ -57,6 +57,7 @@ public class MainActivity extends BaseActivity {
                 PageUtil.toActivity(Constants.PATH_APP_RETROFIT_RXJAVA);
                 break;
             case R.id.btn_eventbus:
+                PageUtil.toActivity(Constants.PATH_APP_EVENTBUS);
                 break;
             case R.id.btn_glide:
                 break;
