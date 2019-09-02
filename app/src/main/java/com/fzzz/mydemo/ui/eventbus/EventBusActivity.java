@@ -61,7 +61,6 @@ public class EventBusActivity extends BaseActivity {
     /**
      * 处理事件优先级priority，越高越先执行
      * cancelEventDelivery 可以取消事件，但一定要在发生线程，其他线程无效
-     * 黏性事件先发消息后订阅也会生效
      *
      * @param message
      */
@@ -77,6 +76,12 @@ public class EventBusActivity extends BaseActivity {
         show(message);
     }
 
+    /**
+     * 黏性事件先发消息后订阅也会生效
+     * 黏性事件发送后，每次注册都会走一次处理，会产生很多问题，黏性事件尽量不用
+     *
+     * @param message
+     */
     @Subscribe(threadMode = ThreadMode.MAIN, priority = 1, sticky = true)
     public void onEventSticky(String message) {
         show("sticky: " + message);
