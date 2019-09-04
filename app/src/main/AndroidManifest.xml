@@ -75,6 +75,7 @@
         <activity android:name=".ui.asynctask.AsyncTaskActivity" />
         <activity android:name=".ui.picker.PickerActivity" />
         <activity android:name=".ui.eventbus.EventBusActivity" />
+        <activity android:name=".ui.recycler.RecyclerViewActivity" />
 
 
         <!--        <meta-data android:name="com.fzzz.mydemo.ui.wifi.OkHttpAppGlideModule"-->
