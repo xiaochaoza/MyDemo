@@ -2,9 +2,11 @@ package com.fzzz.mydemo.ui.asynctask;
 
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -13,6 +15,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fzzz.framework.Constants;
 import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.mydemo.R;
+import com.fzzz.mydemo.utils.ToastUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -39,6 +42,7 @@ public class AsyncTaskActivity extends BaseActivity {
     ProgressBar pbLoadLine;
     @BindView(R.id.image)
     ImageView image;
+    private MyAsyncTask asyncTask;
 
     private String loadType;//0：进度条加载，1：dialog加载
     private ProgressDialog progressDialog;
@@ -58,17 +62,35 @@ public class AsyncTaskActivity extends BaseActivity {
                 break;
             case R.id.bt_load_img2:
                 loadType = "1";
-                progressDialog = new ProgressDialog(this);
-                //设置标题
-                progressDialog.setTitle("提示");
-                //设置显示的信息
-                progressDialog.setMessage("亲、正在玩命儿加载...请稍后...");
-                //设置弹出框为水平进度加载模式
-                progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                progressDialog.setCanceledOnTouchOutside(false);
-                new MyAsyncTask().execute(url);
+                initDialog();
+                asyncTask = new MyAsyncTask();
+                asyncTask.execute(url);
                 break;
         }
+    }
+
+    private void initDialog() {
+        progressDialog = new ProgressDialog(this);
+        //设置标题
+        progressDialog.setTitle("提示");
+        //设置显示的信息
+        progressDialog.setMessage("亲、正在玩命儿加载...请稍后...");
+        //设置弹出框为水平进度加载模式
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    asyncTask.cancel(true);
+                    progressDialog.dismiss();
+                    ToastUtil.show("下载已取消");
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
     }
 
     /**
@@ -130,6 +152,9 @@ public class AsyncTaskActivity extends BaseActivity {
             String imgUrl = strings[0];
             int current = 0;
 
+            if (isCancelled()) {
+                return null;
+            }
             try {
                 URL url = new URL(imgUrl);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
