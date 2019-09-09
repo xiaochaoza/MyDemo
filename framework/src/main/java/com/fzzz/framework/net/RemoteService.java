@@ -12,6 +12,8 @@ import retrofit2.http.HTTP;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.Streaming;
+import retrofit2.http.Url;
 
 /**
  * description:
@@ -58,5 +60,12 @@ public interface RemoteService {
 
     @POST("/user/findUserByUserName")
     Observable<ResponseBody> findUserByUserName(@Body RequestBody requestBody);
+
+    /**
+     * 大文件官方建议用 @Streaming 来进行注解，不然会出现IO异常，小文件可以忽略不注入
+     */
+    @Streaming
+    @GET("/app.apk")
+    Observable<ResponseBody> downloadFile();
 
 }

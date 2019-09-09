@@ -37,6 +37,7 @@ public class Constants {
     public static final String PATH_APP_PICKER = "/ui/picker/PickerActivity";
     public static final String PATH_APP_EVENTBUS = "/ui/eventbus/EventBusActivity";
     public static final String PATH_APP_RECYCLER = "/ui/recycler/RecyclerViewActivity";
+    public static final String PATH_APP_DOWNLOAD = "/ui/download/DownLoadActivity";
 
     public static final String PATH_INTERVIEW = "/interview/InterViewActivity";
     public static final String PATH_INTERVIEW_T11_1 = "/interview/T11Activity1";

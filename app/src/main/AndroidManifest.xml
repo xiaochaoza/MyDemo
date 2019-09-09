@@ -33,12 +33,13 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:scheme="mydemo"
-                    android:host="shouye" />
+                    android:host="shouye"
+                    android:scheme="mydemo" />
             </intent-filter>
         </activity>
         <activity android:name=".ui.result.ResultActivity" />
@@ -76,10 +77,24 @@
         <activity android:name=".ui.picker.PickerActivity" />
         <activity android:name=".ui.eventbus.EventBusActivity" />
         <activity android:name=".ui.recycler.RecyclerViewActivity" />
+        <activity android:name=".ui.download.DownLoadActivity" />
 
+        <!--
+        authorities：app的包名.fileProvider
+        grantUriPermissions：必须是true，表示授予 URI 临时访问权限
+        exported：必须是false
+        resource：中的@xml/file_paths是我们接下来要添加的文件
+        -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.fzzz.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
-        <!--        <meta-data android:name="com.fzzz.mydemo.ui.wifi.OkHttpAppGlideModule"-->
-<!--            android:value="AppGlideModule"/>-->
     </application>
 
 </manifest>
