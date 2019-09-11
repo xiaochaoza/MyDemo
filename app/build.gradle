@@ -33,6 +33,12 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
     //在layout下建立文件夹
 //    sourceSets {
 //        main {
@@ -63,4 +69,5 @@ dependencies {
     implementation "com.github.bumptech.glide:okhttp3-integration:4.5.0"
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
+//    implementation(name: 'liblogin', ext: 'aar')
 }
