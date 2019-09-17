@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.BounceInterpolator;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -106,7 +107,7 @@ public class CustomFloatingActionButton extends FloatingActionButton {
                 } else {
                     //向右贴边
                     animate()
-                            .setInterpolator(new BounceInterpolator())
+                            .setInterpolator(new AccelerateInterpolator())
                             .setDuration(500)
                             .x(mRootMeasuredWidth - getWidth())
                             .start();
