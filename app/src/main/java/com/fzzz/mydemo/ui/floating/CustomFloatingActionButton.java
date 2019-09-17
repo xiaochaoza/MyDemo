@@ -41,6 +41,7 @@ public class CustomFloatingActionButton extends FloatingActionButton {
         float mRawY = ev.getRawY();
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN://手指按下
+                setPressed(true);
                 isDrug = false;
                 //记录按下的位置
                 mLastRawX = mRawX;
@@ -95,6 +96,7 @@ public class CustomFloatingActionButton extends FloatingActionButton {
                 }
                 break;
             case MotionEvent.ACTION_UP://手指离开
+                setPressed(false);
                 float center = mRootMeasuredWidth / 2;
                 //自动贴边
                 if (mLastRawX <= center) {
