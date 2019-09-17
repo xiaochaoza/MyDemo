@@ -58,7 +58,8 @@ dependencies {
         deps.glide,
         deps.logger,
         deps.X5,
-        deps.picker_view
+        deps.picker_view,
+        deps.material
     )
     annotationProcessor deps.butterknifeCompiler
     annotationProcessor deps.arouterComplier

@@ -78,6 +78,7 @@
         <activity android:name=".ui.eventbus.EventBusActivity" />
         <activity android:name=".ui.recycler.RecyclerViewActivity" />
         <activity android:name=".ui.download.DownLoadActivity" />
+        <activity android:name=".ui.floating.FloatingActionActivity" />
 
         <!--
         authorities：app的包名.fileProvider

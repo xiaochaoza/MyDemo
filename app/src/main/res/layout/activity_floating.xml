@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".ui.floating.FloatingActionActivity">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="50dp"
+        android:clickable="true"
+        android:elevation="15dp"
+        app:borderWidth="5dp"
+        app:fabSize="normal"
+        app:pressedTranslationZ="18dp"
+        app:rippleColor="@color/colorPrimary" />
+
+    <com.fzzz.mydemo.ui.floating.CustomFloatingActionButton
+        android:id="@+id/ab_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginBottom="50dp"
+        android:clickable="true"
+        android:elevation="15dp"
+        app:borderWidth="5dp"
+        app:fabSize="normal"
+        app:pressedTranslationZ="18dp"
+        app:rippleColor="@color/colorPrimary" />
+</RelativeLayout>
