@@ -11,7 +11,7 @@ import com.fzzz.framework.Constants;
 import com.orhanobut.logger.Logger;
 
 /**
- * description:
+ * description: 统一处理拦截器，可以用group的方式来分组处理，但是该方法已过时，可以全都拦截，不需要处理的用绿色通道来实现
  * author: ShenChao
  * time: 2019-08-18
  * update:
