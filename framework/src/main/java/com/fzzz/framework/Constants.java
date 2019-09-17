@@ -9,6 +9,8 @@ import android.Manifest;
  * update:
  */
 public class Constants {
+    public static final String GROUP_APP_NEED_LOGIN = "group_app_need_login";
+
     public static final String PATH_APP_OKHTTP = "/ui/okhttp/OkHttpActivity";
     public static final String PATH_APP_RETROFIT = "/ui/retrofit/RetrofitActivity";
     public static final String PATH_APP_RESULT = "/ui/result/ResultActivity";

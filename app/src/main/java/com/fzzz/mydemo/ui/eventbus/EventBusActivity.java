@@ -21,7 +21,7 @@ import butterknife.OnClick;
  * time: 2019-08-30
  * update:
  */
-@Route(path = Constants.PATH_APP_EVENTBUS)
+@Route(path = Constants.PATH_APP_EVENTBUS, group = Constants.GROUP_APP_NEED_LOGIN)
 public class EventBusActivity extends BaseActivity {
 
     @BindView(R.id.tv_show)

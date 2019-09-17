@@ -3,6 +3,7 @@ package com.fzzz.interview.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -15,6 +16,10 @@ import com.fzzz.interview.R2;
 import com.fzzz.interview.t12.MyIntentService;
 import com.fzzz.interview.t12.MyService;
 import com.fzzz.interview.t15.DownloadService;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -34,6 +39,7 @@ public class InterViewActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
 //        tv_tv.setClickable(true);
         tv_tv.setFocusable(true);
         tv_tv.setFocusableInTouchMode(true);
@@ -96,5 +102,12 @@ public class InterViewActivity extends BaseActivity {
     @OnClick(R2.id.bt_t22)
     public void onViewClicked10() {
         ARouter.getInstance().build(Constants.PATH_INTERVIEW_T22).navigation();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(String message) {
+        if ("123".equals(message)) {
+            Toast.makeText(this, "module收到消息", Toast.LENGTH_SHORT).show();
+        }
     }
 }

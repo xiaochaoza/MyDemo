@@ -9,6 +9,8 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fzzz.framework.Constants;
 import com.fzzz.interview.R;
 
+import org.greenrobot.eventbus.EventBus;
+
 /**
  * description:
  * author: ShenChao
@@ -21,9 +23,14 @@ public class T18Activity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 //        CustonView custonView = new CustonView(this);
         setContentView(R.layout.activity_t16);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().post("123");
+
+    }
 }

@@ -22,6 +22,10 @@ public class PageUtil {
         ARouter.getInstance().build(path).navigation();
     }
 
+    public static void toActivityGroup(String path, String group) {
+        ARouter.getInstance().build(path, group).navigation();
+    }
+
     public static void toActivityForResult(Activity activity, String path, int requestCode) {
         ARouter.getInstance().build(path).navigation(activity, requestCode);
     }

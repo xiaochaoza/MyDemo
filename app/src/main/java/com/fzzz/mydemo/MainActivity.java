@@ -8,6 +8,11 @@ import androidx.annotation.Nullable;
 import com.fzzz.framework.Constants;
 import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.framework.utils.PageUtil;
+import com.fzzz.mydemo.utils.ToastUtil;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.OnClick;
 
@@ -27,6 +32,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         setShowBack(false);
+        EventBus.getDefault().register(this);
         super.onCreate(savedInstanceState);
     }
 
@@ -57,7 +63,7 @@ public class MainActivity extends BaseActivity {
                 PageUtil.toActivity(Constants.PATH_APP_RETROFIT_RXJAVA);
                 break;
             case R.id.btn_eventbus:
-                PageUtil.toActivity(Constants.PATH_APP_EVENTBUS);
+                PageUtil.toActivityGroup(Constants.PATH_APP_EVENTBUS, Constants.GROUP_APP_NEED_LOGIN);
                 break;
             case R.id.btn_glide:
                 break;
@@ -142,6 +148,13 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.btn_login:
                 break;
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(String message) {
+        if ("123".equals(message)) {
+            ToastUtil.show("收到消息");
         }
     }
 }

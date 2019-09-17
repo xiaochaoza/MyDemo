@@ -2,13 +2,13 @@ package com.fzzz.mydemo;
 
 
 import android.content.Context;
-import android.util.Log;
 
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Interceptor;
 import com.alibaba.android.arouter.facade.callback.InterceptorCallback;
 import com.alibaba.android.arouter.facade.template.IInterceptor;
-import com.fzzz.mydemo.utils.ToastUtil;
+import com.fzzz.framework.Constants;
+import com.orhanobut.logger.Logger;
 
 /**
  * description:
@@ -17,15 +17,18 @@ import com.fzzz.mydemo.utils.ToastUtil;
  * update:
  */
 @Interceptor(priority = 1)
-public class RouteIntercepter implements IInterceptor {
+public class RouteInterceptor implements IInterceptor {
 
-    public static final String TAG = "RouteIntercepter";
+    public static final String TAG = "RouteInterceptor";
 
     private Context mContext;
 
     @Override
     public void process(Postcard postcard, InterceptorCallback callback) {
-        Log.e(TAG, "拦截器");
+        if (Constants.GROUP_APP_NEED_LOGIN.equals(postcard.getGroup())) {
+            Logger.e("拦截器拦截，需要登录");
+        }
+        Logger.e("拦截器");
         callback.onContinue(postcard);
     }
 
