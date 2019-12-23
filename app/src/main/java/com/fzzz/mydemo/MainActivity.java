@@ -72,7 +72,7 @@ public class MainActivity extends BaseActivity {
             case R.id.btn_figerprint:
                 break;
             case R.id.btn_recyclerview:
-                PageUtil.toActivity(Constants.PATH_APP_RECYCLER);
+                PageUtil.toActivity(Constants.PATH_APP_RECYCLER_LIST);
                 break;
             case R.id.btn_stick_recycler:
                 break;

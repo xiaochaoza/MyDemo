@@ -35,7 +35,16 @@ public class CustomFloatingActionButton extends FloatingActionButton {
     }
 
     @Override
+    public boolean performClick() {
+        return super.performClick();
+    }
+
+    @Override
     public boolean onTouchEvent(MotionEvent ev) {
+        if (ev.getAction() == MotionEvent.ACTION_DOWN) {
+            // 如果点击
+            performClick();
+        }
         //当前手指的坐标
         float mRawX = ev.getRawX();
         float mRawY = ev.getRawY();

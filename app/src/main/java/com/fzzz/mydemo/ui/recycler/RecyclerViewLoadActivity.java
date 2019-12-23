@@ -27,8 +27,8 @@ import butterknife.ButterKnife;
  * time: 2019-09-03
  * update:
  */
-@Route(path = Constants.PATH_APP_RECYCLER)
-public class RecyclerViewActivity extends BaseActivity {
+@Route(path = Constants.PATH_APP_RECYCLER_LOAD)
+public class RecyclerViewLoadActivity extends BaseActivity {
 
     @BindView(R.id.rlv_content)
     RecyclerView rlvContent;
@@ -92,7 +92,7 @@ public class RecyclerViewActivity extends BaseActivity {
 
         @Override
         public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            MyViewHolder holder = new MyViewHolder(LayoutInflater.from(RecyclerViewActivity.this)
+            MyViewHolder holder = new MyViewHolder(LayoutInflater.from(RecyclerViewLoadActivity.this)
                     .inflate(R.layout.activity_recycler_item, parent, false));
             return holder;
         }

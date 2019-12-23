@@ -66,6 +66,7 @@ public class SwipeRefreshActivity extends BaseActivity {
             btStart.setClickable(true);
             Log.e(TAG, "-------------------------------->countDownTimer finish");
         }
+
     };
 
     @Override

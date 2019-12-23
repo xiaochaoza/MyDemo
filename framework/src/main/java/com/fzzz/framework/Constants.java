@@ -38,7 +38,9 @@ public class Constants {
     public static final String PATH_APP_AYSNC_TASK = "/ui/asynctask/AsyncTaskActivity";
     public static final String PATH_APP_PICKER = "/ui/picker/PickerActivity";
     public static final String PATH_APP_EVENTBUS = "/ui/eventbus/EventBusActivity";
-    public static final String PATH_APP_RECYCLER = "/ui/recycler/RecyclerViewActivity";
+    public static final String PATH_APP_RECYCLER_LOAD = "/ui/recycler/RecyclerViewLoadActivity";
+    public static final String PATH_APP_RECYCLER_SORT = "/ui/recycler/RecyclerViewSortActivity";
+    public static final String PATH_APP_RECYCLER_LIST = "/ui/recycler/RecyclerListActivity";
     public static final String PATH_APP_DOWNLOAD = "/ui/download/DownLoadActivity";
     public static final String PATH_APP_FLOATING = "/ui/floating/FloatingActionActivity";
 

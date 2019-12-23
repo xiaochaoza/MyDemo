@@ -30,7 +30,7 @@ task clean(type: Delete) {
 ext {
     compileSdkVersion = 28
     buildToolsVersion = "29.0.0 rc2"
-    minSdkVersion = 22
+    minSdkVersion = 26
     targetSdkVersion = 28
     butterknife = '10.1.0'
 
@@ -81,7 +81,7 @@ ext.deps = [
 ext.serverUrls = [
         BASE_URL_JUHE         : "\"http://v.juhe.cn/\"",
         BASE_URL_JISU         : "\"https://api.jisuapi.com/\"",
-        BASE_URL_LOCAL        : "\"http://192.168.244.67:8080/\"",
+        BASE_URL_LOCAL        : "\"http://192.168.43.202:8080/\"",
 ]
 
 ext.keys = [

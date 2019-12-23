@@ -76,7 +76,9 @@
         <activity android:name=".ui.asynctask.AsyncTaskActivity" />
         <activity android:name=".ui.picker.PickerActivity" />
         <activity android:name=".ui.eventbus.EventBusActivity" />
-        <activity android:name=".ui.recycler.RecyclerViewActivity" />
+        <activity android:name=".ui.recycler.RecyclerViewLoadActivity" />
+        <activity android:name=".ui.recycler.RecyclerListActivity" />
+        <activity android:name=".ui.recycler.RecyclerViewSortActivity" />
         <activity android:name=".ui.download.DownLoadActivity" />
         <activity android:name=".ui.floating.FloatingActionActivity" />
 

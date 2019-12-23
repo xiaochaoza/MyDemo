@@ -24,4 +24,14 @@ public class DataInit {
         }
         return list;
     }
+
+    public static List<String> getData() {
+        if (null == list) {
+            list = new ArrayList<>();
+        }
+        for (int i = 0; i <= 30; i++) {
+            list.add("第" + i + "条数据");
+        }
+        return list;
+    }
 }
