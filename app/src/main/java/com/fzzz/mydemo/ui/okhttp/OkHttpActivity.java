@@ -45,7 +45,7 @@ public class OkHttpActivity extends BaseActivity {
             .build();
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_okhttp;
     }
 

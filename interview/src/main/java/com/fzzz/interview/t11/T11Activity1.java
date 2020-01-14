@@ -25,7 +25,7 @@ public class T11Activity1 extends BaseActivity {
     public static final String TAG = "T11Activity1";
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_t11;
     }
 

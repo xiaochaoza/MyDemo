@@ -20,7 +20,7 @@ import java.util.List;
 public class LeakActivity extends BaseActivity {
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_leak;
     }
 

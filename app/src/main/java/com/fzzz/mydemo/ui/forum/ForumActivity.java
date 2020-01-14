@@ -33,7 +33,7 @@ public class ForumActivity extends BaseActivity {
     private List<User> list = new ArrayList<>();
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_forum;
     }
 

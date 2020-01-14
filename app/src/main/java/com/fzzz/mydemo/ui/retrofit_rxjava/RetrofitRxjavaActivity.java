@@ -65,7 +65,7 @@ public class RetrofitRxjavaActivity extends BaseActivity {
     private Disposable disposable;
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_retrofit_rxjava;
     }
 

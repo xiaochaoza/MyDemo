@@ -49,7 +49,7 @@ public class AsyncTaskActivity extends BaseActivity {
     private String url = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550468908242&di=48b779b79168a94b30b3036ff1b084aa&imgtype=0&src=http%3A%2F%2Fwww.pptbz.com%2Fpptpic%2FUploadFiles_6909%2F201203%2F2012031220134655.jpg";
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_async_task;
     }
 

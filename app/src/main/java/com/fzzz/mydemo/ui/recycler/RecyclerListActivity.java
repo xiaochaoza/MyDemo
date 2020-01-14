@@ -23,7 +23,7 @@ import butterknife.OnClick;
 public class RecyclerListActivity extends BaseActivity {
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_recycler_list;
     }
 

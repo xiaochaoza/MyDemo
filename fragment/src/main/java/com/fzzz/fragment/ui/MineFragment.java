@@ -24,7 +24,7 @@ public class MineFragment extends BaseFragment {
     private MainModel mineFragmentModel;
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.fragment_mine;
     }
 

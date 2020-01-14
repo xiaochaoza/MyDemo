@@ -27,7 +27,7 @@ public class ViewStubActivity extends BaseActivity {
     ViewStub vsItem;
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_viewstub;
     }
 

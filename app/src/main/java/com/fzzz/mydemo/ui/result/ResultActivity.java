@@ -25,7 +25,7 @@ public class ResultActivity extends BaseActivity {
     TextView tvResult;
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_result;
     }
 

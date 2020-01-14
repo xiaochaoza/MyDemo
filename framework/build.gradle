@@ -59,7 +59,8 @@ dependencies {
         deps.logger,
         deps.X5,
         deps.picker_view,
-        deps.material
+        deps.material,
+        deps.photo_view
     )
     annotationProcessor deps.butterknifeCompiler
     annotationProcessor deps.arouterComplier

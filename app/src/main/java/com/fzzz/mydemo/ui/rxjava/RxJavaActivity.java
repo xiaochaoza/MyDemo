@@ -49,7 +49,7 @@ public class RxJavaActivity extends BaseActivity {
     private Disposable mDisposable;
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_rxjava;
     }
 

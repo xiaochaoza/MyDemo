@@ -43,6 +43,7 @@ public class Constants {
     public static final String PATH_APP_RECYCLER_LIST = "/ui/recycler/RecyclerListActivity";
     public static final String PATH_APP_DOWNLOAD = "/ui/download/DownLoadActivity";
     public static final String PATH_APP_FLOATING = "/ui/floating/FloatingActionActivity";
+    public static final String PATH_APP_PHOTO_VIEW = "/ui/photoview/PhotoViewActivity";
 
     public static final String PATH_INTERVIEW = "/interview/InterViewActivity";
     public static final String PATH_INTERVIEW_T11_1 = "/interview/T11Activity1";

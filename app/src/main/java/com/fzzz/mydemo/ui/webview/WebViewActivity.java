@@ -43,7 +43,7 @@ public class WebViewActivity extends BaseActivity {
     private Uri imageUri;
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_webview;
     }
 

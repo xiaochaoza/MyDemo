@@ -42,7 +42,7 @@ public class PickerActivity extends BaseActivity {
     private ArrayList<ArrayList<ArrayList<String>>> options3Items = new ArrayList<>();
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_picker;
     }
 

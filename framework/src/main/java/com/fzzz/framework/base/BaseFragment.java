@@ -29,7 +29,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //1.设置当前视图
-        int layoutID = getLayoutID();
+        int layoutID = getLayoutId();
         View view = inflater.inflate(R.layout.fragment_base, container, false);
         initView(layoutID, view);
         //视图注入
@@ -56,5 +56,5 @@ public abstract class BaseFragment extends Fragment {
         unbinder.unbind();
     }
 
-    public abstract int getLayoutID();
+    public abstract int getLayoutId();
 }

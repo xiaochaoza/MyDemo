@@ -37,7 +37,7 @@ public class RecyclerViewLoadActivity extends BaseActivity {
     private int page = 1;
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_recycler;
     }
 

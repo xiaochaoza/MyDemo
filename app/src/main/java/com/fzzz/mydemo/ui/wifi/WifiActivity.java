@@ -29,7 +29,7 @@ public class WifiActivity extends BaseActivity {
     ImageView image;
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_wifi;
     }
 

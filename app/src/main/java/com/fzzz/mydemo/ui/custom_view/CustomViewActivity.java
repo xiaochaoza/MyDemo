@@ -28,7 +28,7 @@ public class CustomViewActivity extends BaseActivity {
     LinearLayout llShow;
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_custom_view;
     }
 

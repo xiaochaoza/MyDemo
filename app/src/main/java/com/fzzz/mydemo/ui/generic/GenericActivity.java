@@ -11,7 +11,7 @@ import com.fzzz.mydemo.R;
  */
 public class GenericActivity extends BaseActivity {
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_generic;
     }
 }

@@ -64,7 +64,7 @@ public class TakePicOldActivity extends BaseActivity implements SurfaceHolder.Ca
     };
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_camera_old;
     }
 

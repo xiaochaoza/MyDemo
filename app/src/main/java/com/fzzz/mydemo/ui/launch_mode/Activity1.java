@@ -30,7 +30,7 @@ public class Activity1 extends BaseActivity {
     }
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_lunch_mode;
     }
 

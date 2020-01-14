@@ -50,7 +50,7 @@ public class WebLoadActivity extends BaseActivity {
     private long start, end;
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_webload;
     }
 

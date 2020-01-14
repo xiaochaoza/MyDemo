@@ -30,7 +30,7 @@ public class FloatingActionActivity extends BaseActivity {
     CustomFloatingActionButton abButton;
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_floating;
     }
 

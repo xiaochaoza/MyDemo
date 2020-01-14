@@ -70,7 +70,7 @@ public class SwipeRefreshActivity extends BaseActivity {
     };
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_swipe_refresh;
     }
 

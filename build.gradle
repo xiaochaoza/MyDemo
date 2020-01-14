@@ -19,7 +19,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        maven { url "https://jitpack.io" }
     }
 }
 
@@ -71,6 +71,8 @@ ext.deps = [
         logger                : 'com.orhanobut:logger:2.2.0',
 
         X5                    : 'com.tencent.tbs.tbssdk:sdk:43697',
+
+        photo_view            : 'com.github.chrisbanes:PhotoView:2.0.0',
 
         picker_view           :'com.contrarywind:Android-PickerView:4.1.8',
 

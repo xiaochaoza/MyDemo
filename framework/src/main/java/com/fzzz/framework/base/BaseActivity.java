@@ -24,7 +24,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityManager.getInstance().addActivity(this);
         beforeSetContentView();
-        setContentView(getLayoutID());
+        setContentView(getLayoutId());
         ButterKnife.bind(this);
         if (showBack) {
             //设置左上角返回键
@@ -49,7 +49,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public abstract int getLayoutID();
+    public abstract int getLayoutId();
 
     public void setShowBack(boolean showBack) {
         this.showBack = showBack;

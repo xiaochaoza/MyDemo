@@ -51,7 +51,7 @@ public class JsCameraActivity extends BaseActivity {
     private Uri imageUri;
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_js_camera;
     }
 

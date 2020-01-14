@@ -39,7 +39,7 @@ public class RecyclerViewSortActivity extends BaseActivity {
     private SortAadpter mAdapter;
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_recycler;
     }
 

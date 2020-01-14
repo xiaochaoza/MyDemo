@@ -27,7 +27,7 @@ public class JsWebActivity extends BaseActivity {
     WebView webview;
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.activity_js_bridge;
     }
 

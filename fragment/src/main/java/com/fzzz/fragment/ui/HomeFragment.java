@@ -25,7 +25,7 @@ public class HomeFragment extends BaseFragment {
     private MainModel homeFragmentModel;
 
     @Override
-    public int getLayoutID() {
+    public int getLayoutId() {
         return R.layout.fragment_home;
     }
 
