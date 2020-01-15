@@ -41,8 +41,7 @@ public class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_recycler_view, parent, false);
-        ViewHolder viewHolder = new ViewHolder(view);
-        return viewHolder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -53,12 +52,9 @@ public class BaseAdapter extends RecyclerView.Adapter<BaseAdapter.ViewHolder> {
         holder.tvUsername.setText(userName);
         holder.tvPassword.setText(passWord);
 
-        holder.iitemLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (null != onItemClickListener) {
-                    onItemClickListener.onItemClick(userName, passWord);
-                }
+        holder.iitemLayout.setOnClickListener((view) -> {
+            if (null != onItemClickListener) {
+                onItemClickListener.onItemClick(userName, passWord);
             }
         });
     }

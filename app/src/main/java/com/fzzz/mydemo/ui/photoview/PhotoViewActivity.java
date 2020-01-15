@@ -9,11 +9,9 @@ import com.bumptech.glide.Glide;
 import com.fzzz.framework.Constants;
 import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.mydemo.R;
-import com.fzzz.mydemo.ui.wifi.GlideApp;
 import com.github.chrisbanes.photoview.PhotoView;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * description:

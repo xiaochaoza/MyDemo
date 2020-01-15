@@ -49,14 +49,16 @@ public class CustomFloatingActionButton extends FloatingActionButton {
         float mRawX = ev.getRawX();
         float mRawY = ev.getRawY();
         switch (ev.getAction()) {
-            case MotionEvent.ACTION_DOWN://手指按下
+            //手指按下
+            case MotionEvent.ACTION_DOWN:
                 setPressed(true);
                 isDrug = false;
                 //记录按下的位置
                 mLastRawX = mRawX;
                 mLastRawY = mRawY;
                 break;
-            case MotionEvent.ACTION_MOVE://手指滑动
+            //手指滑动
+            case MotionEvent.ACTION_MOVE:
                 ViewGroup mViewGroup = (ViewGroup) getParent();
                 if (mViewGroup != null) {
                     int[] location = new int[2];
@@ -104,7 +106,8 @@ public class CustomFloatingActionButton extends FloatingActionButton {
                     }
                 }
                 break;
-            case MotionEvent.ACTION_UP://手指离开
+            //手指离开
+            case MotionEvent.ACTION_UP:
                 setPressed(false);
                 float center = mRootMeasuredWidth / 2;
                 //自动贴边
@@ -123,6 +126,8 @@ public class CustomFloatingActionButton extends FloatingActionButton {
                             .x(mRootMeasuredWidth - getWidth())
                             .start();
                 }
+                break;
+            default:
                 break;
         }
         //是否拦截事件

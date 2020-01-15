@@ -31,10 +31,13 @@ public class AESUtil {
     public static String getStrKeyAES() throws NoSuchAlgorithmException, UnsupportedEncodingException {
         KeyGenerator keyGen = KeyGenerator.getInstance("AES");
         SecureRandom secureRandom = new SecureRandom(String.valueOf(System.currentTimeMillis()).getBytes(StandardCharsets.UTF_8));
-        keyGen.init(256, secureRandom);// 这里可以是 128、192、256、越大越安全
+        // 这里可以是 128、192、256、越大越安全
+        keyGen.init(256, secureRandom);
         SecretKey secretKey = keyGen.generateKey();
-//        return Base64.getEncoder().encodeToString(secretKey.getEncoded());//java
-        return Base64.encodeToString(secretKey.getEncoded(), Base64.NO_WRAP);//android
+        //java
+//        return Base64.getEncoder().encodeToString(secretKey.getEncoded());
+        //android
+        return Base64.encodeToString(secretKey.getEncoded(), Base64.NO_WRAP);
     }
 
     /**
@@ -44,8 +47,10 @@ public class AESUtil {
      * @return SecretKey
      */
     public static SecretKey strKey2SecretKey(String strKey) {
-//        byte[] bytes = Base64.getDecoder().decode(strKey);//java
-        byte[] bytes = Base64.decode(strKey, Base64.NO_WRAP);//android
+        //java
+//        byte[] bytes = Base64.getDecoder().decode(strKey);
+        //android
+        byte[] bytes = Base64.decode(strKey, Base64.NO_WRAP);
         SecretKeySpec secretKeySpec = new SecretKeySpec(bytes, "AES");
         return secretKeySpec;
     }
@@ -79,10 +84,11 @@ public class AESUtil {
     /**
      * AES加密
      */
-    public static String encrypt (String sourceStr, String key) throws Exception {
+    public static String encrypt(String sourceStr, String key) throws Exception {
         byte[] raw = key.getBytes(StandardCharsets.UTF_8);
         SecretKeySpec skeySpec = new SecretKeySpec(raw, "AES");
-        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");//"算法/模式/补码方式"
+        //"算法/模式/补码方式"
+        Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
         cipher.init(Cipher.ENCRYPT_MODE, skeySpec);
         byte[] encrypted = cipher.doFinal(sourceStr.getBytes(StandardCharsets.UTF_8));
         return Base64.encodeToString(encrypted, android.util.Base64.NO_WRAP);

@@ -55,6 +55,8 @@ public class EventBusActivity extends BaseActivity {
                 EventBus.getDefault().postSticky("23456");
                 show("发送黏性成功");
                 break;
+            default:
+                break;
         }
     }
 
@@ -91,5 +93,4 @@ public class EventBusActivity extends BaseActivity {
         tvShow.append("\n");
         tvShow.append(message);
     }
-
 }

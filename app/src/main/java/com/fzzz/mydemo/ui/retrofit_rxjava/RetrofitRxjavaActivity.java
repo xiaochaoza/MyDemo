@@ -48,7 +48,6 @@ import okhttp3.ResponseBody;
  */
 @Route(path = Constants.PATH_APP_RETROFIT_RXJAVA)
 public class RetrofitRxjavaActivity extends BaseActivity {
-
     public static final String TAG = "RetrofitRxjavaActivity";
 
     @BindView(R.id.content1)
@@ -114,6 +113,8 @@ public class RetrofitRxjavaActivity extends BaseActivity {
             case R.id.local_find_one:
                 localFindUserByUserName();
                 break;
+            default:
+                break;
         }
     }
 
@@ -122,28 +123,19 @@ public class RetrofitRxjavaActivity extends BaseActivity {
         disposable = RetrofitLocalHelper.get().findUserByUserName(requestBody)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(new Function<ResponseBody, UserReturnBean>() {
-                    @Override
-                    public UserReturnBean apply(ResponseBody responseBody) throws Exception {
-                        return new Gson().fromJson(responseBody.string(), UserReturnBean.class);
+                .map((responseBody) ->
+                        new Gson().fromJson(responseBody.string(), UserReturnBean.class)
+                ).subscribe((userReturnBean) -> {
+                    if (null == userReturnBean) {
+                        return;
                     }
-                }).subscribe(new Consumer<UserReturnBean>() {
-                    @Override
-                    public void accept(UserReturnBean userReturnBean) throws Exception {
-                        if (null == userReturnBean) {
-                            return;
-                        }
-                        BaseAdapter adapter = new BaseAdapter(userReturnBean, new BaseAdapter.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(String userName, String password) {
-                                etUsername.setText(userName);
-                                etPassword.setText(password);
-                            }
-                        });
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RetrofitRxjavaActivity.this, LinearLayoutManager.VERTICAL, false);
-                        recyclerview.setAdapter(adapter);
-                        recyclerview.setLayoutManager(layoutManager);
-                    }
+                    BaseAdapter adapter = new BaseAdapter(userReturnBean, (userName, password) -> {
+                        etUsername.setText(userName);
+                        etPassword.setText(password);
+                    });
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RetrofitRxjavaActivity.this, LinearLayoutManager.VERTICAL, false);
+                    recyclerview.setAdapter(adapter);
+                    recyclerview.setLayoutManager(layoutManager);
                 });
     }
 
@@ -152,25 +144,16 @@ public class RetrofitRxjavaActivity extends BaseActivity {
         disposable = RetrofitLocalHelper.get().findAll(requestBody)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(new Function<ResponseBody, UserReturnBean>() {
-                    @Override
-                    public UserReturnBean apply(ResponseBody responseBody) throws Exception {
-                        return new Gson().fromJson(responseBody.string(), UserReturnBean.class);
-                    }
-                }).subscribe(new Consumer<UserReturnBean>() {
-                    @Override
-                    public void accept(UserReturnBean userReturnBean) throws Exception {
-                        BaseAdapter adapter = new BaseAdapter(userReturnBean, new BaseAdapter.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(String userName, String password) {
-                                etUsername.setText(userName);
-                                etPassword.setText(password);
-                            }
-                        });
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RetrofitRxjavaActivity.this, LinearLayoutManager.VERTICAL, false);
-                        recyclerview.setAdapter(adapter);
-                        recyclerview.setLayoutManager(layoutManager);
-                    }
+                .map((responseBody) ->
+                        new Gson().fromJson(responseBody.string(), UserReturnBean.class)
+                ).subscribe((userReturnBean) -> {
+                    BaseAdapter adapter = new BaseAdapter(userReturnBean, (userName, password) -> {
+                        etUsername.setText(userName);
+                        etPassword.setText(password);
+                    });
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(RetrofitRxjavaActivity.this, LinearLayoutManager.VERTICAL, false);
+                    recyclerview.setAdapter(adapter);
+                    recyclerview.setLayoutManager(layoutManager);
                 });
     }
 
@@ -179,20 +162,14 @@ public class RetrofitRxjavaActivity extends BaseActivity {
         disposable = RetrofitLocalHelper.get().update(requestBody)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(new Function<ResponseBody, UserReturnBean>() {
-                    @Override
-                    public UserReturnBean apply(ResponseBody responseBody) throws Exception {
-                        return new Gson().fromJson(responseBody.string(), UserReturnBean.class);
+                .map((responseBody) ->
+                        new Gson().fromJson(responseBody.string(), UserReturnBean.class)
+                )
+                .subscribe((userReturnBean) -> {
+                    if (null == userReturnBean) {
+                        return;
                     }
-                })
-                .subscribe(new Consumer<UserReturnBean>() {
-                    @Override
-                    public void accept(UserReturnBean userReturnBean) throws Exception {
-                        if (null == userReturnBean) {
-                            return;
-                        }
-                        ToastUtil.show(userReturnBean.resultMessage);
-                    }
+                    ToastUtil.show(userReturnBean.resultMessage);
                 });
     }
 
@@ -201,20 +178,14 @@ public class RetrofitRxjavaActivity extends BaseActivity {
         disposable = RetrofitLocalHelper.get().delete(requestBody)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(new Function<ResponseBody, UserReturnBean>() {
-                    @Override
-                    public UserReturnBean apply(ResponseBody responseBody) throws Exception {
-                        return new Gson().fromJson(responseBody.string(), UserReturnBean.class);
+                .map((responseBody) ->
+                        new Gson().fromJson(responseBody.string(), UserReturnBean.class)
+                )
+                .subscribe((userReturnBean) -> {
+                    if (null == userReturnBean) {
+                        return;
                     }
-                })
-                .subscribe(new Consumer<UserReturnBean>() {
-                    @Override
-                    public void accept(UserReturnBean userReturnBean) throws Exception {
-                        if (null == userReturnBean) {
-                            return;
-                        }
-                        ToastUtil.show(userReturnBean.resultMessage);
-                    }
+                    ToastUtil.show(userReturnBean.resultMessage);
                 });
     }
 
@@ -223,20 +194,14 @@ public class RetrofitRxjavaActivity extends BaseActivity {
         disposable = RetrofitLocalHelper.get().add(requestBody)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(new Function<ResponseBody, UserReturnBean>() {
-                    @Override
-                    public UserReturnBean apply(ResponseBody responseBody) throws Exception {
-                        return new Gson().fromJson(responseBody.string(), UserReturnBean.class);
+                .map((responseBody) ->
+                        new Gson().fromJson(responseBody.string(), UserReturnBean.class)
+                )
+                .subscribe((userReturnBean) -> {
+                    if (null == userReturnBean) {
+                        return;
                     }
-                })
-                .subscribe(new Consumer<UserReturnBean>() {
-                    @Override
-                    public void accept(UserReturnBean userReturnBean) throws Exception {
-                        if (null == userReturnBean) {
-                            return;
-                        }
-                        ToastUtil.show(userReturnBean.resultMessage);
-                    }
+                    ToastUtil.show(userReturnBean.resultMessage);
                 });
     }
 
@@ -266,19 +231,13 @@ public class RetrofitRxjavaActivity extends BaseActivity {
         disposable = RetrofitJuHeHelper.get().getNewsGet(BuildConfig.JUHE_APP_KEY)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .flatMap(new Function<ResponseBody, ObservableSource<NewsJuheBean.ResultBean.DataBean>>() {
-                    @Override
-                    public ObservableSource<NewsJuheBean.ResultBean.DataBean> apply(ResponseBody responseBody) throws Exception {
-                        Gson gson = new Gson();
-                        NewsJuheBean newsJuheBean = gson.fromJson(responseBody.string(), NewsJuheBean.class);
-                        return Observable.fromIterable(newsJuheBean.getResult().getData());
-                    }
-                }).subscribe(new Consumer<NewsJuheBean.ResultBean.DataBean>() {
-                    @Override
-                    public void accept(NewsJuheBean.ResultBean.DataBean dataBean) throws Exception {
-                        content1.append(dataBean.getTitle());
-                        content1.append("\n");
-                    }
+                .flatMap((responseBody) -> {
+                    Gson gson = new Gson();
+                    NewsJuheBean newsJuheBean = gson.fromJson(responseBody.string(), NewsJuheBean.class);
+                    return Observable.fromIterable(newsJuheBean.getResult().getData());
+                }).subscribe((dataBean) -> {
+                    content1.append(dataBean.getTitle());
+                    content1.append("\n");
                 });
     }
 
@@ -287,19 +246,13 @@ public class RetrofitRxjavaActivity extends BaseActivity {
         disposable = RetrofitJuHeHelper.get().getNewsPost(BuildConfig.JUHE_APP_KEY, "top")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .flatMap(new Function<ResponseBody, ObservableSource<NewsJuheBean.ResultBean.DataBean>>() {
-                    @Override
-                    public ObservableSource<NewsJuheBean.ResultBean.DataBean> apply(ResponseBody responseBody) throws Exception {
-                        Gson gson = new Gson();
-                        NewsJuheBean newsJuheBean = gson.fromJson(responseBody.string(), NewsJuheBean.class);
-                        return Observable.fromIterable(newsJuheBean.getResult().getData());
-                    }
-                }).subscribe(new Consumer<NewsJuheBean.ResultBean.DataBean>() {
-                    @Override
-                    public void accept(NewsJuheBean.ResultBean.DataBean dataBean) throws Exception {
-                        content1.append(dataBean.getTitle());
-                        content1.append("\n");
-                    }
+                .flatMap((responseBody) -> {
+                    Gson gson = new Gson();
+                    NewsJuheBean newsJuheBean = gson.fromJson(responseBody.string(), NewsJuheBean.class);
+                    return Observable.fromIterable(newsJuheBean.getResult().getData());
+                }).subscribe((dataBean) -> {
+                    content1.append(dataBean.getTitle());
+                    content1.append("\n");
                 });
     }
 
@@ -310,5 +263,4 @@ public class RetrofitRxjavaActivity extends BaseActivity {
             disposable.dispose();
         }
     }
-
 }

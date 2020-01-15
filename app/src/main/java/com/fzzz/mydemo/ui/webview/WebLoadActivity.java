@@ -123,10 +123,18 @@ public class WebLoadActivity extends BaseActivity {
                 webViewX5.setVisibility(View.VISIBLE);
                 webViewX5.loadUrl(url);
                 break;
+            default:
+                break;
         }
     }
 
-    //点击返回返回上一页面
+    /**
+     * 点击返回返回上一页面
+     *
+     * @param keyCode
+     * @param event
+     * @return
+     */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && webView.canGoBack()) {
@@ -139,7 +147,9 @@ public class WebLoadActivity extends BaseActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    //销毁webview
+    /**
+     * 销毁webView
+     */
     @Override
     protected void onDestroy() {
         if (webView != null) {
@@ -291,6 +301,8 @@ public class WebLoadActivity extends BaseActivity {
                 switch (error.getErrorCode()) {
                     case 404:
                         view.loadUrl("file:///android_assets/error_handle.html");
+                        break;
+                    default:
                         break;
                 }
             }

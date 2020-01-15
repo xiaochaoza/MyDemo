@@ -4,7 +4,7 @@ buildscript {
     repositories {
         google()
         jcenter()
-        
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.2'
@@ -63,6 +63,7 @@ ext.deps = [
 
         gson                  : 'com.google.code.gson:gson:2.8.5',
         glide                 : 'com.github.bumptech.glide:glide:4.9.0',
+        glide_transformations : 'jp.wasabeef:glide-transformations:3.0.1',
 //        lottie                : 'com.airbnb.android:lottie:2.7.0',
 
         arouter               : 'com.alibaba:arouter-api:1.5.0',
@@ -74,7 +75,7 @@ ext.deps = [
 
         photo_view            : 'com.github.chrisbanes:PhotoView:2.0.0',
 
-        picker_view           :'com.contrarywind:Android-PickerView:4.1.8',
+        picker_view           : 'com.contrarywind:Android-PickerView:4.1.8',
 
         eventBus              : 'org.greenrobot:eventbus:3.0.0',
 //        adapterHelper         :'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30',

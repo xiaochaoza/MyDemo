@@ -49,28 +49,22 @@ public class DownLoadActivity extends BaseActivity {
         disposable = RetrofitLocalHelper.get().downloadFile()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(new Function<ResponseBody, File>() {
-                    @Override
-                    public File apply(ResponseBody responseBody) throws Exception {
-                        File file = saveFile(path, responseBody);
-                        return file;
+                .map((responseBody) -> {
+                    File file = saveFile(path, responseBody);
+                    return file;
+                }).subscribe((file) -> {
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    //判断是否是AndroidN以及更高的版本
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                        Uri contentUri = FileProvider.getUriForFile(DownLoadActivity.this, "com.fzzz.fileProvider", file);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                        intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
+                    } else {
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
                     }
-                }).subscribe(new Consumer<File>() {
-                    @Override
-                    public void accept(File file) throws Exception {
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        //判断是否是AndroidN以及更高的版本
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                            Uri contentUri = FileProvider.getUriForFile(DownLoadActivity.this, "com.fzzz.fileProvider", file);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                            intent.setDataAndType(contentUri, "application/vnd.android.package-archive");
-                        } else {
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            intent.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-                        }
-                        startActivity(intent);
-                    }
+                    startActivity(intent);
                 });
     }
 

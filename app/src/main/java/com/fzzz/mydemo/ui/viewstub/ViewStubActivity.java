@@ -1,6 +1,5 @@
 package com.fzzz.mydemo.ui.viewstub;
 
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.Button;

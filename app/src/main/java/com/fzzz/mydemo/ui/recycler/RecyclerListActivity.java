@@ -42,6 +42,8 @@ public class RecyclerListActivity extends BaseActivity {
             case R.id.bt_recycler_sort:
                 PageUtil.toActivity(Constants.PATH_APP_RECYCLER_SORT);
                 break;
+            default:
+                break;
         }
     }
 }

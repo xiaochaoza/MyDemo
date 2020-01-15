@@ -56,12 +56,6 @@ public class JsWebActivity extends BaseActivity {
     @OnClick(R.id.bt_call_h5)
     public void onViewClicked() {
         webview.loadUrl("javascript:callH5('Android调h5成功')");
-//        webview.evaluateJavascript("javascript:callH5()", new ValueCallback<String>() {
-//            @Override
-//            public void onReceiveValue(String s) {
-//                s = "aaa";
-//            }
-//        });
     }
 
     interface Contact {

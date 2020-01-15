@@ -57,8 +57,12 @@ import java.util.Arrays;
 public class TakePicNewActivity extends BaseActivity {
     private TextureView tv;
     private Button btn;
-    private String mCameraId = "0";//摄像头id（通常0代表后置摄像头，1代表前置摄像头）
-    private final int RESULT_CODE_CAMERA = 1;//判断是否有拍照权限的标识码
+    /**
+     * 摄像头id（通常0代表后置摄像头，1代表前置摄像头）
+     */
+    private String mCameraId = "0";
+    //判断是否有拍照权限的标识码
+    private final int RESULT_CODE_CAMERA = 1;
     private CameraDevice cameraDevice;
     private CameraCaptureSession mPreviewSession;
     private CaptureRequest.Builder mCaptureRequestBuilder, captureRequestBuilder;
@@ -95,12 +99,9 @@ public class TakePicNewActivity extends BaseActivity {
         btn = findViewById(R.id.bt_take_pic_new);
 
         //拍照
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                takePicture();
-            }
-        });
+        btn.setOnClickListener((v) ->
+                takePicture()
+        );
         //设置TextureView监听
         tv.setSurfaceTextureListener(surfaceTextureListener);
 
@@ -168,12 +169,10 @@ public class TakePicNewActivity extends BaseActivity {
             } else {
                 manager.openCamera(mCameraId, stateCallback, null);
             }
-
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
     }
-
 
     /**
      * 设置摄像头的参数
@@ -266,6 +265,7 @@ public class TakePicNewActivity extends BaseActivity {
         }
 
     }
+
     /**
      * 解决预览变形问题
      *
@@ -277,25 +277,23 @@ public class TakePicNewActivity extends BaseActivity {
     private Size getOptimalPreviewSize(Size[] sizes, int w, int h) {
         final double ASPECT_TOLERANCE = 0.1;
         double targetRatio = (double) w / h;
-        if (sizes == null)
+        if (sizes == null) {
             return null;
-
+        }
         Size optimalSize = null;
         double minDiff = Double.MAX_VALUE;
-
         int targetHeight = h;
-
         // Try to find an size match aspect ratio and size
         for (Size size : sizes) {
             double ratio = (double) size.getWidth() / size.getHeight();
-            if (Math.abs(ratio - targetRatio) > ASPECT_TOLERANCE)
+            if (Math.abs(ratio - targetRatio) > ASPECT_TOLERANCE) {
                 continue;
+            }
             if (Math.abs(size.getHeight() - targetHeight) < minDiff) {
                 optimalSize = size;
                 minDiff = Math.abs(size.getHeight() - targetHeight);
             }
         }
-
         if (optimalSize == null) {
             minDiff = Double.MAX_VALUE;
             for (Size size : sizes) {
@@ -307,7 +305,6 @@ public class TakePicNewActivity extends BaseActivity {
         }
         return optimalSize;
     }
-
 
     /**
      * 拍照
@@ -327,7 +324,8 @@ public class TakePicNewActivity extends BaseActivity {
             int rotation = getWindowManager().getDefaultDisplay().getRotation();
             // 根据设备方向计算设置照片的方向
             captureRequestBuilder.set(CaptureRequest.JPEG_ORIENTATION, ORIENTATIONS.get(rotation));
-            captureRequestBuilder.set(CaptureRequest.JPEG_ORIENTATION, 90);//小米手机设置不生效，只能旋转图片
+            //小米手机设置不生效，只能旋转图片
+            captureRequestBuilder.set(CaptureRequest.JPEG_ORIENTATION, 90);
             // 停止连续取景
             mPreviewSession.stopRepeating();
             //拍照
@@ -358,7 +356,6 @@ public class TakePicNewActivity extends BaseActivity {
 //            } catch (CameraAccessException e) {
 //                e.printStackTrace();
 //            }
-
         }
 
         @Override
@@ -466,6 +463,8 @@ public class TakePicNewActivity extends BaseActivity {
                     //用户授权拒绝之后，友情提示一下就可以了
                     Toast.makeText(TakePicNewActivity.this, "请开启应用拍照权限", Toast.LENGTH_SHORT).show();
                 }
+                break;
+            default:
                 break;
         }
     }

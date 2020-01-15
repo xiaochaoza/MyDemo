@@ -66,6 +66,7 @@ public class MainActivity extends BaseActivity {
                 PageUtil.toActivityGroup(Constants.PATH_APP_EVENTBUS, Constants.GROUP_APP_NEED_LOGIN);
                 break;
             case R.id.btn_glide:
+                PageUtil.toActivity(Constants.PATH_APP_GLIDE);
                 break;
             case R.id.btn_greendao:
                 break;

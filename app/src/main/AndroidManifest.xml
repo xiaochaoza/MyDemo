@@ -82,6 +82,7 @@
         <activity android:name=".ui.download.DownLoadActivity" />
         <activity android:name=".ui.floating.FloatingActionActivity" />
         <activity android:name=".ui.photoview.PhotoViewActivity" />
+        <activity android:name=".ui.glide.GlideActivity" />
 
         <!--
         authorities：app的包名.fileProvider

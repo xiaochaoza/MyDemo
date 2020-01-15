@@ -15,7 +15,8 @@ import java.util.Base64;
 public class RSAUtilTest {
 
     public static void main(String[] args) {
-        String content = "abcdefg456+-=";   // 明文内容
+        // 明文内容
+        String content = "abcdefg456+-=";
         System.out.println("原始字符串是：" + content);
         try {
             // 获得密钥对

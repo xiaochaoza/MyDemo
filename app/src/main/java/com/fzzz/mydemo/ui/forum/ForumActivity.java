@@ -51,19 +51,15 @@ public class ForumActivity extends BaseActivity {
             list.add(user);
         }
         initView();
-
     }
 
     int hi = 0;
 
     private void initView() {
-
         for (int i = list.size(); i >= 0; i--) {
             FormView formView = new FormView(this);
             formView.set(list.get(0));
             FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-//            RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) formView.getLayoutParams();
-
             int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
             int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
             formView.measure(w, h);
@@ -73,28 +69,8 @@ public class ForumActivity extends BaseActivity {
             lp.topMargin = i * 50;
             lp.rightMargin = i * 6;
             formView.setLayoutParams(lp);
-//            formView.nheight = hi;
-//            if (temp!=null) {
-//                temp.addView(formView);
-//                rootView.addView(temp);
-//
-//            }
-//            temp = formView;
-//            viewList.add(formView);
             rootView.addView(formView);
-
-
         }
-
-//        for (int i = 0; i < viewList.size(); i++) {
-//            FormView formView = viewList.get(i);
-//            FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) viewList.get(i).getLayoutParams();
-//            lp.height = viewList.get(viewList.size() - i - 1).getNheight();
-//            formView.setLayoutParams(lp);
-//            rootView.addView(formView);
-//        }
-
         System.out.println();
     }
-
 }

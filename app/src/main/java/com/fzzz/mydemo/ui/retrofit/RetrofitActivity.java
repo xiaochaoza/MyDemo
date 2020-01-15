@@ -64,7 +64,8 @@ public class RetrofitActivity extends BaseActivity {
             case R.id.bt5:
                 hanParamGetAsync();
                 break;
-
+            default:
+                break;
         }
     }
 

@@ -1,6 +1,5 @@
-package com.fzzz.mydemo.ui.wifi;
+package com.fzzz.mydemo.ui.glide;
 
-import android.content.Context;
 import android.net.http.SslCertificate;
 import android.net.http.SslError;
 import android.os.Bundle;
@@ -25,19 +24,20 @@ import javax.net.ssl.X509TrustManager;
  * https校验
  */
 public class CustomedHttpsVerify {
-    private Context context;
 
-    // RN页面fetch请求及网络图片加载过程中，https校验所用的SSLContext
+    /**
+     * RN页面fetch请求及网络图片加载过程中，https校验所用的SSLContext
+     *
+     * @return
+     */
     public SSLContext getSSLContext() {
         X509TrustManager xtm = new X509TrustManager() {
             @Override
-            public void checkClientTrusted(X509Certificate[] chain, String authType)
-                    throws CertificateException {
+            public void checkClientTrusted(X509Certificate[] chain, String authType) {
             }
 
             @Override
-            public void checkServerTrusted(X509Certificate[] chain, String authType)
-                    throws CertificateException {
+            public void checkServerTrusted(X509Certificate[] chain, String authType) {
             }
 
             @Override
@@ -145,5 +145,4 @@ public class CustomedHttpsVerify {
             handler.proceed();
         }
     }
-
 }

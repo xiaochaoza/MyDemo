@@ -45,9 +45,15 @@ public class JsCameraActivity extends BaseActivity {
     @BindView(R.id.wv_camera)
     WebView webview;
 
-    private ValueCallback<Uri> mUploadMessage;// 表单的数据信息
+    /**
+     * 表单的数据信息
+     */
+    private ValueCallback<Uri> mUploadMessage;
     private ValueCallback<Uri[]> mUploadCallbackAboveL;
-    private final static int FILECHOOSER_RESULTCODE = 1;// 表单的结果回调
+    /**
+     * 表单的结果回调
+     */
+    private final static int FILECHOOSER_RESULTCODE = 1;
     private Uri imageUri;
 
     @Override
@@ -98,7 +104,9 @@ public class JsCameraActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == FILECHOOSER_RESULTCODE) {
-            if (null == mUploadMessage && null == mUploadCallbackAboveL) return;
+            if (null == mUploadMessage && null == mUploadCallbackAboveL) {
+                return;
+            }
             Uri result = data == null || resultCode != RESULT_OK ? null : data.getData();
             if (mUploadCallbackAboveL != null) {
                 onActivityResultAboveL(requestCode, resultCode, data);
@@ -137,8 +145,9 @@ public class JsCameraActivity extends BaseActivity {
                         results[i] = item.getUri();
                     }
                 }
-                if (dataString != null)
+                if (dataString != null) {
                     results = new Uri[]{Uri.parse(dataString)};
+                }
             }
         }
         if (results != null) {

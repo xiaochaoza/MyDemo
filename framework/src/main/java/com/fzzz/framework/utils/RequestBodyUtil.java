@@ -18,7 +18,8 @@ public class RequestBodyUtil {
     public static RequestBody creat(Map<String, String> params) {
         JSONObject jsonObject = new JSONObject(params);
         String json = jsonObject.toString();
-        MediaType mediaType = MediaType.parse("application/json; charset=utf-8");//"类型,字节码"
+        //"类型,字节码"
+        MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
         return RequestBody.create(mediaType, json);
     }
 }

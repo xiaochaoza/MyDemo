@@ -130,7 +130,8 @@ public class RxJavaActivity extends BaseActivity {
             case R.id.bt24:
                 test24();
                 break;
-
+            default:
+                break;
         }
     }
 
@@ -140,13 +141,10 @@ public class RxJavaActivity extends BaseActivity {
      * 2019-05-21 15:54:02.490 19564-19564/com.fzzz.mydemo I/System.out: 3
      */
     private void test1() {
-        Observable<Integer> observable = Observable.create(new ObservableOnSubscribe<Integer>() {
-            @Override
-            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
-                emitter.onNext(1);
-                emitter.onNext(2);
-                emitter.onNext(3);
-            }
+        Observable<Integer> observable = Observable.create((emitter) -> {
+            emitter.onNext(1);
+            emitter.onNext(2);
+            emitter.onNext(3);
         });
         mDisposable = observable.subscribe(System.out::println);
         //等价
@@ -169,23 +167,20 @@ public class RxJavaActivity extends BaseActivity {
      * 但当其为 true 的时候，接收器停止了接收。所以可以通过此参数动态控制接收事件了。
      */
     private void test2() {
-        Observable.create(new ObservableOnSubscribe<Integer>() {
-            @Override
-            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
-                content.append("Observable emit 1" + "\n");
-                Logger.e("Observable emit 1" + "\n");
-                emitter.onNext(1);
-                content.append("Observable emit 2" + "\n");
-                Logger.e("Observable emit 2" + "\n");
-                emitter.onNext(2);
-                content.append("Observable emit 3" + "\n");
-                Logger.e("Observable emit 3" + "\n");
-                emitter.onNext(3);
-                emitter.onComplete();
-                content.append("Observable emit 4" + "\n");
-                Logger.e("Observable emit 4" + "\n");
-                emitter.onNext(4);
-            }
+        Observable.create((ObservableEmitter<Integer> emitter) -> {
+            content.append("Observable emit 1" + "\n");
+            Logger.e("Observable emit 1" + "\n");
+            emitter.onNext(1);
+            content.append("Observable emit 2" + "\n");
+            Logger.e("Observable emit 2" + "\n");
+            emitter.onNext(2);
+            content.append("Observable emit 3" + "\n");
+            Logger.e("Observable emit 3" + "\n");
+            emitter.onNext(3);
+            emitter.onComplete();
+            content.append("Observable emit 4" + "\n");
+            Logger.e("Observable emit 4" + "\n");
+            emitter.onNext(4);
         }).subscribe(new Observer<Integer>() {
             private int i;
             private Disposable mDisposable;
@@ -232,24 +227,15 @@ public class RxJavaActivity extends BaseActivity {
      * map 基本作用就是将一个 Observable 通过某种函数关系，转换为另一种 Observable，上面例子中就是把我们的 Integer 数据变成了 String 类型
      */
     private void test3() {
-        mDisposable = Observable.create(new ObservableOnSubscribe<Integer>() {
-            @Override
-            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
-                emitter.onNext(1);
-                emitter.onNext(2);
-                emitter.onNext(3);
-            }
-        }).map(new Function<Integer, String>() {
-            @Override
-            public String apply(Integer integer) throws Exception {
-                return "This is result " + integer;
-            }
-        }).subscribe(new Consumer<String>() {
-            @Override
-            public void accept(String s) throws Exception {
-                content.append("accept : " + s + "\n");
-                Logger.e("accept : " + s + "\n");
-            }
+        mDisposable = Observable.create((ObservableEmitter<Integer> emitter) -> {
+            emitter.onNext(1);
+            emitter.onNext(2);
+            emitter.onNext(3);
+        }).map((integer) ->
+                "This is result " + integer
+        ).subscribe((s) -> {
+            content.append("accept : " + s + "\n");
+            Logger.e("accept : " + s + "\n");
         });
     }
 
@@ -272,65 +258,53 @@ public class RxJavaActivity extends BaseActivity {
      * 最终接收器收到的事件数量是和发送器发送事件最少的那个发送器的发送事件数目相同
      */
     private void test4() {
-        mDisposable = Observable.zip(getStringObservable(), getIntegerObservable(), new BiFunction<String, Integer, Object>() {
-            @Override
-            public Object apply(String s, Integer integer) throws Exception {
-                return s + integer;
-            }
-        }).subscribe(new Consumer<Object>() {
-            @Override
-            public void accept(Object o) throws Exception {
-                String s = (String) o;
-                content.append("zip : accept : " + s + "\n");
-                Logger.e("zip : accept : " + s + "\n");
-                Logger.e("zip : accept : " + s + "\n");
-                Logger.e("zip : accept : " + s + "\n");
-                Logger.e("zip : accept : " + s + "\n");
-                Logger.e("zip : accept : " + s + "\n");
-            }
+        mDisposable = Observable.zip(getStringObservable(), getIntegerObservable(), (s, integer) ->
+                s + integer
+        ).subscribe((Object o) -> {
+            String s = (String) o;
+            content.append("zip : accept : " + s + "\n");
+            Logger.e("zip : accept : " + s + "\n");
+            Logger.e("zip : accept : " + s + "\n");
+            Logger.e("zip : accept : " + s + "\n");
+            Logger.e("zip : accept : " + s + "\n");
+            Logger.e("zip : accept : " + s + "\n");
         });
     }
 
     private Observable<String> getStringObservable() {
-        return Observable.create(new ObservableOnSubscribe<String>() {
-            @Override
-            public void subscribe(ObservableEmitter<String> emitter) throws Exception {
-                if (!emitter.isDisposed()) {
-                    emitter.onNext("A");
-                    content.append("String emit : A \n");
-                    Logger.e("String emit : A \n");
-                    emitter.onNext("B");
-                    content.append("String emit : B \n");
-                    Logger.e("String emit : B \n");
-                    emitter.onNext("C");
-                    content.append("String emit : C \n");
-                    Logger.e("String emit : C \n");
-                }
+        return Observable.create((emitter) -> {
+            if (!emitter.isDisposed()) {
+                emitter.onNext("A");
+                content.append("String emit : A \n");
+                Logger.e("String emit : A \n");
+                emitter.onNext("B");
+                content.append("String emit : B \n");
+                Logger.e("String emit : B \n");
+                emitter.onNext("C");
+                content.append("String emit : C \n");
+                Logger.e("String emit : C \n");
             }
         });
     }
 
     private Observable<Integer> getIntegerObservable() {
-        return Observable.create(new ObservableOnSubscribe<Integer>() {
-            @Override
-            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
-                if (!emitter.isDisposed()) {
-                    emitter.onNext(1);
-                    content.append("Integer emit : 1 \n");
-                    Logger.e("Integer emit : 1 \n");
-                    emitter.onNext(2);
-                    content.append("Integer emit : 2 \n");
-                    Logger.e("Integer emit : 2 \n");
-                    emitter.onNext(3);
-                    content.append("Integer emit : 3 \n");
-                    Logger.e("Integer emit : 3 \n");
-                    emitter.onNext(4);
-                    content.append("Integer emit : 4 \n");
-                    Logger.e("Integer emit : 4 \n");
-                    emitter.onNext(5);
-                    content.append("Integer emit : 5 \n");
-                    Logger.e("Integer emit : 5 \n");
-                }
+        return Observable.create((emitter) -> {
+            if (!emitter.isDisposed()) {
+                emitter.onNext(1);
+                content.append("Integer emit : 1 \n");
+                Logger.e("Integer emit : 1 \n");
+                emitter.onNext(2);
+                content.append("Integer emit : 2 \n");
+                Logger.e("Integer emit : 2 \n");
+                emitter.onNext(3);
+                content.append("Integer emit : 3 \n");
+                Logger.e("Integer emit : 3 \n");
+                emitter.onNext(4);
+                content.append("Integer emit : 4 \n");
+                Logger.e("Integer emit : 4 \n");
+                emitter.onNext(5);
+                content.append("Integer emit : 5 \n");
+                Logger.e("Integer emit : 5 \n");
             }
         });
     }
@@ -347,12 +321,9 @@ public class RxJavaActivity extends BaseActivity {
      */
     private void test5() {
         mDisposable = Observable.concat(Observable.just(1, 2, 3), Observable.just(4, 5, 6))
-                .subscribe(new Consumer<Integer>() {
-                    @Override
-                    public void accept(Integer integer) throws Exception {
-                        content.append("concat : " + integer + "\n");
-                        Logger.e("concat : " + integer + "\n");
-                    }
+                .subscribe((integer) -> {
+                    content.append("concat : " + integer + "\n");
+                    Logger.e("concat : " + integer + "\n");
                 });
     }
 
@@ -369,31 +340,22 @@ public class RxJavaActivity extends BaseActivity {
      * 采用一个随机数，生成一个时间，然后通过 delay（后面会讲）操作符，做一个小延时操作，而查看 Logger 日志也确认验证了我们上面的说法，它是无序的。
      */
     private void test6() {
-        mDisposable = Observable.create(new ObservableOnSubscribe<Integer>() {
-            @Override
-            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
-                emitter.onNext(1);
-                emitter.onNext(2);
-                emitter.onNext(3);
+        mDisposable = Observable.create((ObservableEmitter<Integer> emitter) -> {
+            emitter.onNext(1);
+            emitter.onNext(2);
+            emitter.onNext(3);
+        }).flatMap((integer) -> {
+            List<String> list = new ArrayList<>();
+            for (int i = 0; i < 3; i++) {
+                list.add("I am value " + integer);
             }
-        }).flatMap(new Function<Integer, ObservableSource<String>>() {
-            @Override
-            public ObservableSource<String> apply(@NonNull Integer integer) throws Exception {
-                List<String> list = new ArrayList<>();
-                for (int i = 0; i < 3; i++) {
-                    list.add("I am value " + integer);
-                }
-                int delayTime = (int) (1 + Math.random() * 10);
-                return Observable.fromIterable(list).delay(delayTime, TimeUnit.MILLISECONDS);
-            }
+            int delayTime = (int) (1 + Math.random() * 10);
+            return Observable.fromIterable(list).delay(delayTime, TimeUnit.MILLISECONDS);
         }).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<String>() {
-                    @Override
-                    public void accept(String s) throws Exception {
-                        content.append("flatMap : accept : " + s + "\n");
-                        Logger.e("flatMap : accept : " + s + "\n");
-                    }
+                .subscribe((s) -> {
+                    content.append("flatMap : accept : " + s + "\n");
+                    Logger.e("flatMap : accept : " + s + "\n");
                 });
     }
 
@@ -411,31 +373,22 @@ public class RxJavaActivity extends BaseActivity {
      * 和flatMap一致，但这是有序的
      */
     private void test7() {
-        mDisposable = Observable.create(new ObservableOnSubscribe<Integer>() {
-            @Override
-            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
-                emitter.onNext(1);
-                emitter.onNext(2);
-                emitter.onNext(3);
+        mDisposable = Observable.create((ObservableEmitter<Integer> emitter) -> {
+            emitter.onNext(1);
+            emitter.onNext(2);
+            emitter.onNext(3);
+        }).concatMap((integer) -> {
+            List<String> list = new ArrayList<>();
+            for (int i = 0; i < 3; i++) {
+                list.add("I am value " + integer);
             }
-        }).concatMap(new Function<Integer, ObservableSource<String>>() {
-            @Override
-            public ObservableSource<String> apply(@NonNull Integer integer) throws Exception {
-                List<String> list = new ArrayList<>();
-                for (int i = 0; i < 3; i++) {
-                    list.add("I am value " + integer);
-                }
-                int delayTime = (int) (1 + Math.random() * 10);
-                return Observable.fromIterable(list).delay(delayTime, TimeUnit.MILLISECONDS);
-            }
+            int delayTime = (int) (1 + Math.random() * 10);
+            return Observable.fromIterable(list).delay(delayTime, TimeUnit.MILLISECONDS);
         }).subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<String>() {
-                    @Override
-                    public void accept(String s) throws Exception {
-                        content.append("flatMap : accept : " + s + "\n");
-                        Logger.e("flatMap : accept : " + s + "\n");
-                    }
+                .subscribe((s) -> {
+                    content.append("flatMap : accept : " + s + "\n");
+                    Logger.e("flatMap : accept : " + s + "\n");
                 });
     }
 
@@ -451,12 +404,9 @@ public class RxJavaActivity extends BaseActivity {
     private void test8() {
         mDisposable = Observable.just(1, 1, 2, 3, 4, 4, 4, 5)
                 .distinct()
-                .subscribe(new Consumer<Integer>() {
-                    @Override
-                    public void accept(Integer integer) throws Exception {
-                        content.append("flatMap : accept : " + integer + "\n");
-                        Logger.e("flatMap : accept : " + integer + "\n");
-                    }
+                .subscribe((integer) -> {
+                    content.append("flatMap : accept : " + integer + "\n");
+                    Logger.e("flatMap : accept : " + integer + "\n");
                 });
     }
 
@@ -471,18 +421,12 @@ public class RxJavaActivity extends BaseActivity {
      */
     private void test9() {
         mDisposable = Observable.just(13, 12, 22, 32, 41, 41, 42, 53)
-                .filter(new Predicate<Integer>() {
-                    @Override
-                    public boolean test(Integer integer) throws Exception {
-                        return integer >= 30;
-                    }
-                })
-                .subscribe(new Consumer<Integer>() {
-                    @Override
-                    public void accept(Integer integer) throws Exception {
-                        content.append("flatMap : accept : " + integer + "\n");
-                        Logger.e("flatMap : accept : " + integer + "\n");
-                    }
+                .filter((integer) ->
+                        integer >= 30
+                )
+                .subscribe((integer) -> {
+                    content.append("flatMap : accept : " + integer + "\n");
+                    Logger.e("flatMap : accept : " + integer + "\n");
                 });
     }
 
@@ -506,17 +450,14 @@ public class RxJavaActivity extends BaseActivity {
     private void test10() {
         mDisposable = Observable.just(1, 2, 3, 4, 5)
                 .buffer(3, 2)
-                .subscribe(new Consumer<List<Integer>>() {
-                    @Override
-                    public void accept(@NonNull List<Integer> integers) throws Exception {
-                        content.append("buffer size : " + integers.size() + "\n");
-                        Logger.e("buffer size : " + integers.size() + "\n");
-                        content.append("buffer value : " + integers.toString() + "\n");
-                        Logger.e("buffer value : " + integers.toString() + "\n");
-                        for (Integer i : integers) {
-                            content.append(i + "\n");
-                            Logger.e(i + "\n");
-                        }
+                .subscribe((integers) -> {
+                    content.append("buffer size : " + integers.size() + "\n");
+                    Logger.e("buffer size : " + integers.size() + "\n");
+                    content.append("buffer value : " + integers.toString() + "\n");
+                    Logger.e("buffer value : " + integers.toString() + "\n");
+                    for (Integer i : integers) {
+                        content.append(i + "\n");
+                        Logger.e(i + "\n");
                     }
                 });
     }
@@ -532,13 +473,11 @@ public class RxJavaActivity extends BaseActivity {
         Logger.e("timer start : " + TimeUtil.getLongTime() + "\n");
         mDisposable = Observable.timer(2, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()) // timer 默认在新线程，所以需要切换回主线程
-                .subscribe(new Consumer<Long>() {
-                    @Override
-                    public void accept(@NonNull Long aLong) throws Exception {
-                        content.append("timer :" + aLong + " at " + TimeUtil.getLongTime() + "\n");
-                        Logger.e("timer :" + aLong + " at " + TimeUtil.getLongTime() + "\n");
-                    }
+                // timer 默认在新线程，所以需要切换回主线程
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe((aLong) -> {
+                    content.append("timer :" + aLong + " at " + TimeUtil.getLongTime() + "\n");
+                    Logger.e("timer :" + aLong + " at " + TimeUtil.getLongTime() + "\n");
                 });
     }
 
@@ -560,13 +499,11 @@ public class RxJavaActivity extends BaseActivity {
         Logger.e("timer start : " + TimeUtil.getLongTime() + "\n");
         mDisposable = Observable.interval(3, 2, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()) // timer 默认在新线程，所以需要切换回主线程
-                .subscribe(new Consumer<Long>() {
-                    @Override
-                    public void accept(@NonNull Long aLong) throws Exception {
-                        content.append("timer :" + aLong + " at " + TimeUtil.getLongTime() + "\n");
-                        Logger.e("timer :" + aLong + " at " + TimeUtil.getLongTime() + "\n");
-                    }
+                // timer 默认在新线程，所以需要切换回主线程
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe((aLong) -> {
+                    content.append("timer :" + aLong + " at " + TimeUtil.getLongTime() + "\n");
+                    Logger.e("timer :" + aLong + " at " + TimeUtil.getLongTime() + "\n");
                 });
     }
 
@@ -584,18 +521,12 @@ public class RxJavaActivity extends BaseActivity {
      */
     private void test13() {
         mDisposable = Observable.just(1, 2, 3, 4)
-                .doOnNext(new Consumer<Integer>() {
-                    @Override
-                    public void accept(@NonNull Integer integer) throws Exception {
-                        content.append("doOnNext 保存 " + integer + "成功" + "\n");
-                        Logger.e("doOnNext 保存 " + integer + "成功" + "\n");
-                    }
-                }).subscribe(new Consumer<Integer>() {
-                    @Override
-                    public void accept(@NonNull Integer integer) throws Exception {
-                        content.append("doOnNext :" + integer + "\n");
-                        Logger.e("doOnNext :" + integer + "\n");
-                    }
+                .doOnNext((integer) -> {
+                    content.append("doOnNext 保存 " + integer + "成功" + "\n");
+                    Logger.e("doOnNext 保存 " + integer + "成功" + "\n");
+                }).subscribe((integer) -> {
+                    content.append("doOnNext :" + integer + "\n");
+                    Logger.e("doOnNext :" + integer + "\n");
                 });
     }
 
@@ -628,12 +559,9 @@ public class RxJavaActivity extends BaseActivity {
 
     private void test15() {
         mDisposable = Observable.just(1, 2, 3, 4, 5, 6, 7)
-                .subscribe(new Consumer<Integer>() {
-                    @Override
-                    public void accept(Integer integer) throws Exception {
-                        content.append("doOnNext :" + integer + "\n");
-                        Logger.e("doOnNext :" + integer + "\n");
-                    }
+                .subscribe((integer) -> {
+                    content.append("doOnNext :" + integer + "\n");
+                    Logger.e("doOnNext :" + integer + "\n");
                 });
     }
 
@@ -648,28 +576,30 @@ public class RxJavaActivity extends BaseActivity {
         mDisposable = Observable.create(new ObservableOnSubscribe<Integer>() {
             @Override
             public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
-                emitter.onNext(1); // skip
+                // skip
+                emitter.onNext(1);
                 TimeUnit.MILLISECONDS.sleep(400);
 //                Thread.sleep(400);
-                emitter.onNext(2); // deliver
+                // deliver
+                emitter.onNext(2);
                 TimeUnit.MILLISECONDS.sleep(505);
-                emitter.onNext(3); // skip
+                // skip
+                emitter.onNext(3);
                 Thread.sleep(100);
-                emitter.onNext(4); // deliver
+                // deliver
+                emitter.onNext(4);
                 Thread.sleep(605);
-                emitter.onNext(5); // deliver
+                // deliver
+                emitter.onNext(5);
                 Thread.sleep(510);
                 emitter.onComplete();
             }
         }).debounce(500, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Integer>() {
-                    @Override
-                    public void accept(Integer integer) throws Exception {
-                        content.append("debounce :" + integer + "\n");
-                        Logger.e("debounce :" + integer + "\n");
-                    }
+                .subscribe((integer) -> {
+                    content.append("debounce :" + integer + "\n");
+                    Logger.e("debounce :" + integer + "\n");
                 });
     }
 
@@ -683,12 +613,9 @@ public class RxJavaActivity extends BaseActivity {
      * 每次订阅都会创建一个新的 Observable，并且如果没有被订阅，就不会产生新的 Observable。
      */
     private void test17() {
-        Observable<Integer> observable = Observable.defer(new Callable<ObservableSource<Integer>>() {
-            @Override
-            public ObservableSource<Integer> call() throws Exception {
-                return Observable.just(1, 2, 3, 4);
-            }
-        });
+        Observable<Integer> observable = Observable.defer(() ->
+                Observable.just(1, 2, 3, 4)
+        );
 
         observable.subscribe(new Observer<Integer>() {
             @Override
@@ -724,12 +651,9 @@ public class RxJavaActivity extends BaseActivity {
     private void test18() {
         mDisposable = Observable.just(1, 2, 3)
                 .last(4)
-                .subscribe(new Consumer<Integer>() {
-                    @Override
-                    public void accept(Integer integer) throws Exception {
-                        content.append("last : " + integer + "\n");
-                        Logger.e("last : " + integer + "\n");
-                    }
+                .subscribe((integer) -> {
+                    content.append("last : " + integer + "\n");
+                    Logger.e("last : " + integer + "\n");
                 });
     }
 
@@ -749,12 +673,9 @@ public class RxJavaActivity extends BaseActivity {
      */
     private void test19() {
         mDisposable = Observable.merge(Observable.just(1, 2, 3, 4, 5, 6), Observable.just(9, 8, 7))
-                .subscribe(new Consumer<Integer>() {
-                    @Override
-                    public void accept(@NonNull Integer integer) throws Exception {
-                        content.append("merge :" + integer + "\n");
-                        Logger.e("accept: merge :" + integer + "\n");
-                    }
+                .subscribe((integer) -> {
+                    content.append("merge :" + integer + "\n");
+                    Logger.e("accept: merge :" + integer + "\n");
                 });
     }
 
@@ -766,17 +687,11 @@ public class RxJavaActivity extends BaseActivity {
      */
     private void test20() {
         mDisposable = Observable.just(1, 2, 3, 4)
-                .reduce(new BiFunction<Integer, Integer, Integer>() {
-                    @Override
-                    public Integer apply(Integer integer, Integer integer2) throws Exception {
-                        return integer + integer2;
-                    }
-                }).subscribe(new Consumer<Integer>() {
-                    @Override
-                    public void accept(Integer integer) throws Exception {
-                        content.append("reduce : " + integer + "\n");
-                        Logger.e("accept: reduce : " + integer + "\n");
-                    }
+                .reduce((integer, integer2) ->
+                        integer + integer2
+                ).subscribe((integer) -> {
+                    content.append("reduce : " + integer + "\n");
+                    Logger.e("accept: reduce : " + integer + "\n");
                 });
     }
 
@@ -790,17 +705,11 @@ public class RxJavaActivity extends BaseActivity {
      */
     private void test21() {
         mDisposable = Observable.just(1, 3, 5, 7)
-                .scan(new BiFunction<Integer, Integer, Integer>() {
-                    @Override
-                    public Integer apply(Integer integer, Integer integer2) throws Exception {
-                        return integer + integer2;
-                    }
-                }).subscribe(new Consumer<Integer>() {
-                    @Override
-                    public void accept(Integer integer) throws Exception {
-                        content.append("scan " + integer + "\n");
-                        Logger.e("accept: scan " + integer + "\n");
-                    }
+                .scan((integer, integer2) ->
+                        integer + integer2
+                ).subscribe((integer) -> {
+                    content.append("scan " + integer + "\n");
+                    Logger.e("accept: scan " + integer + "\n");
                 });
 
     }
@@ -834,26 +743,23 @@ public class RxJavaActivity extends BaseActivity {
     private void test22() {
         content.append("window" + "\n");
         Logger.e("window" + "\n");
-        mDisposable = Observable.interval(300, TimeUnit.MILLISECONDS) //300毫秒发一次
-                .take(15) //最多发15次
-                .window(900, TimeUnit.MILLISECONDS) //600毫秒一组
+        //300毫秒发一次
+        mDisposable = Observable.interval(300, TimeUnit.MILLISECONDS)
+                //最多发15次
+                .take(15)
+                //600毫秒一组
+                .window(900, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<Observable<Long>>() {
-                    @Override
-                    public void accept(Observable<Long> longObservable) throws Exception {
-                        content.append("Sub Divide begin...\n");
-                        Logger.e("Sub Divide begin...\n");
-                        mDisposable = longObservable.subscribeOn(Schedulers.io())
-                                .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe(new Consumer<Long>() {
-                                    @Override
-                                    public void accept(Long aLong) throws Exception {
-                                        content.append("Next:" + aLong + "\n");
-                                        Logger.e("Next:" + aLong + "\n");
-                                    }
-                                });
-                    }
+                .subscribe((longObservable) -> {
+                    content.append("Sub Divide begin...\n");
+                    Logger.e("Sub Divide begin...\n");
+                    mDisposable = longObservable.subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe((aLong) -> {
+                                content.append("Next:" + aLong + "\n");
+                                Logger.e("Next:" + aLong + "\n");
+                            });
                 });
     }
 
@@ -888,87 +794,52 @@ public class RxJavaActivity extends BaseActivity {
      * onNext : RxCachedThreadScheduler-2
      */
     private void test23() {
-        mDisposable = Observable.create(new ObservableOnSubscribe<Integer>() {
-            @Override
-            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
-                emitter.onNext(1);
-                emitter.onComplete();
-            }
+        mDisposable = Observable.create((ObservableEmitter<Integer> emitter) -> {
+            emitter.onNext(1);
+            emitter.onComplete();
         })
-                .doOnSubscribe(new Consumer<Disposable>() {
-                    @Override
-                    public void accept(Disposable disposable) throws Exception {
-                        Logger.e("doOnSubscribe: " + Thread.currentThread().getName());
-                    }
-                })
-                .doOnNext(new Consumer<Integer>() {
-                    @Override
-                    public void accept(Integer integer) throws Exception {
-                        Logger.e("doOnNext: " + Thread.currentThread().getName());
-                    }
-                })
+                .doOnSubscribe((disposable) ->
+                        Logger.e("doOnSubscribe: " + Thread.currentThread().getName())
+                )
+                .doOnNext((integer) ->
+                        Logger.e("doOnNext: " + Thread.currentThread().getName())
+
+                )
                 .subscribeOn(Schedulers.newThread())
                 .subscribeOn(Schedulers.single())
-                .map(new Function<Integer, String>() {
-                    @Override
-                    public String apply(Integer integer) throws Exception {
-                        Logger.e("map thread: " + Thread.currentThread().getName());
-                        return integer + "";
-                    }
+                .map((integer) -> {
+                    Logger.e("map thread: " + Thread.currentThread().getName());
+                    return integer + "";
                 })
-                .doOnSubscribe(new Consumer<Disposable>() {
-                    @Override
-                    public void accept(Disposable disposable) throws Exception {
-                        Logger.e("doOnSubscribe after new Thread: " + Thread.currentThread().getName());
-                    }
-                })
-                .doOnNext(new Consumer<String>() {
-                    @Override
-                    public void accept(String s) throws Exception {
-                        Logger.e("doOnNext after new Thread: " + Thread.currentThread().getName());
-                    }
-                })
+                .doOnSubscribe((disposable) ->
+                        Logger.e("doOnSubscribe after new Thread: " + Thread.currentThread().getName())
+                )
+                .doOnNext((s) ->
+                        Logger.e("doOnNext after new Thread: " + Thread.currentThread().getName())
+                )
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map(new Function<String, String>() {
-                    @Override
-                    public String apply(String s) throws Exception {
-                        Logger.e("map after main: " + Thread.currentThread().getName());
-                        return s + "1";
-                    }
+                .map((s) -> {
+                    Logger.e("map after main: " + Thread.currentThread().getName());
+                    return s + "1";
                 })
-                .doOnNext(new Consumer<String>() {
-                    @Override
-                    public void accept(String s) throws Exception {
-                        Logger.e("doOnNext after main: " + Thread.currentThread().getName());
-                    }
-                })
-                .doOnSubscribe(new Consumer<Disposable>() {
-                    @Override
-                    public void accept(Disposable disposable) throws Exception {
-                        Logger.e("doOnSubscribe after main: " + Thread.currentThread().getName());
-                    }
-                })
+                .doOnNext((s) ->
+                        Logger.e("doOnNext after main: " + Thread.currentThread().getName())
+                )
+                .doOnSubscribe((disposable) ->
+                        Logger.e("doOnSubscribe after main: " + Thread.currentThread().getName())
+                )
                 .subscribeOn(Schedulers.computation())
                 .observeOn(Schedulers.io())
-                .doOnNext(new Consumer<String>() {
-                    @Override
-                    public void accept(String s) throws Exception {
-                        Logger.e("doOnNext after trampoline: " + Thread.currentThread().getName());
-                    }
-                })
-                .doOnSubscribe(new Consumer<Disposable>() {
-                    @Override
-                    public void accept(Disposable disposable) throws Exception {
-                        Logger.e("doOnSubscribe after trampoline: " + Thread.currentThread().getName());
-                    }
-                })
-                .subscribe(new Consumer<String>() {
-                    @Override
-                    public void accept(String s) throws Exception {
-                        Logger.e("onNext : " + Thread.currentThread().getName());
-                    }
-                });
+                .doOnNext((s) ->
+                        Logger.e("doOnNext after trampoline: " + Thread.currentThread().getName())
+                )
+                .doOnSubscribe((disposable) ->
+                        Logger.e("doOnSubscribe after trampoline: " + Thread.currentThread().getName())
+                )
+                .subscribe((s) ->
+                        Logger.e("onNext : " + Thread.currentThread().getName())
+                );
     }
 
     private void test24() {

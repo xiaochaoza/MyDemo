@@ -49,7 +49,8 @@ public class PickerActivity extends BaseActivity {
     @OnClick({R.id.bt_pick1, R.id.bt_pick2, R.id.bt_pick3, R.id.bt_pick4})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.bt_pick1://时间选择器
+            //时间选择器
+            case R.id.bt_pick1:
                 TimePickerView pvTime = new TimePickerBuilder(this, new OnTimeSelectListener() {
                     @Override
                     public void onTimeSelect(Date date, View v) {
@@ -58,9 +59,9 @@ public class PickerActivity extends BaseActivity {
                 }).build();
                 pvTime.show();
                 break;
-            case R.id.bt_pick2://省市区三级联动菜单
+            //省市区三级联动菜单
+            case R.id.bt_pick2:
                 initJson();
-
                 //条件选择器
                 OptionsPickerView pvOptions = new OptionsPickerBuilder(this, new OnOptionsSelectListener() {
                     @Override
@@ -79,12 +80,10 @@ public class PickerActivity extends BaseActivity {
                                 options3Items.get(options1).get(options2).get(options3) : "";
                         ToastUtil.show(opt1tx + opt2tx + opt3tx);
                     }
-                }).setOptionsSelectChangeListener(new OnOptionsSelectChangeListener() {
-                    @Override
-                    public void onOptionsSelectChanged(int options1, int options2, int options3) {
+                }).setOptionsSelectChangeListener((options1, options2, options3) -> {
 
-                    }
-                }).build();
+                        }
+                ).build();
 
                 pvOptions.setPicker(options1Items, options2Items, options3Items);
                 pvOptions.show();
@@ -92,6 +91,8 @@ public class PickerActivity extends BaseActivity {
             case R.id.bt_pick3:
                 break;
             case R.id.bt_pick4:
+                break;
+            default:
                 break;
         }
     }
@@ -104,15 +105,18 @@ public class PickerActivity extends BaseActivity {
         for (int i = 0; i < provinces.size(); i++) {
             //添加省份
             options1Items.add(provinces.get(i).name);
-            ArrayList<String> cityList = new ArrayList<>();//该省的城市列表（第二级）
-            ArrayList<ArrayList<String>> province_countyList = new ArrayList<>();//该省的所有地区列表（第三极）
+            //该省的城市列表（第二级）
+            ArrayList<String> cityList = new ArrayList<>();
+            //该省的所有地区列表（第三极）
+            ArrayList<ArrayList<String>> province_countyList = new ArrayList<>();
 
             Logger.d(provinces.get(i).name);
             List<AddressInfoBean.Province.City> cities = provinces.get(i).cities;
             for (int j = 0; j < cities.size(); j++) {
                 //添加城市
                 cityList.add(cities.get(j).name);
-                ArrayList<String> city_countyList = new ArrayList<>();//该城市的所有地区列表
+                //该城市的所有地区列表
+                ArrayList<String> city_countyList = new ArrayList<>();
 
                 List<AddressInfoBean.Province.City.County> counties = provinces.get(i).cities.get(j).counties;
                 List<String> countyList = new ArrayList<>();

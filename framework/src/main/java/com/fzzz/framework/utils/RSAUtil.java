@@ -36,8 +36,10 @@ public class RSAUtil {
      * @throws UnsupportedEncodingException
      */
     public static KeyPair getKeyPair() throws NoSuchAlgorithmException, UnsupportedEncodingException {
-        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");// 获得RSA密钥对的生成器实例
-        SecureRandom secureRandom = new SecureRandom(String.valueOf(System.currentTimeMillis()).getBytes(StandardCharsets.UTF_8)); // 说的一个安全的随机数
+        // 获得RSA密钥对的生成器实例
+        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
+        // 说的一个安全的随机数
+        SecureRandom secureRandom = new SecureRandom(String.valueOf(System.currentTimeMillis()).getBytes(StandardCharsets.UTF_8));
         keyPairGenerator.initialize(2048, secureRandom);
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
         return keyPair;
@@ -52,8 +54,10 @@ public class RSAUtil {
     public static String getPublicKey(KeyPair keyPair) {
         PublicKey publicKey = keyPair.getPublic();
         byte[] bytes = publicKey.getEncoded();
-//        return Base64.getEncoder().encodeToString(bytes);//java
-        return Base64.encodeToString(bytes, android.util.Base64.NO_WRAP);//android
+        //java
+//        return Base64.getEncoder().encodeToString(bytes);
+        //android
+        return Base64.encodeToString(bytes, android.util.Base64.NO_WRAP);
     }
 
     /**
@@ -65,8 +69,10 @@ public class RSAUtil {
     public static String getPrivateKey(KeyPair keyPair) {
         PrivateKey privateKey = keyPair.getPrivate();
         byte[] bytes = privateKey.getEncoded();
-//        return Base64.getEncoder().encodeToString(bytes);//java
-        return Base64.encodeToString(bytes, android.util.Base64.NO_WRAP);//android
+        //java
+//        return Base64.getEncoder().encodeToString(bytes);
+        //android
+        return Base64.encodeToString(bytes, android.util.Base64.NO_WRAP);
     }
 
     /**
@@ -76,8 +82,10 @@ public class RSAUtil {
      * @return PublicKey
      */
     public static PublicKey string2PublicKey(String pubStr) throws NoSuchAlgorithmException, InvalidKeySpecException {
-//        byte[] bytes = Base64.getDecoder().decode(pubStr);//java
-        byte[] bytes = Base64.decode(pubStr, Base64.NO_WRAP);//android
+        //java
+//        byte[] bytes = Base64.getDecoder().decode(pubStr);
+        //android
+        byte[] bytes = Base64.decode(pubStr, Base64.NO_WRAP);
         X509EncodedKeySpec keySpec = new X509EncodedKeySpec(bytes);
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         PublicKey publicKey = keyFactory.generatePublic(keySpec);
@@ -91,8 +99,10 @@ public class RSAUtil {
      * @return PrivateKey
      */
     public static PrivateKey string2Privatekey(String priStr) throws NoSuchAlgorithmException, InvalidKeySpecException {
-//        byte[] bytes = Base64.getDecoder().decode(priStr);//java
-        byte[] bytes = Base64.decode(priStr, Base64.NO_WRAP);//android
+        //java
+//        byte[] bytes = Base64.getDecoder().decode(priStr);
+        //android
+        byte[] bytes = Base64.decode(priStr, Base64.NO_WRAP);
         PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(bytes);
         KeyFactory keyFactory = KeyFactory.getInstance("RSA");
         PrivateKey privateKey = keyFactory.generatePrivate(keySpec);

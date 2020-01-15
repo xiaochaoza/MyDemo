@@ -1,5 +1,7 @@
 package com.fzzz.framework.helper;
 
+import androidx.annotation.NonNull;
+
 import com.fzzz.framework.BuildConfig;
 import com.fzzz.framework.net.RemoteService;
 
@@ -61,7 +63,7 @@ public class RetrofitJuHeHelper {
     private class RequestInterceptor implements Interceptor{
 
         @Override
-        public Response intercept(Chain chain) throws IOException {
+        public Response intercept(@NonNull Chain chain) throws IOException {
             Request request = chain.request()
                     .newBuilder()
                     .addHeader("Content-Type", "application/json")

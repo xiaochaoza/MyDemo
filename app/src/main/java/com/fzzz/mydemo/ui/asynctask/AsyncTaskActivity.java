@@ -44,7 +44,10 @@ public class AsyncTaskActivity extends BaseActivity {
     ImageView image;
     private MyAsyncTask asyncTask;
 
-    private String loadType;//0：进度条加载，1：dialog加载
+    /**
+     * 0：进度条加载，1：dialog加载
+     */
+    private String loadType;
     private ProgressDialog progressDialog;
     private String url = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550468908242&di=48b779b79168a94b30b3036ff1b084aa&imgtype=0&src=http%3A%2F%2Fwww.pptbz.com%2Fpptpic%2FUploadFiles_6909%2F201203%2F2012031220134655.jpg";
 
@@ -65,6 +68,8 @@ public class AsyncTaskActivity extends BaseActivity {
                 initDialog();
                 asyncTask = new MyAsyncTask();
                 asyncTask.execute(url);
+                break;
+            default:
                 break;
         }
     }
@@ -116,12 +121,14 @@ public class AsyncTaskActivity extends BaseActivity {
                 case "1":
                     progressDialog.show();
                     break;
+                default:
+                    break;
             }
             image.setImageBitmap(null);
         }
 
         /**
-         * 在doInBackgroudn()方法中调用publishProgress()方法，更新任务的执行进度后，就会触发该方法。（获取进度跟新进度条）
+         * 在doInBackground()方法中调用publishProgress()方法，更新任务的执行进度后，就会触发该方法。（获取进度跟新进度条）
          */
         @Override
         protected void onProgressUpdate(Integer... values) {
@@ -134,12 +141,13 @@ public class AsyncTaskActivity extends BaseActivity {
                 case "0":
                     //length不转float会导致没有小数，结果一直为0
                     int progress = (int) (current / (float) length * 100);
-//                  pbLoadRound.setProgress(progress);//圆形就是一直转，设进度无效
                     pbLoadLine.setProgress(progress);
                     break;
                 case "1":
                     progressDialog.setMax(length);
                     progressDialog.setProgress(current);
+                    break;
+                default:
                     break;
             }
         }
@@ -199,6 +207,8 @@ public class AsyncTaskActivity extends BaseActivity {
                     break;
                 case "1":
                     progressDialog.dismiss();
+                    break;
+                default:
                     break;
             }
             image.setImageBitmap(bitmap);

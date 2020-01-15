@@ -1,5 +1,6 @@
 package com.fzzz.mydemo.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
  * time: 2019-05-14
  * update:
  */
-public class UserReturnBean {
+public class UserReturnBean implements Serializable {
 
     /**
      * resultCode : 0

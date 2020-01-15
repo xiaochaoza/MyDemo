@@ -36,7 +36,6 @@ import okhttp3.Response;
 public class OkHttpActivity extends BaseActivity {
     public static final String TAG = "OkHttpActivity";
 
-    //1.创建OkHttpClient对象
     OkHttpClient httpClient = new OkHttpClient.Builder()
             .addInterceptor(new LoggingInterceptor())
             .connectTimeout(20, TimeUnit.SECONDS)
@@ -63,6 +62,8 @@ public class OkHttpActivity extends BaseActivity {
                 break;
             case R.id.bt4:
                 hasJsonPostAsync();
+                break;
+            default:
                 break;
         }
     }
@@ -150,7 +151,8 @@ public class OkHttpActivity extends BaseActivity {
      * json提交post请求
      */
     private void hasJsonPostAsync() {
-        MediaType mediaType = MediaType.parse("application/json; charset=utf-8");//"类型,字节码"
+        //"类型,字节码"
+        MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
         JSONObject params = new JSONObject();
         try {
             params.put("key", BuildConfig.JUHE_APP_KEY);

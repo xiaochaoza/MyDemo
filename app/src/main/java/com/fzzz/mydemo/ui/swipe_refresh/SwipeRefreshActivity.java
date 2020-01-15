@@ -26,9 +26,9 @@ import butterknife.OnClick;
  */
 @Route(path = Constants.PATH_APP_SWIPE_REFRESH)
 public class SwipeRefreshActivity extends BaseActivity {
+
     public static final String TAG = "SwipeRefresh";
-    //    @BindView(R.id.sv_root)
-//    LinearLayout svRoot;
+
     @BindView(R.id.root_view)
     SwipeRefreshLayout rootView;
     @BindView(R.id.tv_conutdown_timer)
@@ -78,14 +78,11 @@ public class SwipeRefreshActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        rootView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                if (rootView.isRefreshing()) {
-                    handler.postDelayed(runnable, 1500);
-                    time = 10;
-                    tvConutdownTimer.setText("CountDownTimer实现");
-                }
+        rootView.setOnRefreshListener(() -> {
+            if (rootView.isRefreshing()) {
+                handler.postDelayed(runnable, 1500);
+                time = 10;
+                tvConutdownTimer.setText("CountDownTimer实现");
             }
         });
     }
@@ -106,6 +103,8 @@ public class SwipeRefreshActivity extends BaseActivity {
                 }
                 Log.e(TAG, "-------------------------------->click finish");
                 btStart.setClickable(true);
+                break;
+            default:
                 break;
         }
     }

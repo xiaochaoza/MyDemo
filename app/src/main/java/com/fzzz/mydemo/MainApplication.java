@@ -31,20 +31,28 @@ public class MainApplication extends Application {
         context = getApplicationContext();
 
         //初始化路由arouter
-        if (BuildConfig.DEBUG) {   // These two lines must be written before init, otherwise these configurations will be invalid in the init process
-            ARouter.openLog();     // Print log
-            ARouter.openDebug();   // Turn on debugging mode (If you are running in InstantRun mode, you must turn on debug mode! Online version needs to be closed, otherwise there is a security risk)
+        // These two lines must be written before init, otherwise these configurations will be invalid in the init process
+        if (BuildConfig.DEBUG) {
+            // Print log
+            ARouter.openLog();
+            // Turn on debugging mode (If you are running in InstantRun mode, you must turn on debug mode! Online version needs to be closed, otherwise there is a security risk)
+            ARouter.openDebug();
         }
         //路由初始化
         ARouter.init(this);
 
         //logger初始化
         FormatStrategy formatStrategy = PrettyFormatStrategy.newBuilder()
-                .showThreadInfo(false)  // （可选）是否显示线程信息。默认值true
-                .methodCount(1)         // (可选）要显示的方法行数。默认值2
-                .methodOffset(0)        // （可选）隐藏内部方法调用到偏移量。默认值5
-                .logStrategy(new LogcatLogStrategy()) // （可选）更改要打印的日志策略。默认LogCat
-                .tag(DeviceUtil.getAppName(this))   // （可选）每个日志的全局标记。默认Default PRETTY_LOGGER
+                // （可选）是否显示线程信息。默认值true
+                .showThreadInfo(false)
+                // (可选）要显示的方法行数。默认值2
+                .methodCount(1)
+                // （可选）隐藏内部方法调用到偏移量。默认值5
+                .methodOffset(0)
+                // （可选）更改要打印的日志策略。默认LogCat
+                .logStrategy(new LogcatLogStrategy())
+                // （可选）每个日志的全局标记。默认Default PRETTY_LOGGER
+                .tag(DeviceUtil.getAppName(this))
                 .build();
 
         Logger.addLogAdapter(new AndroidLogAdapter(formatStrategy){

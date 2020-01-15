@@ -59,7 +59,6 @@ public class TakePicOldActivity extends BaseActivity implements SurfaceHolder.Ca
 
             bitmap = toRotating(data, degrees);
             imageView.setImageBitmap(bitmap);
-
         }
     };
 
@@ -122,33 +121,24 @@ public class TakePicOldActivity extends BaseActivity implements SurfaceHolder.Ca
     }
 
     private void initEvent() {
-        mSurfaceView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mCamera.autoFocus(null);
-            }
-        });
+        mSurfaceView.setOnClickListener((v) ->
+                mCamera.autoFocus(null)
+        );
 
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cameraRl.setVisibility(View.VISIBLE);
-                showPicRl.setVisibility(View.GONE);
-                mCamera.stopPreview();
-                startPreview(mCamera, mHolder);
-            }
+        cancel.setOnClickListener((v) -> {
+            cameraRl.setVisibility(View.VISIBLE);
+            showPicRl.setVisibility(View.GONE);
+            mCamera.stopPreview();
+            startPreview(mCamera, mHolder);
         });
 
 
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String result = getBase64ByBitmap(bitmap);
-                CameraActivity.base64Result = result;
+        confirm.setOnClickListener((v) -> {
+            String result = getBase64ByBitmap(bitmap);
+            CameraActivity.base64Result = result;
 
-                setResult(RESULT_OK);
-                finish();
-            }
+            setResult(RESULT_OK);
+            finish();
         });
     }
 
@@ -160,18 +150,17 @@ public class TakePicOldActivity extends BaseActivity implements SurfaceHolder.Ca
     public void takePic(View view) {
         switch (cameraID) {
             case Constants.CAMERA_OCR:
-                mCamera.autoFocus(new Camera.AutoFocusCallback() {
-                    @Override
-                    public void onAutoFocus(boolean success, Camera camera) {
-                        if (success) {
-                            //前两个参数可以为空,第三个方法是照片的回调
-                            mCamera.takePicture(null, null, mPictureCallback);
-                        }
+                mCamera.autoFocus((success, camera) -> {
+                    if (success) {
+                        //前两个参数可以为空,第三个方法是照片的回调
+                        mCamera.takePicture(null, null, mPictureCallback);
                     }
                 });
                 break;
             case Constants.CAMERA_FACE:
                 mCamera.takePicture(null, null, mPictureCallback);
+                break;
+            default:
                 break;
         }
     }
@@ -193,7 +182,6 @@ public class TakePicOldActivity extends BaseActivity implements SurfaceHolder.Ca
         super.onPause();
 
         releaseCamera();
-
     }
 
     /**
@@ -202,7 +190,6 @@ public class TakePicOldActivity extends BaseActivity implements SurfaceHolder.Ca
      * @return
      */
     private Camera initCamera() {
-
         Camera camera;
         try {
             camera = Camera.open(cameraID);
@@ -210,7 +197,6 @@ public class TakePicOldActivity extends BaseActivity implements SurfaceHolder.Ca
             camera = null;
             e.printStackTrace();
         }
-
         return camera;
     }
 
@@ -230,7 +216,6 @@ public class TakePicOldActivity extends BaseActivity implements SurfaceHolder.Ca
         }
     }
 
-
     /**
      * 解决预览变形问题
      *
@@ -242,25 +227,23 @@ public class TakePicOldActivity extends BaseActivity implements SurfaceHolder.Ca
     private Camera.Size getOptimalPreviewSize(List<Camera.Size> sizes, int w, int h) {
         final double ASPECT_TOLERANCE = 0.1;
         double targetRatio = (double) w / h;
-        if (sizes == null)
+        if (sizes == null) {
             return null;
-
+        }
         Camera.Size optimalSize = null;
         double minDiff = Double.MAX_VALUE;
-
         int targetHeight = h;
-
         // Try to find an size match aspect ratio and size
         for (Camera.Size size : sizes) {
             double ratio = (double) size.width / size.height;
-            if (Math.abs(ratio - targetRatio) > ASPECT_TOLERANCE)
+            if (Math.abs(ratio - targetRatio) > ASPECT_TOLERANCE) {
                 continue;
+            }
             if (Math.abs(size.height - targetHeight) < minDiff) {
                 optimalSize = size;
                 minDiff = Math.abs(size.height - targetHeight);
             }
         }
-
         // Cannot find the one match the aspect ratio, ignore the requirement
         if (optimalSize == null) {
             minDiff = Double.MAX_VALUE;
@@ -294,11 +277,16 @@ public class TakePicOldActivity extends BaseActivity implements SurfaceHolder.Ca
         if (cameraID == Constants.CAMERA_OCR) {
             parameters.setFocusMode(Camera.Parameters.FOCUS_MODE_AUTO);
         }
-        List<Camera.Size> sizeList = parameters.getSupportedPreviewSizes();//获取所有支持的camera尺寸
-        List<Camera.Size> picSizeList = parameters.getSupportedPictureSizes();//获取所有支持的pic尺寸
-        Camera.Size optionSize = getOptimalPreviewSize(sizeList, mSurfaceView.getHeight(), mSurfaceView.getWidth());//获取一个最为适配的camera.size
-        Camera.Size picSize = getOptimalPreviewSize(picSizeList, mSurfaceView.getHeight(), mSurfaceView.getWidth());//获取一个最为适配的pic.size
-        parameters.setPreviewSize(optionSize.width, optionSize.height);//把camera.size赋值到parameters
+        //获取所有支持的camera尺寸
+        List<Camera.Size> sizeList = parameters.getSupportedPreviewSizes();
+        //获取所有支持的pic尺寸
+        List<Camera.Size> picSizeList = parameters.getSupportedPictureSizes();
+        //获取一个最为适配的camera.size
+        Camera.Size optionSize = getOptimalPreviewSize(sizeList, mSurfaceView.getHeight(), mSurfaceView.getWidth());
+        //获取一个最为适配的pic.size
+        Camera.Size picSize = getOptimalPreviewSize(picSizeList, mSurfaceView.getHeight(), mSurfaceView.getWidth());
+        //把camera.size赋值到parameters
+        parameters.setPreviewSize(optionSize.width, optionSize.height);
         parameters.setPictureSize(picSize.width, picSize.height);
         parameters.setPictureFormat(ImageFormat.JPEG);
         mCamera.setParameters(parameters);
@@ -353,6 +341,8 @@ public class TakePicOldActivity extends BaseActivity implements SurfaceHolder.Ca
                 return 180;
             case Surface.ROTATION_270:
                 return 270;
+            default:
+                break;
         }
         return 0;
     }
@@ -371,7 +361,8 @@ public class TakePicOldActivity extends BaseActivity implements SurfaceHolder.Ca
         if (cameraID == Constants.CAMERA_FACE) {
             degree += 180;
         }
-        matrix.postRotate(degree); /*翻转90度*/
+        //翻转90度
+        matrix.postRotate(degree);
         int width = img.getWidth();
         int height = img.getHeight();
         img = Bitmap.createBitmap(img, 0, 0, width, height, matrix, true);
@@ -407,9 +398,12 @@ public class TakePicOldActivity extends BaseActivity implements SurfaceHolder.Ca
     private Bitmap comp(Bitmap image) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         image.compress(Bitmap.CompressFormat.JPEG, 80, baos);
-        if (baos.toByteArray().length / 1024 > 512) {//判断如果图片大于500KB,进行压缩
-            baos.reset();//重置baos即清空baos
-            image.compress(Bitmap.CompressFormat.JPEG, 60, baos);//这里压缩50%，把压缩后的数据存放到baos中
+        //判断如果图片大于500KB,进行压缩
+        if (baos.toByteArray().length / 1024 > 512) {
+            //重置baos即清空baos
+            baos.reset();
+            //这里压缩50%，把压缩后的数据存放到baos中
+            image.compress(Bitmap.CompressFormat.JPEG, 60, baos);
         }
         ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());
         BitmapFactory.Options newOpts = new BitmapFactory.Options();
@@ -420,18 +414,25 @@ public class TakePicOldActivity extends BaseActivity implements SurfaceHolder.Ca
         int w = newOpts.outWidth;
         int h = newOpts.outHeight;
         //现在主流手机比较多是800*480分辨率，所以高和宽我们设置为
-        float hh = 800f;//这里设置高度为800f
-        float ww = 480f;//这里设置宽度为480f
+        //这里设置高度为800f
+        float hh = 800f;
+        //这里设置宽度为480f
+        float ww = 480f;
         //缩放比。由于是固定比例缩放，只用高或者宽其中一个数据进行计算即可
-        int be = 1;//be=1表示不缩放
-        if (w > h && w > ww) {//如果宽度大的话根据宽度固定大小缩放
+        //be=1表示不缩放
+        int be = 1;
+        //如果宽度大的话根据宽度固定大小缩放
+        if (w > h && w > ww) {
             be = (int) (newOpts.outWidth / ww);
-        } else if (w < h && h > hh) {//如果高度高的话根据宽度固定大小缩放
+        } else if (w < h && h > hh) {
+            //如果高度高的话根据宽度固定大小缩放
             be = (int) (newOpts.outHeight / hh);
         }
-        if (be <= 0)
+        if (be <= 0) {
             be = 1;
-        newOpts.inSampleSize = be;//设置缩放比例
+        }
+        //设置缩放比例
+        newOpts.inSampleSize = be;
         //重新读入图片，注意此时已经把options.inJustDecodeBounds 设回false了
         isBm = new ByteArrayInputStream(baos.toByteArray());
         bitmap = BitmapFactory.decodeStream(isBm, null, newOpts);

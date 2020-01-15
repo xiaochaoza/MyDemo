@@ -1,7 +1,6 @@
 package com.fzzz.mydemo.bean;
 
-import com.contrarywind.interfaces.IPickerViewData;
-
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +9,7 @@ import java.util.List;
  * time: 2019-08-30
  * update:
  */
-public class AddressInfoBean {
+public class AddressInfoBean implements Serializable {
 
     public List<Province> provinces;
 

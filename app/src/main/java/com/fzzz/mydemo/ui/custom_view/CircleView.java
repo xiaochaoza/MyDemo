@@ -52,7 +52,7 @@ public class CircleView extends View {
         }
     }
 
-    /*
+    /**
         Paint.ANTI_ALIAS_FLAG ：抗锯齿标志
         Paint.FILTER_BITMAP_FLAG : 使位图过滤的位掩码标志
         Paint.DITHER_FLAG : 使位图进行有利的抖动的位掩码标志
@@ -76,8 +76,7 @@ public class CircleView extends View {
         mRadius = length * 0.1f / 2;
         mCirclePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mCirclePaint.setColor(circleColor);
-        mRectF = new RectF(length * 0.1f, length * 0.1f, length * 0.9f,
-                length * 0.9f);
+        mRectF = new RectF(length * 0.1f, length * 0.1f, length * 0.9f, length * 0.9f);
 
         mArcPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mArcPaint.setColor(arcColor);

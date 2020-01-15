@@ -86,6 +86,8 @@ public class WebViewActivity extends BaseActivity {
             case R.id.bt_load:
                 PageUtil.toActivity(Constants.PATH_APP_WEBLOAD);
                 break;
+            default:
+                break;
         }
     }
 

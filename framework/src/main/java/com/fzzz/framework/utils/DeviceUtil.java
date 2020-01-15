@@ -20,7 +20,6 @@ public class DeviceUtil {
      * @return 版本名称
      */
     public static String getVersionName(Context context) {
-
         //获取包管理器
         PackageManager pm = context.getPackageManager();
         //获取包信息
@@ -31,9 +30,7 @@ public class DeviceUtil {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-
         return null;
-
     }
 
     /**
@@ -43,7 +40,6 @@ public class DeviceUtil {
      * @return 版本号
      */
     public static int getVersionCode(Context context) {
-
         //获取包管理器
         PackageManager pm = context.getPackageManager();
         //获取包信息
@@ -54,9 +50,7 @@ public class DeviceUtil {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-
         return 0;
-
     }
 
     /**
@@ -79,7 +73,6 @@ public class DeviceUtil {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-
         return null;
     }
 }

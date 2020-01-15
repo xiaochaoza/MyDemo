@@ -51,6 +51,8 @@ public class CustomViewActivity extends BaseActivity {
                     llShow.addView(customLineView);
                 }
                 break;
+            default:
+                break;
         }
     }
 }

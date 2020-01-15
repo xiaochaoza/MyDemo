@@ -38,19 +38,12 @@ public class FloatingActionActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        fabButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastUtil.show("系统按钮被点击");
-            }
-        });
+        fabButton.setOnClickListener((v) ->
+                ToastUtil.show("系统按钮被点击")
+        );
 
-        abButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastUtil.show("自定义按钮被点击");
-            }
-        });
+        abButton.setOnClickListener((v) ->
+                ToastUtil.show("自定义按钮被点击")
+        );
     }
-
 }

@@ -24,8 +24,6 @@ public class FormView extends RelativeLayout {
     @BindView(R.id.content)
     TextView content;
 
-//    public int nheight;
-
     public FormView(Context context) {
         super(context);
         init();
@@ -40,8 +38,4 @@ public class FormView extends RelativeLayout {
         name.setText(user.id);
         content.setText(user.content);
     }
-
-//    public int getNheight() {
-//        return nheight;
-//    }
 }

@@ -47,6 +47,8 @@ public class CameraActivity extends BaseActivity {
                 break;
             case R.id.bt_camera3:
                 break;
+            default:
+                break;
         }
     }
 

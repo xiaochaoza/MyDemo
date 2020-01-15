@@ -43,8 +43,8 @@ public abstract class BaseFragment extends Fragment {
     private void initView(int layoutID, View view) {
         View statusView = view.findViewById(R.id.status_view);
         ViewGroup.LayoutParams params = statusView.getLayoutParams();
-//        params.height = ScreenUtil.getStatusHeight(getActivity());
-//        statusView.setLayoutParams(params);
+        params.height = ScreenUtil.getStatusHeight(getActivity());
+        statusView.setLayoutParams(params);
         FrameLayout mainContent = view.findViewById(R.id.fragment_content);
         View content = View.inflate(getActivity(), layoutID, null);
         mainContent.addView(content);

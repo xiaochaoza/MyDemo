@@ -135,11 +135,13 @@ public class RecyclerViewSortActivity extends BaseActivity {
             if (fromPosition < toPosition) {
                 //从上往下拖动，每滑动一个item，都将list中的item向下交换，向上滑同理。
                 for (int i = fromPosition; i < toPosition; i++) {
-                    Collections.swap(mDatas, i, i + 1);//交换数据源两个数据的位置
+                    //交换数据源两个数据的位置
+                    Collections.swap(mDatas, i, i + 1);
                 }
             } else {
                 for (int i = fromPosition; i > toPosition; i--) {
-                    Collections.swap(mDatas, i, i - 1);//交换数据源两个数据的位置
+                    //交换数据源两个数据的位置
+                    Collections.swap(mDatas, i, i - 1);
                 }
             }
             notifyItemMoved(fromPosition, toPosition);
