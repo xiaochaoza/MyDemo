@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingStart="14dp"
+    android:paddingEnd="14dp"
+    tools:context=".ui.biometric_prompt.BiometricPromptActivity">
+
+    <Button
+        android:id="@+id/bt_biometric_prompt_finger"
+        style="@style/button_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="指纹识别(直接调用)"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/bt_biometric_prompt_finger2"
+        style="@style/button_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="指纹识别(调起系统，错误几次跳到密码)"
+        android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/bt_biometric_prompt_face"
+        style="@style/button_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="人脸识别"
+        android:textAllCaps="false" />
+
+</LinearLayout>

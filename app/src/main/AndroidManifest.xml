@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
 
     <!--    网络框架现在不允许明文传输，会报错-->
     <!--    java.net.UnknownServiceException: CLEARTEXT communication to v.juhe.cn not permitted by network security policy-->
@@ -83,6 +84,7 @@
         <activity android:name=".ui.floating.FloatingActionActivity" />
         <activity android:name=".ui.photoview.PhotoViewActivity" />
         <activity android:name=".ui.glide.GlideActivity" />
+        <activity android:name=".ui.biometric_prompt.BiometricPromptActivity" />
 
         <!--
         authorities：app的包名.fileProvider

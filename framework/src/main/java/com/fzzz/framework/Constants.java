@@ -45,6 +45,7 @@ public class Constants {
     public static final String PATH_APP_FLOATING = "/ui/floating/FloatingActionActivity";
     public static final String PATH_APP_PHOTO_VIEW = "/ui/photoview/PhotoViewActivity";
     public static final String PATH_APP_GLIDE = "/ui/glide/GlideActivity";
+    public static final String PATH_APP_BIOMETRICPROMPT = "/ui/biometric_prompt/BiometricPromptActivity";
 
     public static final String PATH_INTERVIEW = "/interview/InterViewActivity";
     public static final String PATH_INTERVIEW_T11_1 = "/interview/T11Activity1";

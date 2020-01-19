@@ -37,7 +37,7 @@ public class MainActivity extends BaseActivity {
     }
 
     @OnClick({R.id.btn_async_load, R.id.btn_volley, R.id.btn_okhttp, R.id.btn_retrofit, R.id.btn_rxjava, R.id.btn_retrofit_rxjava,
-            R.id.btn_eventbus, R.id.btn_glide, R.id.btn_greendao, R.id.btn_figerprint, R.id.btn_recyclerview, R.id.btn_stick_recycler,
+            R.id.btn_eventbus, R.id.btn_glide, R.id.btn_greendao, R.id.btn_biometric_prompt, R.id.btn_recyclerview, R.id.btn_stick_recycler,
             R.id.btn_coordinator, R.id.btn_webview, R.id.btn_dialog, R.id.btn_drawerlayout, R.id.btn_toolbar, R.id.btn_zxing,
             R.id.btn_lottie, R.id.btn_tablayout, R.id.btn_dagger2, R.id.btn_handler, R.id.btn_databinding, R.id.btn_windowinput,
             R.id.btn_animation, R.id.btn_gps, R.id.btn_take_pic, R.id.btn_device_info, R.id.btn_mytest, R.id.btn_thread, R.id.btn_single_task,
@@ -70,7 +70,8 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.btn_greendao:
                 break;
-            case R.id.btn_figerprint:
+            case R.id.btn_biometric_prompt:
+                PageUtil.toActivity(Constants.PATH_APP_BIOMETRICPROMPT);
                 break;
             case R.id.btn_recyclerview:
                 PageUtil.toActivity(Constants.PATH_APP_RECYCLER_LIST);
