@@ -18,7 +18,7 @@
     <!--    需要设置        android:usesCleartextTraffic="true"-->
     <application
         android:name=".MainApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -85,6 +85,9 @@
         <activity android:name=".ui.photoview.PhotoViewActivity" />
         <activity android:name=".ui.glide.GlideActivity" />
         <activity android:name=".ui.biometric_prompt.BiometricPromptActivity" />
+        <activity android:name=".ui.push.PushTestActivity"
+            android:launchMode="singleTask"
+            android:exported="true" />
 
         <!--
         authorities：app的包名.fileProvider
@@ -101,6 +104,10 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+        <meta-data
+            android:name="com.huawei.hms.client.appid"
+            android:value="appid=102018889" />
 
     </application>
 

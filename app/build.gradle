@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -20,10 +23,39 @@ android {
         }
     }
 
+    signingConfigs {
+        release {
+            keyAlias properties.getProperty("fzzz_signature.alias")
+            keyPassword properties.getProperty("fzzz_signature.alias_password")
+            storePassword properties.getProperty("fzzz_signature.password")
+            storeFile file('fzzz.jks')
+        }
+    }
+
     buildTypes {
         release {
+            //不显示Log
+            debuggable false
+            //启用混淆
             minifyEnabled false
+            //清理无用资源
+            shrinkResources false
+            //启用zipAlign压缩
+            zipAlignEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            //显示Log
+            debuggable true
+            //不启用混淆
+            minifyEnabled false
+            //清理无用资源
+            shrinkResources false
+            //启用zipAlign压缩
+            zipAlignEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 
@@ -39,7 +71,7 @@ android {
         }
     }
 
-    //在layout下建立文件夹
+//在layout下建立文件夹
 //    sourceSets {
 //        main {
 //            res.srcDirs = [

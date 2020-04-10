@@ -4,6 +4,7 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven { url 'https://dl.bintray.com/umsdk/release' }
 
     }
     dependencies {
@@ -19,7 +20,9 @@ allprojects {
     repositories {
         google()
         jcenter()
+        mavenCentral()
         maven { url "https://jitpack.io" }
+        maven { url 'https://dl.bintray.com/umsdk/release' }
     }
 }
 
@@ -31,7 +34,7 @@ ext {
     compileSdkVersion = 29
     buildToolsVersion = "29.0.0 rc2"
     minSdkVersion = 28
-    targetSdkVersion = 28
+    targetSdkVersion = 24
     butterknife = '10.1.0'
 
     versionCode = 1
