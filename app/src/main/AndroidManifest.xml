@@ -85,6 +85,7 @@
         <activity android:name=".ui.photoview.PhotoViewActivity" />
         <activity android:name=".ui.glide.GlideActivity" />
         <activity android:name=".ui.biometric_prompt.BiometricPromptActivity" />
+        <activity android:name=".ui.gson.GsonActivity" />
         <activity android:name=".ui.push.PushTestActivity"
             android:launchMode="singleTask"
             android:exported="true" />

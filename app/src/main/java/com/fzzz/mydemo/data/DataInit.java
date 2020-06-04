@@ -1,4 +1,4 @@
-package com.fzzz.mydemo.ui.recycler;
+package com.fzzz.mydemo.data;
 
 import java.util.ArrayList;
 import java.util.List;

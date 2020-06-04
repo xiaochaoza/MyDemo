@@ -16,6 +16,7 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.fzzz.framework.Constants;
 import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.mydemo.R;
+import com.fzzz.mydemo.data.DataInit;
 import com.orhanobut.logger.Logger;
 
 import java.util.Collections;

@@ -34,8 +34,8 @@ android {
 
     buildTypes {
         release {
-            //不显示Log
-            debuggable false
+            //显示Log
+            debuggable true
             //启用混淆
             minifyEnabled false
             //清理无用资源

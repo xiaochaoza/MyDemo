@@ -14,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.fzzz.framework.Constants;
 import com.fzzz.framework.base.BaseActivity;
 import com.fzzz.framework.utils.PageUtil;
@@ -84,7 +85,8 @@ public class WebViewActivity extends BaseActivity {
                 cameraIntents.clear();
                 break;
             case R.id.bt_load:
-                PageUtil.toActivity(Constants.PATH_APP_WEBLOAD);
+//                PageUtil.toActivity(Constants.PATH_APP_WEBLOAD);
+                ARouter.getInstance().build(Constants.PATH_APP_WEBLOAD).withString("url", "http://www.baidu.com").navigation();
                 break;
             default:
                 break;

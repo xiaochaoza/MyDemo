@@ -107,6 +107,11 @@ public class WebLoadActivity extends BaseActivity {
                 pbLoading.setProgress(newProgress);
             }
         });
+
+        String url = getIntent().getStringExtra("url");
+        webView.setVisibility(View.VISIBLE);
+        webViewX5.setVisibility(View.GONE);
+        webView.loadUrl(url);
     }
 
     @OnClick({R.id.bt_webview_load, R.id.bt_x5_load})
