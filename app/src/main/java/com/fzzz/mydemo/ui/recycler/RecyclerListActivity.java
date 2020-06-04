@@ -33,7 +33,7 @@ public class RecyclerListActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.bt_recycler_load, R.id.bt_recycler_sort})
+    @OnClick({R.id.bt_recycler_load, R.id.bt_recycler_sort, R.id.bt_recycler_default, R.id.bt_recycler_base})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_recycler_load:
@@ -41,6 +41,12 @@ public class RecyclerListActivity extends BaseActivity {
                 break;
             case R.id.bt_recycler_sort:
                 PageUtil.toActivity(Constants.PATH_APP_RECYCLER_SORT);
+                break;
+            case R.id.bt_recycler_default:
+                PageUtil.toActivity(Constants.PATH_APP_RECYCLER_DEFAULT);
+                break;
+            case R.id.bt_recycler_base:
+                PageUtil.toActivity(Constants.PATH_APP_RECYCLER_BASE);
                 break;
             default:
                 break;

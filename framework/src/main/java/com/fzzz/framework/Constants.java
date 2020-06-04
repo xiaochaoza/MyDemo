@@ -41,6 +41,8 @@ public class Constants {
     public static final String PATH_APP_RECYCLER_LOAD = "/ui/recycler/RecyclerViewLoadActivity";
     public static final String PATH_APP_RECYCLER_SORT = "/ui/recycler/RecyclerViewSortActivity";
     public static final String PATH_APP_RECYCLER_LIST = "/ui/recycler/RecyclerListActivity";
+    public static final String PATH_APP_RECYCLER_DEFAULT = "/ui/recycler/RecyclerDefaultActivity";
+    public static final String PATH_APP_RECYCLER_BASE = "/ui/recycler/RecyclerBaseActivity";
     public static final String PATH_APP_DOWNLOAD = "/ui/download/DownLoadActivity";
     public static final String PATH_APP_FLOATING = "/ui/floating/FloatingActionActivity";
     public static final String PATH_APP_PHOTO_VIEW = "/ui/photoview/PhotoViewActivity";

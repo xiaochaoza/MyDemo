@@ -80,6 +80,8 @@ ext.deps = [
 
         picker_view           : 'com.contrarywind:Android-PickerView:4.1.8',
 
+        base_quick_adpater    : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30',
+
         eventBus              : 'org.greenrobot:eventbus:3.0.0',
 //        adapterHelper         :'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30',
 ]
