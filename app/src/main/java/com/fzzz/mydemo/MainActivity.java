@@ -1,5 +1,7 @@
 package com.fzzz.mydemo;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -38,10 +40,10 @@ public class MainActivity extends BaseActivity {
 
     @OnClick({R.id.btn_async_load, R.id.btn_volley, R.id.btn_okhttp, R.id.btn_retrofit, R.id.btn_rxjava, R.id.btn_retrofit_rxjava,
             R.id.btn_eventbus, R.id.btn_glide, R.id.btn_greendao, R.id.btn_biometric_prompt, R.id.btn_recyclerview, R.id.btn_stick_recycler,
-            R.id.btn_coordinator, R.id.btn_webview, R.id.btn_dialog, R.id.btn_drawerlayout, R.id.btn_toolbar, R.id.btn_zxing,
+            R.id.btn_coordinator, R.id.btn_webview, R.id.btn_dialog, R.id.btn_drawerlayout, R.id.btn_toolbar, R.id.btn_zxing, R.id.btn_go_app,
             R.id.btn_lottie, R.id.btn_tablayout, R.id.btn_dagger2, R.id.btn_handler, R.id.btn_databinding, R.id.btn_windowinput,
             R.id.btn_animation, R.id.btn_gps, R.id.btn_take_pic, R.id.btn_device_info, R.id.btn_mytest, R.id.btn_thread, R.id.btn_single_task,
-            R.id.btn_custom_view, R.id.btn_fragment, R.id.btn_leak, R.id.btn_forum, R.id.btn_swipe_refresh, R.id.btn_viewstub,
+            R.id.btn_custom_view, R.id.btn_fragment, R.id.btn_leak, R.id.btn_forum, R.id.btn_swipe_refresh, R.id.btn_viewstub,  R.id.btn_go_shoushi,
             R.id.btn_wifi, R.id.btn_picker_view, R.id.btn_download, R.id.btn_login, R.id.btn_floating, R.id.btn_photo_view, R.id.btn_gson})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -49,6 +51,7 @@ public class MainActivity extends BaseActivity {
                 PageUtil.toActivity(Constants.PATH_APP_AYSNC_TASK);
                 break;
             case R.id.btn_volley:
+
                 break;
             case R.id.btn_okhttp:
                 PageUtil.toActivity(Constants.PATH_APP_OKHTTP);
@@ -158,6 +161,46 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.btn_gson:
                 PageUtil.toActivity(Constants.PATH_APP_GSON);
+                break;
+                case R.id.btn_go_shoushi:
+                PageUtil.toActivity(Constants.PATH_APP_GESTURE);
+                break;
+            case R.id.btn_go_app:
+                Intent intent = new Intent();
+                intent.setData(Uri.parse("nxzw://pay"));
+                intent.putExtra("merName", "xxx");
+                intent.putExtra("orderDate", "xxx");
+                intent.putExtra("orderId", "xxx");
+                intent.putExtra("goodsId", "xxx");
+                intent.putExtra("goodsName", "xxx");
+                intent.putExtra("goodsNum", "xxx");
+                intent.putExtra("carriageAmt", "xxx");
+                intent.putExtra("amount", "xxx");
+                intent.putExtra("merId", "xxx");
+                intent.putExtra("userId", "xxx");
+                intent.putExtra("platId", "xxx");
+                intent.putExtra("expireTime", "xxx");
+                intent.putExtra("eWalletFlag", "xxx");
+                intent.putExtra("sheBaoCardFlag", "xxx");
+                intent.putExtra("wxpayflag", "xxx");
+                intent.putExtra("alipayflag", "xxx");
+                intent.putExtra("icbcpayflag", "xxx");
+                intent.putExtra("eWalletStatus", "xxx");
+                intent.putExtra("passfreePaymentFlag", "xxx");
+                intent.putExtra("eWalletBalance", "xxx");
+                intent.putExtra("eWalletDiscount", "xxx");
+                intent.putExtra("icbcpayDiscount", "xxx");
+                intent.putExtra("alipayDiscount", "xxx");
+                intent.putExtra("wxpayDiscount", "xxx");
+                intent.putExtra("rank", "xxx");
+                intent.putExtra("openId","xxx");
+                intent.putExtra("appReturnUrl", "xxx");
+                intent.putExtra("reserved", "xxx");
+                intent.putExtra("orderType", "xxx");
+                intent.putExtra("remark1", "xxx");
+                intent.putExtra("payPlat", "xxx");
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
                 break;
             default:
                 break;

@@ -43,12 +43,16 @@ public class Constants {
     public static final String PATH_APP_RECYCLER_LIST = "/ui/recycler/RecyclerListActivity";
     public static final String PATH_APP_RECYCLER_DEFAULT = "/ui/recycler/RecyclerDefaultActivity";
     public static final String PATH_APP_RECYCLER_BASE = "/ui/recycler/RecyclerBaseActivity";
+    public static final String PATH_APP_RECYCLER_BASE2 = "/ui/recycler/RecyclerBaseActivity2";
     public static final String PATH_APP_DOWNLOAD = "/ui/download/DownLoadActivity";
     public static final String PATH_APP_FLOATING = "/ui/floating/FloatingActionActivity";
     public static final String PATH_APP_PHOTO_VIEW = "/ui/photoview/PhotoViewActivity";
     public static final String PATH_APP_GLIDE = "/ui/glide/GlideActivity";
     public static final String PATH_APP_BIOMETRICPROMPT = "/ui/biometric_prompt/BiometricPromptActivity";
     public static final String PATH_APP_GSON = "/ui/gson/GsonActivity";
+    public static final String PATH_APP_GESTURE = "/ui/shoushi/GestureActivity";
+    public static final String PATH_APP_GESTURE_SET = "/ui/shoushi/GestureLockSetActivity";
+    public static final String PATH_APP_GESTURE_VERIFY = "/ui/shoushi/GestureLockVerifyActivity";
 
     public static final String PATH_INTERVIEW = "/interview/InterViewActivity";
     public static final String PATH_INTERVIEW_T11_1 = "/interview/T11Activity1";

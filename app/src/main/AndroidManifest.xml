@@ -87,7 +87,11 @@
         <activity android:name=".ui.biometric_prompt.BiometricPromptActivity" />
         <activity android:name=".ui.gson.GsonActivity" />
         <activity android:name=".ui.recycler.RecyclerBaseActivity" />
+        <activity android:name=".ui.recycler.RecyclerBaseActivity2" />
         <activity android:name=".ui.recycler.RecyclerDefaultActivity" />
+        <activity android:name=".ui.gesture.GestureActivity" />
+        <activity android:name=".ui.gesture.GestureLockSetActivity" />
+        <activity android:name=".ui.gesture.GestureLockVerifyActivity" />
         <activity android:name=".ui.push.PushTestActivity"
             android:launchMode="singleTask"
             android:exported="true" />

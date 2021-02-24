@@ -46,7 +46,7 @@ public class RecyclerListActivity extends BaseActivity {
                 PageUtil.toActivity(Constants.PATH_APP_RECYCLER_DEFAULT);
                 break;
             case R.id.bt_recycler_base:
-                PageUtil.toActivity(Constants.PATH_APP_RECYCLER_BASE);
+                PageUtil.toActivity(Constants.PATH_APP_RECYCLER_BASE2);
                 break;
             default:
                 break;
