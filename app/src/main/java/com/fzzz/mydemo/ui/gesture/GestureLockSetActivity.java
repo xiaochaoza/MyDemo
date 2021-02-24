@@ -71,8 +71,9 @@ public class GestureLockSetActivity extends BaseActivity {
             } else {
                 // 密码设置成功
                 if (password.equals(firstEnterPsw)) {
-                    ToastUtil.show("设置成功:" + password);
-                    finish();
+                    tv_tip.setTextColor(ContextCompat.getColor(GestureLockSetActivity.this, R.color.color999));
+                    tv_tip.setText(GestureLockConfig.SET_DONE);
+                    refreshView();
                 } else {
                     lockView.showErrorState();
                     tv_tip.setTextColor(ContextCompat.getColor(GestureLockSetActivity.this, android.R.color.holo_red_dark));
@@ -105,5 +106,6 @@ public class GestureLockSetActivity extends BaseActivity {
     private void refreshView() {
         lockView.resetAndInvalidate();
         lockTipView.resetAndInvalidate();
+        firstEnterPsw = null;
     }
 }
