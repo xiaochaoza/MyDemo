@@ -8,7 +8,6 @@ import androidx.annotation.Nullable;
 
 import com.fzzz.framework.utils.ActivityManager;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
-import com.umeng.message.PushAgent;
 
 import butterknife.ButterKnife;
 
@@ -35,7 +34,7 @@ public abstract class BaseActivity extends RxAppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        PushAgent.getInstance(this).onAppStart();
+//        PushAgent.getInstance(this).onAppStart();
     }
 
     public void beforeSetContentView() {
